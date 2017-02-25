@@ -22,4 +22,6 @@ export default [
   [/^json\/(\d+)$/, 'data/index/json?id=:1'],
   [/^jsonp\/(\d+)$/, 'data/index/jsonp?id=:1'],
 
+  [/^desc\/(.+)$/,'home/index/desc?name=:1'],
+
 ];

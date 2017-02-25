@@ -1,0 +1,72 @@
+body {
+  color: #666;
+  max-width: 600px;
+  margin: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.tip {
+  background-color: rgba(155, 215, 255, 0.31);
+  color: black;
+  display: block;
+  text-align: center;
+}
+
+nav li {
+  margin-bottom: 10px;
+
+}
+
+.w50 {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.w70 {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+nav a {
+  color: #666;
+}
+
+#use li {
+  margin-bottom: 40px;
+}
+.content{
+  margin-bottom: 40px;
+
+}
+
+.content li {
+  font-size: 20px;
+}
+.c-p{
+  font-size: 16px;
+  text-indent: 20px;
+
+}
+.toStart{
+  position: fixed;
+  top: 0;
+  margin: auto;
+  left: 0;
+  background-color: white;
+  right: 0;
+  width: 99px;
+  white-space: nowrap;
+}
+body{
+  padding-top: 30px;
+}
+a{
+  color: #666;
+}

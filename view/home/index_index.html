@@ -2,43 +2,62 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>New ThinkJS Application</title>
+<title>welcome</title>
 <style>
 *{padding: 0;margin: 0;font-size: 16px;line-height: 20px;font-family: arial;}
 a, a:visited{color:#337ab7;text-decoration: none;}
-header{padding: 70px 0 70px 0;background-color: #4A6495}
-h1{font-size: 36px;color:#fff;font-weight: normal;}
+header{padding: 30px 0 30px 0;background-color: #4A6495}
+h1{font-size: 36px;color:#fff;font-weight: normal;line-height: 40px;  text-align: center;}
 code{  padding: 2px 4px;font-size: 90%;color: #c7254e;background-color: #f9f2f4;border-radius: 4px;}
-.content{width: 1000px;margin: auto}
-.wrap{width: 1000px;margin: auto}
+.content{width: 100%;;margin: auto}
+.wrap{margin: auto}
 .content{margin-top: 80px;}
-.list{width: 800px;}
+.list{width: 100%;}
 .list .item{position: relative;padding-left: 70px;margin-top: 50px;}
 .list .item .step{position: absolute;width: 36px;height: 36px;top:-3px;left:0;border: 5px solid #4A6495;border-radius: 23px;text-align: center;line-height: 36px;}
-.list .item h2{font-size: 24px;font-weight: normal;}
-.list .item p{line-height: 30px;margin-top: 10px}
+.list .item h2{font-size: 24px;font-weight: normal;line-height: 43px;}
+.list .item p{line-height: 24px;margin-top: 10px;text-indent: 32px;}
+  a{
+    font-size: inherit;
+  }
+  .list .item li{
+    margin: 10px 0px;
+    list-style-type: none;
+  }
+  h3{
+    font-size: 18px;
+  }
 </style>
 </head>
 <body>
   <header>
     <div class="wrap">
-      <h1>A New App Created By ThinkJS</h1>
+      <h1>欢迎来到我的主页</h1>
     </div>
   </header>
   <div class="content">
     <div class="list">
       <div class="item">
-        <div class="step">1</div>
-        <h2>Generate Files</h2>
-        <p>Run <code>thinkjs</code> command to create module, controler, model, service and so on. visit <a href="https://thinkjs.org/doc/thinkjs_command.html">https://thinkjs.org/doc/thinkjs_command.html</a> to view more infomation.</p>
+        <div class="step"></div>
+        <h2>项目一览</h2>
+        <ul>
+          <li>
+            <h3><a target="_blank" href="desc/fatso">静态数据平台</a></h3>
+            <p>技术项目。独立进行全栈开发。项目功能：提供数据快速录入、即改即得的功能。用户先建立数据模板，再根据模板创建数据，系统提供数据接口，以供线上项目访问。功能亮点：可以满足复杂的树状数据结构。项目技术栈：think.js、pm2、webpack、SPA、MySQL、树状数据解析与存储。</p>
+          </li>
+          <li>
+            <h3><a target="_blank" href="desc/rpo">RPO企业系统</a></h3>
+            <p>独立负责进行前端、node中间层开发。实现功能：基于node中间层实现前端页面与后端SCF服务的数据交互，实现用户身份验证、登录态保存，编写了日历组件。项目意义：使用koa.js技术栈进行中间层开发；node与Java服务通信；通过session与redis进行登录态保存；使用webpack优化项目结构并使用ES6语言；使用xtemplate并编写命令扩展以处理数据。</p>
+          </li>
+        </ul>
       </div>
       <div class="item">
-        <div class="step">2</div>
+        <div class="step"></div>
         <h2>Documentation</h2>
         <p>ThinkJS has html and pdf documents. visit <a href="https://thinkjs.org/doc.html">https://thinkjs.org/doc.html</a></p>
       </div>
       <div class="item">
-        <div class="step">3</div>
+        <div class="step"></div>
         <h2>WebSocket</h2>
         <p>ThinkJS support <code>socket.io</code> and <code>sockjs</code> WebSocket client and server node. visit <a href="https://thinkjs.org/doc/adapter_websocket.html">https://thinkjs.org/doc/adapter_websocket.html</a></p>
       </div>

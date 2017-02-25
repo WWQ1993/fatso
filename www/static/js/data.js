@@ -112,7 +112,9 @@ var variable = {
     }
   },
   method = {
-
+    about:function () {
+      alert('powered by 吴万强:wwqin1993@163.com')
+    },
     edit: {
       //清除临时数据
       clearList: function () {

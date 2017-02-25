@@ -112,6 +112,9 @@ var variable = {
     }
   },
   method = {
+    about:function () {
+      alert('powered by 吴万强:wwqin1993@163.com')
+    },
     uploadTemplateData:function (event) {
       if($('.input-file')[0].files[0]){
 
