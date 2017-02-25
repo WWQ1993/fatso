@@ -1,0 +1,136 @@
+html, body {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.main {
+  position: relative;
+  min-height: 300px;
+}
+
+.loading {
+  cursor: progress;
+}
+
+.inner-slider {
+  position: fixed;
+  top: 175px;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-width: 12rem;
+}
+
+.inner-main .item {
+  border: 1px #9d9d9d dashed;;
+  padding: 5px 0px;
+}
+
+.inner-main .item .col-xs-3, .inner-main .item .col-xs-2 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.inner-main .form-control {
+  padding: 0 5px;
+}
+
+.inner-main .input-group-addon {
+  padding: 0 1px;
+  min-width: 45px;
+}
+
+.template-name {
+  /*font-size: 2rem;*/
+  margin-left: 1rem;
+  color: gray;
+  outline: solid 1px #ddd;
+  /*line-height: 2.5rem;*/
+
+}
+
+.item-type {
+  line-height: 2.91rem;
+  font-size: 1.7rem;
+}
+
+.row.tool-btn {
+  line-height: 3rem;
+}
+
+.dirty-alert {
+  text-align: center;
+  margin: auto;
+  padding: .62rem 0;
+}
+
+.inner-title input.alias {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+
+.listAreaInfo {
+  min-width: 550px;
+}
+
+
+.baffle {
+  display: none;
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(128, 128, 128, 0.4);
+}
+
+.closeBtn {
+  display: inline-block;
+  float: right;
+  font-size: 2rem;
+  line-height: 35px;
+  margin-right: 13px;
+}
+
+.closeBtn:hover {
+  text-decoration: none;
+}
+
+.pop-frame {
+  background: white;
+  border: 10px #a0a1a2 solid;
+  width: 30%;
+  max-height: 50%;
+  overflow-y: auto;
+  margin: auto;
+  margin-top: 20%;
+}
+
+.pop-frame h4 {
+  padding-left: 1rem;
+}
+.pop-frame .input-file{
+  display: block;
+   margin :20px auto;
+  outline: 0 !important;
+  cursor: pointer;
+  line-height: 25px;
+  vertical-align: middle;
+  font:caption;
+}
+
+.pop-frame .list-group {
+  margin-bottom: 0px;
+}
+.pop-frame .btnArea{
+  text-align: center;
+  margin-bottom:20px;
+}
+.pop-frame .btnArea button{
+  margin: 0 10px;
+}

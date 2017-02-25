@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>静态数据平台</title>
+
+  <!-- Bootstrap -->
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link rel="stylesheet" href="/static/css/data.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">静态数据平台</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="/template">模板</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/data">数据</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="baffle">
+  <div class="listInner-area">
+    <a class="closeBtn" href="javascript:method.list.closeChooseTemplate()">✕</a><h4>请选择模板</h4>
+    <ul class="list-group template-list">
+    </ul>
+  </div>
+</div>
+
+<script type="text/html" id="edit">
+
+  <h3 class="page-header">
+    <div class="row">
+      <div class="col-md-1 col-sm-1 col-xs-1">
+        <button type="button" class="btn btn-default btn-sm " onclick="router.goBack()">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </button>
+      </div>
+      <div class="inner-title col-xs-5">
+         <span class="form-control data-alias check-value-val" contenteditable="true" onkeyup="method.edit.checkDirty()" onblur="method.edit.checkDirty()"
+               data-value="">别名
+         </span>
+      </div>
+    </div>
+  </h3>
+  <div class="row">
+    <div class="col-sm-2 col-xs-2 col-md-2 inner-slider">
+      <div class="btn-group btn-group-justified" style="margin-bottom: 1rem">
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" onclick="method.edit.addLine(null,true)">添加数据</button>
+        </div>
+      </div>
+      <div class="btn-group btn-group-justified" style="margin-bottom: 1rem">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default btn-save" onclick="method.edit.saveList()">保存</button>
+        </div>
+      </div>
+      <div class="row alert alert-success dirty-alert" role="alert">数据未改动</div>
+    </div>
+    <div class=" col-xs-10    col-xs-offset-3 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 inner-main"></div>
+  </div>
+  <div style="margin-top: 3rem; " class="row">
+    <ul style="max-height: 450px;overflow-y: scroll; "
+        class="list-group col-md-8 col-sm-9 col-xs-10 list-area"></ul>
+  </div>
+
+</script>
+<script type="text/html" id="list">
+  <h3 class="page-header">数据列表</h3>
+  <div class="row">
+    <div class="col-md-2 col-sm-2 col-xs-2">
+      <button type="button" class="btn btn-default btn-sm " onclick="method.list.chooseTemplate()">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-6">
+      <div class="input-group">
+        <input type="text" class="form-control search-text">
+        <span class="input-group-btn">
+            <button class="btn btn-default"  onclick="method.list.search()" type="button">搜索</button>
+          </span>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 3rem; " class="row">
+    <ul style="max-height: 450px;overflow-y: scroll; "
+        class="list-group col-md-8 col-sm-9 col-xs-10 list-area"></ul>
+  </div>
+
+
+</script>
+<script src="/static/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/data.js">
+
+</script>
+</body>
+</html>
