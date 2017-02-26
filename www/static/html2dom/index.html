@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="utf-8">
+    <title>HtmlToDom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>
+        HTML TO DOM
+        <h4>by 吴万强</h4>
+    </h1>
+    <div id="LeftArea">
+        <TextArea id="inputArea" spellcheck="false" autofocus>
+<div style="text-align: center;">
+    <h4 style="color:#869585;text-align: center;background-color: beige">This area will run your code</h4>
+    <p>You can paste your code to the left-top area, after submitting, you will get the equivalence code for DOM at left-bottom area.</p>
+    <p>You can also change the DOM code and run, the result will show at right-bottom area.</p>
+    <p>Powered by WWQ</p>
+    <p>2015.08</p>
+</div>
+        </TextArea>
+        <Button class="submit">Submit</Button>
+        <TextArea id="outputArea" spellcheck="false"></TextArea>
+        <Button class="submit">Submit</Button>
+
+    </div>
+
+    <iframe src=input.html id="iIframe" ></iframe>
+    <iframe src=output.html id="oIframe"></iframe>
+
+
+<script src="main.js"  charset="UTF-8"></script>
+</body>
+</html>

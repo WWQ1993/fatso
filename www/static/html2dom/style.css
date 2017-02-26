@@ -1,0 +1,42 @@
+body{
+    width: 830px;
+    margin: auto;
+    font: 12px/1.5em Tahoma;
+}
+TextArea{
+    font: 12px/1.5em Tahoma;
+
+    width: 400px;
+    height: 300px;
+    display: block;
+    border: #8bb9ff solid 1px;
+    margin: 5px 0px;
+
+}
+#LeftArea{
+    float: left;
+}
+iframe{
+    margin: 5px;
+    width: 400px;
+    height: 315px;
+    border: #f1ffff solid thin;
+    background-color: #e4f4e5
+}
+h1,h4{
+    text-align: center;
+    margin: 0.1em;
+    padding: 0.1em;
+}
+.submit{
+    background: #65a3ed;
+    width: 100px;
+    height: 29px;
+    border: none;
+    color: white;
+    outline-style: none;
+}
+
+.submit:active{
+    background: #5880ed;
+}

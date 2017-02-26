@@ -6,22 +6,28 @@
 <style>
 *{padding: 0;margin: 0;font-size: 16px;line-height: 20px;font-family: arial;}
 a, a:visited{color:#337ab7;text-decoration: none;}
-header{padding: 30px 0 30px 0;background-color: #4A6495}
+header{padding: 30px 0 30px 0;background-color: #0f95b3}
 h1{font-size: 36px;color:#fff;font-weight: normal;line-height: 40px;  text-align: center;}
 code{  padding: 2px 4px;font-size: 90%;color: #c7254e;background-color: #f9f2f4;border-radius: 4px;}
-.content{width: 100%;;margin: auto}
+.content{width: 100%;;margin: auto;max-width: 800px;}
 .wrap{margin: auto}
-.content{margin-top: 80px;}
+.content{margin: 80px auto;}
 .list{width: 100%;}
 .list .item{position: relative;padding-left: 70px;margin-top: 50px;}
-.list .item .step{position: absolute;width: 36px;height: 36px;top:-3px;left:0;border: 5px solid #4A6495;border-radius: 23px;text-align: center;line-height: 36px;}
+.list .item .step{position: absolute;width: 36px;height: 36px;top:-3px;left:0;border: 5px solid #0f95b3;border-radius: 23px;text-align: center;line-height: 36px;}
 .list .item h2{font-size: 24px;font-weight: normal;line-height: 43px;}
-.list .item p{line-height: 24px;margin-top: 10px;text-indent: 32px;}
+
+.list .item p {
+  line-height: 28px;
+  margin-top: 10px;
+  text-indent: 32px;
+  color: #666;
+}
   a{
     font-size: inherit;
   }
   .list .item li{
-    margin: 10px 0px;
+    margin: 35px 0px;
     list-style-type: none;
   }
   h3{
@@ -49,17 +55,61 @@ code{  padding: 2px 4px;font-size: 90%;color: #c7254e;background-color: #f9f2f4;
             <h3><a target="_blank" href="desc/rpo">RPO企业系统</a></h3>
             <p>独立负责进行前端、node中间层开发。实现功能：基于node中间层实现前端页面与后端SCF服务的数据交互，实现用户身份验证、登录态保存，编写了日历组件。项目意义：使用koa.js技术栈进行中间层开发；node与Java服务通信；通过session与redis进行登录态保存；使用webpack优化项目结构并使用ES6语言；使用xtemplate并编写命令扩展以处理数据。</p>
           </li>
+          <li>
+            <h3><a target="_blank" href="desc/mindom">精简dom</a></h3>
+            <p>技术项目。独立开发了类zepto.js库。项目意义：涵盖大部分API（事件、Ajax、DOM核心），大小为zepto.js的60%；熟悉库的编写；深入理解DOM。</p>
+          </li>
+          <li>
+            <h3><a target="_blank" href="desc/pofeng">2017新年人气雇主</a></h3>
+            <p>项目中期介入，负责前端开发：包括专场页面（PC、M端）、HTML5页面（微信、webview）。项目意义：任务量重、交互繁琐、样式多变、人员缺乏、前期代码混乱，挑战能力且锻炼心态。
+            </p>
+          </li>
+          <li>
+            <h3><div style="font-size: inherit;color: #666;">直聊专场</div></h3>
+            <p>独立进行全栈。项目功能：维护后台数据以供产品经理查询和修改。项目意义：使用express框架进行全栈开发；使用swipe.js库；了解分布式系统、负载均衡、nginx等；编写服务器单一定时任务。</p>
+          </li>
+          <li>
+            <h3><a target="_blank" href="https://github.com/WWQ1993/GraduationThesisNode">消防辅助决策调度系统</a></h3>
+            <p>毕业设计。项目功能：提高火情选择和地点选择功能，根据输入和已有知识库进行算法匹配决策，根据决策方案、火灾地点、各消防队实际信息进行路线调度。项目特点：使用Express框架进行全栈开发（MySQL、路由、webservice、cookie、决策算法）、单页应用开发、接入高德地图API。</p>
+          </li>
+          <li>
+            <h3><a target="_blank" href="http://etm.chinahr.com/etm/hotjob">英才ETM</a></h3>
+            <p>独立负责前端页面开发。项目意义：对前端资源加载进行探究性优化；自主编写了导航与内容联动的组件。</p>
+          </li>
+          <li>
+            <h3><a target="_blank" href="http://op.chinahr.com/2016spring">名气大咖秀</a></h3>
+            <p>独立负责PC专场页面开发。项目意义：第一次独立进行大型公司需求开发；使用前端模板和AJAX进行数据处理与异步渲染；对多个二级页代码进行抽象与复用；实现数据分页加载。</p>
+          </li>
+          <li>
+            <h3><a target="_blank" href="static/noteassistant/index.html">笔记助手</a></h3>
+            <p>使用原生JavaScript开发的辅助笔记的程序，能对文本进行样式批注、动态编号、保存等。涉及富文本操作、网页缓存、网页事件交互、树状数据解析与存储。</p>
+          </li>
+          <li>
+            <h3><a target="_blank" href="static/html2dom/index.html">HTML转DOM工具 </a></h3>
+            <p>使用原生JavaScript开发的将HTML代码转为原生JavaScript DOM代码的程序：输入HTML源码，能输出对应的DOM实现代码，支持嵌套的HTML标签语法格式。涉及字符提取（正则表达式）、网页框架、DOM编程技术。</p>
+          </li>
         </ul>
       </div>
       <div class="item">
         <div class="step"></div>
-        <h2>Documentation</h2>
-        <p>ThinkJS has html and pdf documents. visit <a href="https://thinkjs.org/doc.html">https://thinkjs.org/doc.html</a></p>
+        <h2>技术随笔</h2>
+        <ul>
+          <li>
+            <h3><a target="_blank" href="desc/fatso">静态数据平台</a></h3>
+            <p>技术项目。独立进行全栈开发。项目功能：提供数据快速录入、即改即得的功能。用户先建立数据模板，再根据模板创建数据，系统提供数据接口，以供线上项目访问。功能亮点：可以满足复杂的树状数据结构。项目技术栈：think.js、pm2、webpack、SPA、MySQL、树状数据解析与存储。</p>
+          </li>
+
+        </ul>
       </div>
       <div class="item">
         <div class="step"></div>
-        <h2>WebSocket</h2>
-        <p>ThinkJS support <code>socket.io</code> and <code>sockjs</code> WebSocket client and server node. visit <a href="https://thinkjs.org/doc/adapter_websocket.html">https://thinkjs.org/doc/adapter_websocket.html</a></p>
+        <h2>读书笔记</h2>
+        <ul>
+          <li>
+            <h3><a target="_blank" href="desc/fatso">静态数据平台</a></h3>
+            <p>技术项目。独立进行全栈开发。项目功能：提供数据快速录入、即改即得的功能。用户先建立数据模板，再根据模板创建数据，系统提供数据接口，以供线上项目访问。功能亮点：可以满足复杂的树状数据结构。项目技术栈：think.js、pm2、webpack、SPA、MySQL、树状数据解析与存储。</p>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
