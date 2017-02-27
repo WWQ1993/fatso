@@ -166,10 +166,6 @@ define(function (require, exports, module) {
         initData();
         comp.window.trigger('ChangeMode', {val: 'READ', first: true});
 
-        setInterval(function () {
-            console.log(selection)
-        }, 2000)
-
     };
 
     function getComponent() {
@@ -212,9 +208,22 @@ define(function (require, exports, module) {
                     tools.showPop('success', '所有更改已保存', 600);
                     //todo save
 
-                  $('.currentP').each(function (e) {
-
+                  var data = [];
+                  $('li').each(function (e) {
+                    var obj={
+                      content: $(this)[0].firstChild.textContent,
+                      id:  $(this).attr('id'),
+                      parentId: $(this).attr('data-parentid'),
+                      childListStyle: $(this).attr('data-childliststyle'),
+                      textAlign: function (that) {
+                        var text = $(that).attr('style');
+                        var arr = text.match(/text-align:\s(.*?);/);
+                        return arr[1];
+                      }(this)
+                    };
+                    data.push(obj);
                   });
+                  localStorage.notes=JSON.stringify(data);
 
                 }
                 currentMode = 'READ';
@@ -528,7 +537,8 @@ define(function (require, exports, module) {
                 if (ol.attr('id') === 'contentOl') {
                     return;
                 }
-                selectP.parent().parent().after(selectP);
+              selectP.attr('data-parentid',selectP.parent().parent().attr('id'))
+              selectP.parent().parent().after(selectP);
                 if (!ol.html()) {
                     ol.remove();
                 }
@@ -555,12 +565,15 @@ define(function (require, exports, module) {
                     else {//前一节点有子节点，本节点作为其子节点添加至首
                         selectP.prev().find('>ol').append(selectP);
                     }
+                  selectP.attr('data-parentid',selectP.parent().parent().attr('id'))
+
                 }
                 else {  //本节点没有前驱节点
 
                     //todo
                 }
-                tools.getLevel(selectP);
+
+              tools.getLevel(selectP);
                 tools.setFocus(selectP[0], offset);
 
                 comp.window.trigger('btnChange.listStyle', {val: selectP.parent().css('list-style-type')});
@@ -659,46 +672,10 @@ define(function (require, exports, module) {
             fontSize: 16
 
         };
-        var data = [
-            {
-                content: 'cccccontnet11',
-                id: '1',
-                parentId: 'content',
-                childListStyle: 'circle',
-                textAlign: 'left'
-            }, {
-                content: 'cccccontnet 22',
-                id: '2',
-                parentId: 'content',
-                childListStyle: 'lower-roman',
-                textAlign: 'left'
-            }, {
-                content: 'document.execCommand(”Bold”,”false”,null);',
-                id: '3',
-                parentId: '2',
-                childListStyle: 'square',
-                textAlign: 'left'
-            }, {
-                content: '调用execCommand()可以实现浏览器菜单的很多功能. 如保存文件,打开新文件,撤消、重做操作…等等. ',
-                id: '4',
-                parentId: '3',
-                childListStyle: 'upper-roman',
-                textAlign: 'left'
-            }, {
-                content: 'cccccontnet55',
-                id: '5',
-                parentId: '2',
-                childListStyle: '',
-                textAlign: 'left'
-            }, {
-                content: 'ccccc ',
-                id: '7',
-                parentId: '2',
-                childListStyle: '',
-                textAlign: 'left'
-            }
-        ];
 
+
+      var defaultData=[{"content":"欢迎使用笔记助手     ","id":"1","parentId":"content","childListStyle":"circle","textAlign":"center"},{"content":"简介：这是我早期的一个前端项目，使用原生js进行开发。主要使用了富文本技术进了笔记编辑，并进行树状数据格式的存储与解析。    ","id":"2","parentId":"content","childListStyle":"lower-roman","textAlign":"left"},{"content":"项目时间：2015年9月    ","id":"1488208724732","parentId":"content","childListStyle":"lower-roman","textAlign":"left"},{"content":"开发周期：5天    ","id":"1488208876691","parentId":"content","childListStyle":"lower-roman","textAlign":"left"},{"content":"项目特点    ","id":"1488208751058","parentId":"content","childListStyle":"lower-roman","textAlign":"left"},{"content":"html5富文本    ","id":"1488208882281","parentId":"1488208751058","childListStyle":"lower-roman","textAlign":"left"},{"content":"localstorage    ","id":"1488208907540","parentId":"1488208751058","childListStyle":"lower-roman","textAlign":"left"},{"content":"数据存储与解析    ","id":"1488208912429","parentId":"1488208751058","childListStyle":"lower-roman","textAlign":"left"},{"content":"动态改变编号    ","id":"1488208914334","parentId":"1488208751058","childListStyle":"lower-roman","textAlign":"left"},{"content":"维系文档结构    ","id":"1488208916035","parentId":"1488208751058","childListStyle":"lower-roman","textAlign":"left"},{"content":"较多的事件处理    ","id":"1488208917449","parentId":"1488208751058","childListStyle":"lower-roman","textAlign":"left"},{"content":"操作快捷键    ","id":"1488208919238","parentId":"1488208751058","childListStyle":"lower-roman","textAlign":"left"},{"content":"项目意义    ","id":"1488208929986","parentId":"content","childListStyle":"lower-roman","textAlign":"left"},{"content":"认识到HTML5富文本技术的缺陷    ","id":"1488208941437","parentId":"1488208929986","childListStyle":"lower-roman","textAlign":"left"},{"content":"兼容性问题，需要浏览器支持HTML5    ","id":"1488209016576","parentId":"1488208941437","childListStyle":"lower-roman","textAlign":"left"},{"content":"对标准的实现程度。很多标准目前尚未有浏览器进行实现    ","id":"1488209029614","parentId":"1488208941437","childListStyle":"lower-roman","textAlign":"left"},{"content":"由于以上问题，我认为在短期内，富文本无法做到较重的商业用途    ","id":"1488209035837","parentId":"1488208941437","childListStyle":"lower-roman","textAlign":"left"},{"content":"认识到原生js操作dom的繁琐不便    ","id":"1488209042131","parentId":"1488208929986","childListStyle":"lower-roman","textAlign":"left"},{"content":"学习初期一个较重的实战演练，对代码风格、设计思路、编码技巧等起到了很好的锻炼意义，具有    ","id":"1488209053409","parentId":"1488208929986","childListStyle":"lower-roman","textAlign":"left"}];
+      var data = localStorage.notes?JSON.parse(localStorage.notes):defaultData;
         comp.content.css('font-size', config.fontSize);
 
         comp.contentOl.css('list-style-type', config.childListStyle);
