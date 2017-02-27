@@ -99,17 +99,41 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    body{
+    #nav-swiper,#content-swiper{
       opacity: 0;
+    }
+    .loading{
+      font-size: 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: 130px;
+      z-index: 100;
+      height: 60px;
+      line-height: 60px;
+      animation:mymove 1200ms infinite ;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    @keyframes mymove
+    {
+      from {width:95px;}
+      25%{width:95px;}
+      26%{width:105px;}
+      50%{width:105px;}
+      51%{width:112px;}
+      75%{width:112px;}
+      76%{width:122px;}
+      to {width:122px;}
     }
   </style>
   <link rel="stylesheet" href="http://st02.chrstatic.com/themes/event/campaign/pofeng/common/css/swiper.min.css">
-
-  <script src="http://st02.chrstatic.com/themes/event/campaign/pofeng/common/js/swiper.min.js"></script>
-  <script src="http://apps.bdimg.com/libs/jquery/1.10.0/jquery.min.js"></script>
 </head>
 <body>
-
+<div class="loading">loading...</div>
 <div class="swiper-container" id="nav-swiper">
   <div class="swiper-wrapper" id="nav_s_w">
     <%data.forEach(function(i,_i){%>
@@ -131,6 +155,9 @@
   </div>
 </div>
 
+<script src="http://st02.chrstatic.com/themes/event/campaign/pofeng/common/js/swiper.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/1.10.0/jquery.min.js"></script>
+
 <script>
   var navSwiper = new Swiper('#nav-swiper', {
     slidesPerView: 5,
@@ -151,7 +178,8 @@
     }
 
   });
-  $('body').css('opacity',1);
+  $('#nav-swiper,#content-swiper').css('opacity',1);
+  $('.loading').css('opacity',0);
 
 </script>
 </body>
