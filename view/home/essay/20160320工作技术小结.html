@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>20160320</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: Arial, Helvetica, sans-serif;margin: 0;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre {margin: 0;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+  <!-- ace-static.css -->
+  <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+  <style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+  <!-- export.css -->
+  <style>
+    body{margin:0 auto;max-width:800px;line-height:1.4}
+    #nav{margin:5px 0 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+    .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+</head>
+<body>
+
+  <div id="contentarea"><div class="cell markdown-cell"><ol>
+<li><p>关于q1运营活动内容专场的思考与总结：</p>
+<ul>
+<li>低版本ie下实现圆角矩形效果：<ul>
+<li>遮挡法要求图片父级元素背景色不能为透明；</li><li>ie-css3.htc插件要求放置于html文件同级目录，但服务器默认为其添加.html后缀，导致无法读取此文件；</li><li>引入其他脚本，以JavaScript方式实现圆角矩形，存在性能问题。</li><li>解决方法：渐进增强，非低版本ie（即支持css3的border-radius）,使用css3的border-radius属性；不支持该属性的低版本ie使用遮挡法（背景的透明导致遮挡不完美，但还是可用）。</li></ul>
+</li><li>前端对风险的把控：<ul>
+<li>分析需求时进行变更预判。考虑哪些地方需要可能进行变更，为此预留变更接口，以防到时措手不及。</li><li>增强程序鲁棒性——数据极值测试。不能完全按照设计psd上的数据进行编码，必须考虑：<ol>
+<li>文字很多或很少时是否能正常展现；</li><li>图片很大或者很小时，是否布局混乱；</li><li>没有此项内容，如何正确呈现；</li><li>后台传回意外更多的数据，该如何进行限定。</li></ol>
+</li><li>对不合理的需求进行提议。产品并非都了解技术，他们可能提出不佳的需求，浪费带宽、资源，损耗性能。技术应该有义务提前告知产品经理，以防不合预期，推翻重写。</li></ul>
+</li><li>浏览器性能优化：<ul>
+<li>滚动事件回调。尽量在一个滚动回调函数中，实现所有滚动相关逻辑，以避免多次重复读取scrollTop，造成页面重排版产生性能损耗。UC、QQ等手机浏览器，对滚动事件和touchMove事件进行了‘优化’，默认只有当滚动结束、touchEnd时才回调对应监听函数，解决方法：event.preventDefault。</li><li>避免多次读取可能造成重排版的属性：offsetTop, offsetLeft, offsetWidth, offsetHeight， scrollTop, scrollLeft, scrollWidth, scrollHeight， clientTop, clientLeft, clientWidth,clientHeight，getComputedStyle()</li><li>jquery性能优化：缓存查询到的DOM元素；利用id选择器；事件委托（delegate方法）；在class前面使用tag，当要进行DOM插入时，将所有元素封装成一个元素（html字符串）</li><li>缩短页面加载（onload）时间。</li><li>背景图随浏览器缩放居中且和DOM元素保持位置相对静止：在背景图上设置一个相对定位且left为0，width为0的隐藏div，其他DOM元素作为其子元素，在其上保持绝对定位即可和背景图位置一致变化。</li></ul>
+</li></ul>
+</li><li><p>渐进增强和优雅降级——拥抱变化，提升用户体验</p>
+<ul>
+<li>什么是渐进增强和优雅降级：在现代浏览器（支持css3和html5等新特性）中使用视觉优美、交互良好且编写简单的浏览器新特性，而对于不支持这些属性的浏览器，只提供可用性就行，不会产生严重布局错乱、功能不可用的问题。</li><li>渐进增强和优雅降级的优点：<ul>
+<li>没必要要求网页在所有浏览器中保持完全一致，用户也不会察觉到；</li><li>强制保持一致会导致无法实现一些新的页面效果，对网站吸引力产生影响，显得追不上技术潮流；</li><li>对于使用老的浏览器的小众用户，既然不追求现代浏览器的炫酷页面效果，自然更看重功能体验，只需                  要页面简洁可用就行。优雅降级不会让这部分用户远离我们。</li><li>新的页面效果会对用户产生视觉冲击，更容易记住我们的网站。</li></ul>
+</li><li>这是一种摆脱束缚、拥抱变化的尝试。需要产品、技术人员同时进行认可和配合。</li></ul>
+</li></ol>
+</div></div>
+  <script></script>
+</body>
+</html>
