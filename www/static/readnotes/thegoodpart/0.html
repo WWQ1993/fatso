@@ -1,0 +1,840 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <style type="text/css">
+   /*
+CSS stylesheet is based on killwing's flavored markdown style:
+https://gist.github.com/2937864
+*/
+body{
+margin: 0 auto;
+font: 12px/1.5em Tahoma;
+letter-spacing:0.1em;
+color: #444444;
+line-height: 1;
+width: 840px;
+padding: 5px;
+}
+h1, h2, h3, h4 {
+color: #111111;
+font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+margin-bottom: 16px;
+padding: 0;
+}
+h1 {
+margin: 15px auto;
+text-align: center;
+font-size: 28px;
+}
+h2 {
+font-size: 24px;
+
+}
+h3 {
+font-size: 20px;
+margin: 8px 16px ;
+}
+h4 {
+font-size: 16px;
+}
+h5 {
+font-size: 14px;
+}
+a {
+color: #0099ff;
+margin: 0;
+padding: 0;
+vertical-align: baseline;
+}
+a:link,a:visited{
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+}
+ul, ol {
+padding: 0;
+margin: 0;
+}
+li {
+line-height: 24px;
+margin-left: 40px;
+}
+li ul, li ol {
+margin-left: -5px;
+//margin-top:-15px;
+          color: #000080;
+
+}
+ul, ol {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+}
+
+p {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+margin-top: 3px;
+}
+
+pre {
+padding: 0px 4px;
+max-width: 800px;
+white-space: pre-wrap;
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+code {
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+pre code {
+border: 0px;
+}
+aside {
+display: block;
+float: right;
+width: 800px;
+}
+blockquote {
+border-left:.5em solid #40AA53;
+padding: 0 2em;
+margin-left:0;
+max-width: 800px;
+}
+blockquote  cite {
+font-size:14px;
+line-height:20px;
+color:#bfbfbf;
+}
+blockquote cite:before {
+content: '\2014 \00A0';
+}
+
+blockquote p {
+color: #666;
+max-width: 760px;
+}
+hr {
+height: 1px;
+border: none;
+border-top: 1px dashed #0066CC
+}
+
+button,
+input,
+select,
+textarea {
+font-size: 100%;
+margin: 0;
+vertical-align: baseline;
+*vertical-align: middle;
+}
+button, input {
+line-height: normal;
+*overflow: visible;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+border: 0;
+padding: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+cursor: pointer;
+-webkit-appearance: button;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+
+input[type="search"] {
+-webkit-appearance: textfield;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+-webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+font-weight: normal;
+line-height: normal;
+margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+display: inline-block;
+width: 210px;
+padding: 4px;
+font-size: 13px;
+font-weight: normal;
+line-height: 18px;
+height: 18px;
+color: #808080;
+border: 1px solid #ccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+select, input[type=file] {
+height: 27px;
+line-height: 27px;
+}
+textarea {
+height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+transition: border linear 0.2s, box-shadow linear 0.2s;
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+outline: none;
+border-color: rgba(82, 168, 236, 0.8);
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+/* buttons */
+button {
+display: inline-block;
+padding: 4px 14px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+line-height: 18px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+background-color: #0064cd;
+background-repeat: repeat-x;
+background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+background-image: linear-gradient(top, #049cdb, #0064cd);
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+border: 1px solid #004b9a;
+border-bottom-color: #003f81;
+-webkit-transition: 0.1s linear all;
+-moz-transition: 0.1s linear all;
+transition: 0.1s linear all;
+border-color: #0064cd #0064cd #003f81;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+button:hover {
+color: #fff;
+background-position: 0 -15px;
+text-decoration: none;
+}
+button:active {
+-webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+button::-moz-focus-inner {
+padding: 0;
+border: 0;
+}
+/* table  */
+table {
+border-spacing: 0;
+border: 1px solid #ccc;
+}
+td, th{
+border: 1px solid #ccc;
+padding: 5px;
+}
+/* code syntax highlight.
+Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own
+*/
+pre .literal,
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+color: #008000;
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+color: #0000FF;
+font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .python .decorator,
+pre .ruby .constant {
+color: #0000FF;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+color: #D14
+}
+
+pre .title,
+pre .id {
+color: #900;
+font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+color: #458;
+font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+color: #000080;
+font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+color: #008080
+}
+
+pre .regexp {
+color: #009926
+}
+
+pre .class {
+color: #458;
+font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+color: #999;
+font-weight: bold
+}
+
+pre .deletion {
+background: #fdd
+}
+
+pre .addition {
+background: #dfd
+}
+
+pre .diff .change {
+background: #0086b3
+}
+
+pre .chunk {
+color: #aaa
+}
+
+pre .markdown .header {
+color: #800;
+font-weight: bold;
+}
+
+pre .markdown .blockquote {
+color: #888;
+}
+
+pre .markdown .link_label {
+color: #88F;
+}
+
+pre .markdown .strong {
+font-weight: bold;
+}
+
+pre .markdown .emphasis {
+font-style: italic;
+}
+
+   </style>
+   
+   
+</head>
+<body>
+    <h1>《JavaScript语言精粹<sub>（修订版）</sub>》读书笔记<sup><a href="http://wwq1993.github.io/">回主页</a></sup></h1>
+
+<p><br></p>
+
+<h1>书籍信息</h1>
+
+<ul>
+<li>名称：JavaScript语言精粹<sub>（修订版）</sub></li>
+<li>作者：Douglas Crockford</li>
+<li>译者：赵泽欣 鄢学鹍</li>
+<li>出版信息：电子工业出版社</li>
+</ul>
+
+<hr>
+
+<h1 id="catalogue">目录</h1>
+
+<p><a href="0.html#c1">第一章</a> 精华<br>
+<a href="0.html#c2">第二章</a> 语法<br>
+<a href="0.html#c3">第三章</a> 对象<br>
+<a href="0.html#c4">第四章</a>  函数<br>
+<a href="0.html#c5">第五章</a>  继承<br>
+<a href="0.html#c6">第六章</a>  数组<br>
+<a href="0.html#c7">第七章</a>  正则表达式<br>
+<a href="0.html#c8">第八章</a>  方法<br>
+<a href="0.html#c9">第九章</a> 代码风格<br>
+<a href="0.html#c10">第十章</a>  优美的特性<br>
+<a href="0.html#c11">附录A</a>   毒瘤<br>
+<a href="0.html#c12">附录B</a>    糟粕<br>
+<a href="0.html#c13">附录C</a>    JSLint<br>
+<a href="0.html#c14">附录D</a>   语法图<br>
+<a href="0.html#c15">附录E</a>  JSON    </p>
+
+<hr>
+
+<h1>书评</h1>
+
+<blockquote>
+<p>这是一本介绍JavaScript语言本质的权威书籍，值得任何正在或准备从事JavaScript开发的人阅读，并且需要反复阅读。学习、理解、实践大师的思想，我们才能站在巨人的肩膀上，才有机会超越大师，本书就是开始。</p>
+</blockquote>
+
+<hr>
+
+<h1 id="c1">第一章 精华 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>优点：弱类型、字面量表示对象</li>
+<li>缺点：原型链继承、全局变量</li>
+</ul>
+
+<hr>
+
+<h1 id="c2">第二章 语法 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>避免使用块注释（语句内的*/会误取消注释 ），建议只用//</li>
+<li>字符都是16位的。</li>
+<li>for in语句：枚举一个对象所有属性名。在每次循环中，object的下一个<strong>属性名字符串</strong>被赋值给变量。</li>
+<li>throw语句中的表达式通常是一个对象字面量，它包含一个name属性和一个message属性。</li>
+<li>return没有返回表达式时返回undefined。不允许return和表达式之间换行。</li>
+<li>运算符优先级表<sup>P16</sup></li>
+</ul>
+
+<hr>
+
+<h1 id="c3">第三章 对象 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>属性名可以是包括空字符串在内的任意字符串。属性值可以是任意非undefined值。<br></li>
+<li>对于属性名是保留字或者非法标识符，需要用“”。</li>
+<li>检索一个并不存在的成员属性的值会返回undefined，因此可以用||连接一个默认值。如：<br>
+<code>var a=ob.a||&quot;defautValue&quot;</code>。</li>
+<li>尝试从值为undefined的属性中取值会导致TypeError异常。此时可以通过&amp;&amp;避免错误：<br>
+<code>var a = ob.ob2 &amp;&amp; ob.ob2.a;</code></li>
+<li>delete无法删除原型链中的属性</li>
+<li>减小全局污染的 一种方法：创建一个对象，将所有属性方法都建立在该对象内。</li>
+</ul>
+
+<hr>
+
+<h1 id="c4">第四章 函数 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>每个函数还接收两个附加参数：this和arguments</li>
+<li>四种调用模式：
+
+<ul>
+<li>方法调用模式：作为对象的一个属性来调用，this绑定该对象。在方法中，可以用this访问该对象的其他属性。也称为公共方法</li>
+<li>函数调用模式：并非作为对象的属性来调用。this绑定全局对象（而非外层函数的this变量。要想访问外层的this，需要复制this为that。）</li>
+<li>构造器调用模式（构造函数模式）：函数前加new来调用，会创建一个连接到该函数prototype的新对象，同时this绑定到该对象。约定构造函数名首字母大写（如果误作普通函数调用，不会报错，却没有实现功能）。</li>
+<li>apply调用模式</li>
+</ul></li>
+<li>如果构造函数的返回值不是一个对象，则返回this（新建的对象）。</li>
+<li>异常：<br>
+
+<ul>
+<li>throw语句中断函数的执行，跳到包含该语句的try对应的catch语句。throw后可接对象字面量。异常的默认属性为name和message。</li>
+</ul></li>
+<li>扩充类型功能<sup>P32。例子：</sup>
+
+<ul>
+<li>Function是一切函数的构造函数</li>
+<li>String()、Number()、Boolean()是基本类型的构造函数。当读取基本类型时，先调用其构造函数，再调用对应方法。</li>
+</ul></li>
+<li>内部函数能访问外部函数的参数（除了this和arguments。外部形式参数可以访问，）</li>
+<li>级联<sup>P42</sup> :方法的返回值为调用该方法的对象（即返回this）。产生极富表现力的接口。</li>
+<li>函数柯里化：把接受多个参数的函数变换成接受一个单一参数(最初函数的第一个参数)的函数，并且返回接受余下的参数且返回结果的新函数的技术。见《JavaScript高级程序设计》P605</li>
+</ul>
+
+<hr>
+
+<h1 id="c5">第五章 继承 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>伪类模式：通过原型继承。
+
+<ul>
+<li>缺陷：构造函数调用忘用new的问题-&gt;构造函数命名必须首字母大写；隐藏了该语言的真实本质，误导程序员编写过于深入复杂的层次结构。</li>
+</ul></li>
+<li>对象说明符：将对象字面量传入函数参数。
+
+<ul>
+<li>好处：
+
+<ul>
+<li>函数更易使用参数，设置默认值；</li>
+<li>代码可读性增强；</li>
+<li>与json共用方便。</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<hr>
+
+<h1 id="c6">第六章 数组 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>实质：可以用整数作为属性名的对象。数组有自己的字面量格式和内置方法（数组继承Array.prototype，对象继承Object.prototype）。它的属性检索和更新方法与对象一模一样。</li>
+<li>可以直接设置length值。设置更大的length不会给数组分配更多的空间，而把length设小将导致下标大于length的项被删除。</li>
+<li>使用delete删除数组中的项（同对象），该项值变为undefined。length不会改变。（删除项并递归移动后面项的方法：<code>[].prototype.splice()</code>）</li>
+<li>for-in语句不保证顺序，所以不用来遍历数组。</li>
+<li>检测数组的另一个方法：<code>return Object.prototype.toString.apply(val)===&quot;[object Array]&quot;;</code></li>
+</ul>
+
+<hr>
+
+<h1 id="c7">第七章 正则表达式 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>可处理正则表达式的方法有：
+
+<ul>
+<li>regexp.exec()</li>
+<li>regexp.test()</li>
+<li>string.match()</li>
+<li>string.replace()</li>
+<li>string.search()</li>
+<li>string.split()</li>
+</ul></li>
+<li>正则表达式相较于一般的字符串处理有着显著的性能优势。</li>
+<li>正则表达式必须写在一行。</li>
+<li>优先考虑使用正则表达式字面量方式创建regexp对象。该方法创建的RegExp对象共享同一个单例。</li>
+<li>正则表达式序列包括一个或者多个正则表达式因子，每个因子可以选择是否跟一个两次。
+
+<ul>
+<li> 因子可以是一个字符、一个圆括号包围的组、一个字符类、或者一个转义序列(\d 表示数字)。</li>
+<li>量词：{3,6}  + * ？</li>
+</ul></li>
+<li>可以给任何特殊字符都加上转义符使其字面化。需要被转义的如下：- / [ \ ] ^ </li>
+<li>一个未被转义的：
+
+<ul>
+<li>.会匹配除行结束符以外的任何字符</li>
+<li>^匹配文本的开始（指定多行属性m时，也能匹配行结束符）</li>
+<li>$匹配文本的结束（指定m时也匹配行结束符）</li>
+</ul></li>
+<li>转义符含义：
+
+<ul>
+<li>\f换页符   \n换行符   \r回车符   \t制表符   \u接Unicode字符表示十六进制常量</li>
+<li>\d等于[0-9]</li>
+<li>\s等同于[\f\n\r\t\u000B\u00A0\u2028\u2029]，是Unicode空白符的不完全子集。</li>
+<li>\w匹配数字26对英文字母和_</li>
+<li>\b匹配字边界（使用\w去寻找字边界）</li>
+<li>\1对分组1所捕获的<strong>文本</strong>的一个引用</li>
+</ul></li>
+<li>正则表达式分组：第一个(是分组一，第二个(是分组二。（因此括号内包含一个括号，外面是1里面是2。）
+
+<ul>
+<li>非捕获型：(:?作前缀，此括号不算作捕获组。<br></li>
+<li>向前捕获组：不建议</li>
+<li>向后捕获组：不建议</li>
+</ul></li>
+<li>[^。。]会捕获排除括号内字符外的其他字符。</li>
+<li>如果只有一个量词，表示趋向贪婪型匹配，如果这个量词后加一个？表示非贪婪型匹配。一般情况下最好坚持贪婪型匹配。</li>
+<li>exec()是最慢的方法</li>
+<li>test()是最快的方法。不要对它使用g标识符。</li>
+</ul>
+
+<hr>
+
+<h1 id="c8">第八章 方法 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li> array.shift()通常比pop()慢得多。</li>
+<li>array.join()把数组连接成字符串，默认连接符为逗号，传入空字符串时无连接符。</li>
+<li>连接字符串用+比array.join()快。</li>
+<li><p>用sort实现对数值型数组排序：</p>
+
+<pre><code class="javascript">n.sort(<span class="keyword">function</span>(a-b){
+<span class="keyword">return</span> a-b})
+</code></pre></li>
+<li><p>利用sort进行对象的次优先级排序。<sup>P81</sup></p></li>
+<li><p>unshift()的实现原理（A）<sup>P83</sup></p></li>
+<li><p>string.localCompare(that)：如果string比that小，返回负数，大则返回正数，相等返回0</p></li>
+<li><p>string.match(regexp)：如果正则表达式没有g标识，则返回和regexp.exec(string)相同；若有g，则返回一个包含所有匹配（捕获组除外）的数组</p></li>
+<li><p>string.replace（searchValue,replaceValue）：</p>
+
+<ul>
+<li>searchValue是字符串或不带g的正则表达式时，只替换第一个匹配项；唯有是带g的正则表达式时，替换所有符合项。</li>
+<li>replaceValue：可以是字符串或者一个函数。
+
+<ul>
+<li>如果是一个$开头的字符串，可以有特殊含义。<br>
+美元符序列|替换对象
+------|----
+$$|$
+$&amp;|匹配的文本
+$number|分组捕获文本
+$`|匹配之前所有文本
+$&#39;|匹配之后所有文本</li>
+<li>如果是函数，则每遇到一次匹配项就会调用一次该函数，该函数返回的字符串会被用作替换文本。传递给函数的第一个参数是匹配的文本，第二个是捕获组1...<br></li>
+</ul></li>
+</ul></li>
+<li><p>string.search(regexp)： 只接受正则表达式作参数，如果找到匹配，返回第一匹配的首字符位置，没有找到则返回-1。</p></li>
+<li><p>string.slice(start，end)：返回一个新字符串。</p></li>
+<li><p>string.split(separator,limit)：按separator（可以是字符串和正则表达式）来分隔为数组。limit限制分隔数量。</p>
+
+<ul>
+<li>分隔符两边的文本都会复制到数组中，包括空字符。</li>
+<li>分隔符可以是空字符</li>
+<li>正则表达式作分隔符会忽略g标识。来自分组捕获的文本会被包含到结果数组中</li>
+</ul></li>
+<li><p>string.substring(start , end )：会将较小的数作为开始位置，将较大的数作为结束位置。不能处理负数参数，建议用slice代替。</p></li>
+<li><p>string.toLocalLowerCase()/string.toLocalUpperCase()：主要用在土耳其语中。</p></li>
+<li><p>String.fromCharCode(编码，编码)：将一组编号转换为对应的字符串。</p></li>
+</ul>
+
+<hr>
+
+<h1 id="c9">第九章 代码风格 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>程序在软件生命周期中通常会被修改。</li>
+<li>优秀的程序应该具有前瞻性，预见到可能会修改的地方。还会具有清晰的表达方式，容易理解修改。</li>
+<li>对于一个机构来说，软件的长远价值和代码库的质量成正比。</li>
+<li>代码风格在编程中至关重要。</li>
+<li>如果程序可读，它正常运行的可能性，以及准确按照人的意图去工作的可能性也显著增强。扩展能力也增强</li>
+<li>好的编码风格：
+
+<ul>
+<li>代码块和字面量缩进4空格。</li>
+<li>if和括号之前有一个空格</li>
+<li>除了 . 和 [ 外的中置运算符两边各一个空格：A + B</li>
+<li>逗号和冒号后一个空格</li>
+<li>一行只放一条语句</li>
+<li>一条语句一行放不下则在一个冒号或二元运算符后拆开它。能防止自动插入分号机制。折断的语句第二行首插入4或8个空格。</li>
+<li>if或while等结构化语句使用代码块。{ 放在第一行末尾而非第二行首（避免return字面量的问题）。</li>
+<li>注释</li>
+<li>程序结构自我说明，可以省去对应注释。</li>
+<li>避免未声明而直接使用的全局变量。</li>
+<li>不在if语句条件中进行赋值操作</li>
+<li>switch语句块避免case穿越到下一个case语句（每个case接个break）。</li>
+<li>避免全局变量，用对象作为命名空间而取代全局变量。</li>
+</ul></li>
+</ul>
+
+<hr>
+
+<h1 id="c10">第十章 优美的特性 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>函数是顶级对象。函数是有词法作用域的闭包。</li>
+<li>基于原型继承的动态对象。容易给对象实时添加属性，可以继承另一个对象的属性。</li>
+<li>对象字面量和数组字面量。方便创建，json结合。</li>
+</ul>
+
+<hr>
+
+<h1 id="c11">附录A 毒瘤 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>全局变量</li>
+<li>作用域：没有块级作用域。所有声明应放至块级开头。</li>
+<li>自动插入分号。</li>
+<li>保留字。不能命名参数或变量。作对象属性时，必须用中括号法，用引号包含保留字。</li>
+<li>Unicode。js的字符是16位，只能覆盖Unicode原有的65536个字符，对Unicode后期增加的一百多万个字符无法正常兼容。</li>
+<li><p>typeof对null返回object。最好使用如下判断对象：</p>
+
+<pre><code class="javascript"><span class="keyword">if</span> (myobject &amp;&amp; <span class="keyword">typeof</span> myobject===<span class="string">"object"</span>)
+</code></pre>
+
+<ul>
+<li>对正则表达式执行typeof时，主流浏览器返回’object‘</li>
+</ul></li>
+<li><p>parseInt。建议总是加上进制基数。</p></li>
+<li><p>+。会将字符+数值转为字符相连接。</p></li>
+<li><p>浮点数。二进制的浮点数无法正确处理十进制的小数。精度问题。可以指定精度来避免。先乘上倍数转化为整数，再将结果除以倍数。</p></li>
+<li><p>NaN。不是数值，但typeof返回&#39;number&#39;。</p>
+
+<ul>
+<li><p>isFinite()函数。除去NaN和Infinity数值返回true。有类型转换问题，如<code>isFinite(&quot;456&quot;)</code>为true。检测数值的最好方法：</p>
+
+<pre><code class="javascript"><span class="keyword">typeof</span> value===<span class="string">'number'</span>&amp;&amp;isFinite(value)
+</code></pre></li>
+</ul></li>
+<li><p>伪数组。JavaScript的数组为伪数组：</p>
+
+<ul>
+<li>容易设定维数。</li>
+<li>不会越界。</li>
+<li>性能比真正数值差。</li>
+<li><p>最佳检测方法：</p>
+
+<pre><code class="javascript">Object.prototype.toString.apply(value)===<span class="string">'[object Array]'</span>
+</code></pre></li>
+</ul></li>
+<li><p>对象。对象原生属性对自定义的同名属性的干扰<sup>P108</sup></p></li>
+</ul>
+
+<hr>
+
+<h1 id="c12">附录B 糟粕 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>一门语言最糟糕的特性是那些带刺的玫瑰，有用而危险。</li>
+<li>==。强制转换复杂难记，有传递性问题。建议永远不要使用==与！==</li>
+<li>with语句。结果难以预料，无法确定它会任何运行，而且影响性能。</li>
+<li><p>eval语句：</p>
+
+<ul>
+<li>难以阅读。</li>
+<li>降低性能。需要运行编译。</li>
+<li>让jsLint失效。</li>
+<li>减弱安全性。</li>
+<li>同时避免一切用字符串表示代码的情况，如Function构造器，setTimeout等。</li>
+</ul></li>
+<li><p>continue语句。会造成一定性能问题。</p></li>
+<li><p>switch。避免使用case穿越。</p></li>
+<li><p>++  --：使代码过于拥挤、复制、隐晦。</p></li>
+<li><p>位运算符。无法接触硬件，没有性能的提升。容易隐藏bug。</p></li>
+<li><p>function语句（以function开头的语句是一个function语句）和function表达式。function语句有变量声明提升问题。一个语句不能以一个函数语句开头，解决办法是把函数调用用括号括起来。</p></li>
+<li><p>类型的包装对象。避免使用：new Boolean，new Number，new String，new Object，new Array。最后两项使用{ }和[ ]代替</p></li>
+<li><p>new。构造函数首字母大写规则。一个更好就是不去使用new。</p></li>
+<li><p>void。避免使用。</p></li>
+</ul>
+
+<hr>
+
+<h1 id="c13">附录C JSLint <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>注释全局变量。</li>
+<li>表达式语句只能是：赋值，函数调用，delete操作。</li>
+<li>for in语句的主体最好被包围在一个用于过滤的if语句中（if (object.hasOwnProperty(name))）</li>
+<li>将（foo！=0）替换为（foo）</li>
+</ul>
+
+<hr>
+
+<h1 id="c14">附录D 语法图（略） <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<hr>
+
+<h1 id="c15">附录E JSON <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>六种数据类型：对象，数组，数值，字符串，布尔值，null</li>
+<li>空白符（空格，制表，回车，换行符）可以被插到值前后。为了减少储存传输成本，可以删除空白符。</li>
+<li>字符串用双引号包含。&lt;/应转义为&lt;\/</li>
+<li>使用JSON.parse方法执行json数据。</li>
+<li>外部数据直接与innerHTML交互存在危险。如果这个HTML包含一个&lt;script&gt;便签或其等价物，那么一个恶意脚本将会执行。<sup>P142</sup></li>
+</ul>
+
+<hr>
+
+<p><br>   </p>
+
+<h3><a href="http://wwq1993.github.io/">回主页</a></h3>
+
+<h3 id="c14"><a href="0.html#catalogue">回目录</a></h3>
+
+</body>
+</html>

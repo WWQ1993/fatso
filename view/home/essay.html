@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+  <title>Title</title>
+  <style>
+    /*CSS reset*/
+    html, body {
+      font: 14px/18px Microsoft YaHei, Helvetica, Tahoma;
+    }
+
+    body, div, dl, dt, dd,  h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    fieldset, img {
+      border: 0
+    }
+
+    address, caption, cite, code, dfn, em, strong, th, var {
+      font-style: normal;
+      font-weight: normal
+    }
+
+
+    caption, th {
+      text-align: left
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 100%;
+      font-weight: normal
+    }
+
+    q:before, q:after {
+      content: ''
+    }
+    *{
+      line-height: 1.8;
+    }
+
+    abbr, acronym {
+      border: 0
+    }
+    html, body{ margin:0; height:100%; }
+    html{
+      position: relative;;
+    }
+    body{
+      padding-top: 50px;
+      box-sizing: border-box;
+    }
+    #nav-swiper{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 50px;
+      background-color: #ddd;
+      left: 0;
+    }
+    #nav-swiper .swiper-slide{
+      cursor: pointer;
+
+    }
+    #nav-swiper .swiper-slide:hover{
+      background-color: #7ba9e7;
+      color: #fff;
+    }
+    #nav-swiper .swiper-wrapper .swiper-slide-active {
+      background-color: #88bbff;
+      color: #fff;
+
+    }
+    #content-swiper{
+      max-width: 700px;
+    }
+
+    #nav-swiper .swiper-slide {
+      text-align: center;
+      line-height: 25px;
+    }
+
+    #content-swiper .swiper-slide {
+      overflow: auto;
+    }
+    #content-swiper, #content-swiper .swiper-wrapper,#content-swiper .swiper-slide{
+      min-height: 100%;
+      height: 100%;
+    }
+    .title,.date{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+  <link rel="stylesheet" href="/static/essay/swiper.min.css">
+</head>
+<body>
+
+<div class="swiper-container" id="nav-swiper">
+  <div class="swiper-wrapper" id="nav_s_w">
+    <%data.forEach(function(i,_i){%>
+    <div class="swiper-slide">
+      <p class="title" title="<%=i.title%>"><%=i.title%></p>
+      <p class="date" title="<%=i.date%>"><%=i.date%></p>
+    </div>
+    <%})%>
+
+  </div>
+</div>
+<div class="swiper-container" id="content-swiper">
+  <div class="swiper-wrapper">
+    <%data.forEach(function(i,_i){%>
+    <div class="swiper-slide"><%-i.content%></div>
+    <%})%>
+
+
+  </div>
+</div>
+
+<script src="/static/essay/swiper.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/1.10.0/jquery.min.js"></script>
+
+<script>
+  var navSwiper = new Swiper('#nav-swiper', {
+    slidesPerView: 5,
+    centeredSlides: true,
+    onClick: function (swiper) {
+      contentSwiper.slideTo(swiper.clickedIndex, 0, function () {
+      })
+    },
+    onSlideChangeStart: function (swiper) {
+      contentSwiper.slideTo(navSwiper.activeIndex, 0, function () {
+      })
+    }
+  });
+  var contentSwiper = new Swiper('#content-swiper', {
+    onSlideChangeStart: function (swiper) {
+      navSwiper.slideTo(contentSwiper.activeIndex, 200, function () {
+      })
+    }
+
+  });
+
+</script>
+</body>
+</html>

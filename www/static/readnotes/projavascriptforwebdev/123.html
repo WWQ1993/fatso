@@ -1,0 +1,1310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <style type="text/css">
+   /*
+CSS stylesheet is based on killwing's flavored markdown style:
+https://gist.github.com/2937864
+*/
+body{
+margin: 0 auto;
+font: 12px/1.5em Tahoma;
+letter-spacing:0.1em;
+color: #444444;
+line-height: 1;
+width: 840px;
+padding: 5px;
+}
+h1, h2, h3, h4 {
+color: #111111;
+font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+margin-bottom: 16px;
+padding: 0;
+}
+h1 {
+margin: 15px auto;
+text-align: center;
+font-size: 28px;
+}
+h2 {
+font-size: 24px;
+
+}
+h3 {
+font-size: 20px;
+margin: 8px 16px ;
+}
+h4 {
+font-size: 16px;
+}
+h5 {
+font-size: 14px;
+}
+a {
+color: #0099ff;
+margin: 0;
+padding: 0;
+vertical-align: baseline;
+}
+a:link,a:visited{
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+}
+ul, ol {
+padding: 0;
+margin: 0;
+}
+li {
+line-height: 24px;
+margin-left: 40px;
+}
+li ul, li ol {
+margin-left: -5px;
+//margin-top:-15px;
+          color: #000080;
+
+}
+ul, ol {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+}
+
+p {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+margin-top: 3px;
+}
+
+pre {
+padding: 0px 4px;
+max-width: 800px;
+white-space: pre-wrap;
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+code {
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+pre code {
+border: 0px;
+}
+aside {
+display: block;
+float: right;
+width: 800px;
+}
+blockquote {
+border-left:.5em solid #40AA53;
+padding: 0 2em;
+margin-left:0;
+max-width: 800px;
+}
+blockquote  cite {
+font-size:14px;
+line-height:20px;
+color:#bfbfbf;
+}
+blockquote cite:before {
+content: '\2014 \00A0';
+}
+
+blockquote p {
+color: #666;
+max-width: 760px;
+}
+hr {
+height: 1px;
+border: none;
+border-top: 1px dashed #0066CC
+}
+
+button,
+input,
+select,
+textarea {
+font-size: 100%;
+margin: 0;
+vertical-align: baseline;
+*vertical-align: middle;
+}
+button, input {
+line-height: normal;
+*overflow: visible;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+border: 0;
+padding: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+cursor: pointer;
+-webkit-appearance: button;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+
+input[type="search"] {
+-webkit-appearance: textfield;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+-webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+font-weight: normal;
+line-height: normal;
+margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+display: inline-block;
+width: 210px;
+padding: 4px;
+font-size: 13px;
+font-weight: normal;
+line-height: 18px;
+height: 18px;
+color: #808080;
+border: 1px solid #ccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+select, input[type=file] {
+height: 27px;
+line-height: 27px;
+}
+textarea {
+height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+transition: border linear 0.2s, box-shadow linear 0.2s;
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+outline: none;
+border-color: rgba(82, 168, 236, 0.8);
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+/* buttons */
+button {
+display: inline-block;
+padding: 4px 14px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+line-height: 18px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+background-color: #0064cd;
+background-repeat: repeat-x;
+background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+background-image: linear-gradient(top, #049cdb, #0064cd);
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+border: 1px solid #004b9a;
+border-bottom-color: #003f81;
+-webkit-transition: 0.1s linear all;
+-moz-transition: 0.1s linear all;
+transition: 0.1s linear all;
+border-color: #0064cd #0064cd #003f81;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+button:hover {
+color: #fff;
+background-position: 0 -15px;
+text-decoration: none;
+}
+button:active {
+-webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+button::-moz-focus-inner {
+padding: 0;
+border: 0;
+}
+/* table  */
+table {
+border-spacing: 0;
+border: 1px solid #ccc;
+}
+td, th{
+border: 1px solid #ccc;
+padding: 5px;
+}
+/* code syntax highlight.
+Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own
+*/
+pre .literal,
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+color: #008000;
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+color: #0000FF;
+font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .python .decorator,
+pre .ruby .constant {
+color: #0000FF;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+color: #D14
+}
+
+pre .title,
+pre .id {
+color: #900;
+font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+color: #458;
+font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+color: #000080;
+font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+color: #008080
+}
+
+pre .regexp {
+color: #009926
+}
+
+pre .class {
+color: #458;
+font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+color: #999;
+font-weight: bold
+}
+
+pre .deletion {
+background: #fdd
+}
+
+pre .addition {
+background: #dfd
+}
+
+pre .diff .change {
+background: #0086b3
+}
+
+pre .chunk {
+color: #aaa
+}
+
+pre .markdown .header {
+color: #800;
+font-weight: bold;
+}
+
+pre .markdown .blockquote {
+color: #888;
+}
+
+pre .markdown .link_label {
+color: #88F;
+}
+
+pre .markdown .strong {
+font-weight: bold;
+}
+
+pre .markdown .emphasis {
+font-style: italic;
+}
+
+   </style>
+   
+   
+</head>
+<body>
+    <h1 id="c1">第一章 JavaScript简介 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<h2>1.1简史</h2>
+
+<ul>
+<li>创立目的：在客户端验证表单以减少对服务器的依赖</li>
+</ul>
+
+<h2>1.2实现</h2>
+
+<ul>
+<li>js由三大部分组成：<br>
+
+<ol>
+<li>ECMAScript<br></li>
+<li>BOM<br></li>
+<li>DOM<br></li>
+</ol></li>
+</ul>
+
+<h3>1.2.1ECMAScript</h3>
+
+<ul>
+<li>本语言与web浏览器无依赖关系</li>
+<li>ECMAScript受主流浏览器支持情况 <sup>P5</sup></li>
+</ul>
+
+<h3>1.2.2DOM</h3>
+
+<ul>
+<li>解释：HTML的应用编程接口（API）</li>
+<li>实现：把整个页面映射成多层次结点结构</li>
+<li>意义：控制页面内容、结构<sup>P5</sup></li>
+<li>DOM分级<sup>P6</sup></li>
+<li>浏览器支持情况：<sup>P7</sup></li>
+</ul>
+
+<h3>1.2.3BOM</h3>
+
+<ul>
+<li>作用：控制浏览器显示页面以外的部分，处理窗口和框架</li>
+<li>具体扩展：
+
+<ol>
+<li>弹出新浏览器窗口的功能；</li>
+<li>移动、缩放和关闭浏览器窗口的功能；</li>
+<li>提供浏览器详细信息的navigator 对象；</li>
+<li>提供浏览器所加载页面的详细信息的location 对象；</li>
+<li>提供用户显示器分辨率详细信息的screen 对象；</li>
+<li>对 cookies 的支持；</li>
+<li>像 XMLHttpRequest 和IE 的ActiveXObject 这样的自定义对象。</li>
+</ol></li>
+</ul>
+
+<hr>
+
+<h1 id="c2">第二章 在HTML中使用js  <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<h2>2.1&lt;script&gt;元素</h2>
+
+<ul>
+<li>作用：向HTML页面插入js</li>
+<li>属性：
+
+<ol>
+<li>[async]:表示异步下载脚本，不会阻塞页面呈现</li>
+<li>[charset]:浏览器忽略此属性，少用。</li>
+<li>[defer]:表示外部脚本延迟到浏览器解析和显示完文档后方才执行</li>
+<li>[language]:已废弃</li>
+<li>[src]:外部脚本路径</li>
+<li>[type]:脚本语言的内容属性（MIME类型）。默认（text/javascript）即可</li>
+</ol></li>
+<li>使用方式：
+
+<ol>
+<li>嵌入代码式；</li>
+<li>外部文件式。需要指定src属性，扩展名（.js）不必需，可以包含外域js文件。</li>
+</ol></li>
+<li>解析顺序：无defer和async属性时，按照代码先后顺序解析。（一个脚本下载并解析完后才执行后续操作，包括显示页面和下载解析另一个脚本）</li>
+</ul>
+
+<h3>2.1.1标签的位置</h3>
+
+<ul>
+<li>传统做法：所有&lt;script&gt;置于head元素内</li>
+<li>传统做法的缺点：延迟了页面的呈现。（必须等到全部JavaScript 代码都被下载、解析和执行完成以后，才能开始呈现页面的内容。）</li>
+<li>现代web程序做法：置于body元素页面内容之后。</li>
+</ul>
+
+<h3>2.1.2延迟脚本</h3>
+
+<ul>
+<li>defer属性：立刻下载，延迟执行（主动权交给下一个标签），在&lt;/html&gt;之后执行。</li>
+<li>只适用外部脚本。</li>
+</ul>
+
+<h3>2.1.3异步脚本</h3>
+
+<ul>
+<li>立即下载然后执行脚本，同时加载页面内容，一定在load事件前开始执行。</li>
+<li>建议异步脚本不要在加载DOM期间进行DOM的修改。</li>
+<li>异步脚本不保证按照其&lt;script&gt;在代码中出现的顺序执行，因此确保异步脚本之间互不依赖很重要。</li>
+</ul>
+
+<h3>2.1.4在XHTML中的用法（略）</h3>
+
+<h3>2.1.5不推荐使用的语法（略）</h3>
+
+<h2>2.2嵌入代码和外部文件</h2>
+
+<ul>
+<li>最好使用外部文件，优点如下：
+
+<ol>
+<li>可维护性：集中管理脚本文件</li>
+<li>可缓存性：浏览器可以缓存js文件以加快页面加载速度。</li>
+<li>适应未来：HTML与XHTML的外部文件语法一致。</li>
+</ol></li>
+</ul>
+
+<h2>2.3文档模式</h2>
+
+<ul>
+<li>实现：使用文档类型（doctype）切换以实现</li>
+<li>混杂模式和标准模式：主要影响css内容的呈现</li>
+<li>默认类型：在没有文档类型声明时，所有浏览器默认混杂模式（不推荐该模式）</li>
+<li>&lt;!DOCTYPE html&gt;：开启标准模式</li>
+<li>准标准模式和标准模式十分接近，通常说的标准指的是除去混杂模式的其他模式。</li>
+</ul>
+
+<h2>2.4&lt;noscript&gt;元素</h2>
+
+<ul>
+<li>显示元素内容的条件：不支持js脚本或者脚本被禁用。否则用户永远看不见元素内容。</li>
+</ul>
+
+<hr>
+
+<h1 id="c3">第三章 基本概念  <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<h2>3.1语法</h2>
+
+<ul>
+<li>类C语言，更为宽松</li>
+</ul>
+
+<h3>3.1.1区分大小写</h3>
+
+<ul>
+<li>一切，包括变量名、函数名、操作符</li>
+</ul>
+
+<h3>3.1.2标识符</h3>
+
+<ul>
+<li>格式规则
+
+<ol>
+<li>第一字符只能是：字母、_、$</li>
+<li>其他字符只能是：字母、_、$、数字</li>
+</ol></li>
+<li>js命名规则遵循“驼峰格式”</li>
+</ul>
+
+<h3>3.1.3注释</h3>
+
+<ul>
+<li>单行注释和块注释</li>
+</ul>
+
+<h3>3.1.4严格模式</h3>
+
+<ul>
+<li>在严格模式下，一些不确定的行为得到处理，不安全的行为会抛出异常。</li>
+<li>开启方法：在函数体内首行加入：<code>&quot;use strict;&quot;</code></li>
+</ul>
+
+<h3>3.1.5语句</h3>
+
+<ul>
+<li>可以省略结尾分号，会由解析器自动确定语句的结尾。</li>
+<li>不推荐省略结尾分号：
+
+<ol>
+<li>避免不完整的输入</li>
+<li>方便压缩语句时删除多余空格。</li>
+<li>提升性能。解析器不必推测何处结尾</li>
+</ol></li>
+<li>代码块：用大括号包含语句而得。</li>
+<li>推荐控制语句使用代码块，即使只有一句。使代码根据清晰。</li>
+</ul>
+
+<h2>3.2关键字和保留字</h2>
+
+<ul>
+<li>关键字：用于控制语句的开始和结束</li>
+<li>保留字：现在没有实际作用而留待以后定义使用的特殊词汇</li>
+<li>都不能作标识符</li>
+<li>所有关键字和保留字<sup>P21</sup></li>
+</ul>
+
+<h2>3.3变量</h2>
+
+<ul>
+<li><p>松散型变量：</p>
+
+<ol>
+<li>可以保存任何类型数据</li>
+<li>变量只是在特定时间保存特定值的一个名字而已。变量的值和类型可以在脚本生命周期内改变。</li>
+</ol></li>
+<li><p>显式申明：使用var声明的变量为局部变量</p></li>
+<li><p>隐式申明：省略var而直接赋值会创建全局变量（不推荐）</p></li>
+<li><p>【与C语言的区别】可以在一条语句中定义多个不同类型变量：<br>
+<code>var a,b,c=1,d=&quot;abcd&quot;,e=new Object();</code></p></li>
+</ul>
+
+<h2>3.4数据类型</h2>
+
+<ul>
+<li><p>五大基本类型：</p>
+
+<ol>
+<li>Undefined</li>
+<li>Null</li>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+</ol></li>
+<li><p>一种复杂类型：Object</p></li>
+</ul>
+
+<h3>3.4.1typeOf操作符</h3>
+
+<ul>
+<li>作用：检测变量的数据类型</li>
+<li><p>返回值分析：  </p>
+
+<table><thead>
+<tr>
+<th>返回值（字符串）</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>undefined</td>
+<td>该值未定义(<a href="#com1">详见3.4.2</a>)</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>布尔型</td>
+</tr>
+<tr>
+<td>string</td>
+<td>字符串型</td>
+</tr>
+<tr>
+<td>number</td>
+<td>数值型</td>
+</tr>
+<tr>
+<td>object</td>
+<td>对象或null</td>
+</tr>
+<tr>
+<td>function</td>
+<td>函数</td>
+</tr>
+</tbody></table></li>
+<li><p>受体：变量或字面量。</p></li>
+<li><p>null被看作空对象的引用。</p></li>
+</ul>
+
+<h3 id="com1">3.4.2Undefined型</h3>
+
+<ul>
+<li>只有一个值：undefined</li>
+<li>意义：声明而未初始化</li>
+<li>可以在任何地方使用Undefined型变量，而未声明的标识符则只能在声明语句和typeOf检测语句使用（返回undefined），所以使用typeOf返回undefined不代表该变量是Undefined型，只代表该值未定义。<sup>P24</sup></li>
+</ul>
+
+<h3>3.4.3Null型</h3>
+
+<ul>
+<li>只有一个值：null</li>
+<li>表示一个指向空对象的指针</li>
+<li>作用：如果定义的变量将用作保存对象，最好先赋值为null，使之成为一个对象，方便类型检测等。</li>
+<li>undefined派生自null： null==undefined;//true</li>
+</ul>
+
+<h3>3.4.4Boolean型</h3>
+
+<ul>
+<li>只有两个值：true和false</li>
+<li>与数值无关（与C语言区别）</li>
+<li><p>其他类型转换为Boolean型：<code>Boolean(OtherDataType);</code><br>
+  规则如下：  </p>
+
+<table><thead>
+<tr>
+<th>类型</th>
+<th>true</th>
+<th>false</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>String</td>
+<td>非空字符</td>
+<td>&quot;&quot;</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>非0数值（含无穷）</td>
+<td>0或NaN</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>null</td>
+<td>非null对象</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>N/A</td>
+<td>undefined</td>
+</tr>
+</tbody></table></li>
+</ul>
+
+<h3>3.4.5Number型</h3>
+
+<ul>
+<li>使用IEEE754格式，表示整数和浮点数（双精度）</li>
+<li>进制相关：
+
+<ol>
+<li>默认进制：十进制</li>
+<li>八进制表示：以0开头</li>
+<li>十六进制表示：以0x开头</li>
+</ol></li>
+</ul>
+
+<ol>
+<li>浮点数值
+
+<ul>
+<li>数值必须包含：一个小数点、小数点后一位数字 </li>
+<li>消耗内存为整数的两倍。所以存在自动转换可转换浮点数为整数，规则如下：
+
+<ol>
+<li>小数点后无数字</li>
+<li>小数点后只有0：如1.00转换为1</li>
+</ol></li>
+<li>科学表示法：小于10对于1的小数e±指数值。如3.17e-5//0.0000317</li>
+<li>精度问题：存在舍入误差（IEEE754通病），永远不要检测某个特定浮点数值</li>
+</ul></li>
+<li>数字范围
+
+<ul>
+<li>最大值：<code>Number.MAX_VALUE</code></li>
+<li>最小值：<code>Number.MIN_VALUE</code></li>
+<li>超出范围：±Infinity</li>
+<li>检测是否无穷：<code>isFinite()</code></li>
+</ul></li>
+<li><p>NaN</p>
+
+<ul>
+<li>非数值(not a number)：表示本应返回数值的操作数为返回数值</li>
+<li>特点：
+
+<ol>
+<li>任何涉及NaN的运算返回NaN</li>
+<li>与任何值不等，包括自身</li>
+</ol></li>
+<li><code>isNaN()</code> ：接收任何类型作为参数，调用<strong><code>Number()</code></strong>，不能转换为数值则返回true</li>
+</ul></li>
+<li><p><strong>转换为数值</strong>：</p>
+
+<ul>
+<li><code>Number()</code>（默认转换方法）
+
+<ul>
+<li>转换任何类型</li>
+<li>规则<br></li>
+</ul></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>类型</th>
+<th>规则</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>null</td>
+<td>0</td>
+</tr>
+<tr>
+<td>undefined</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>0开头的有效八进制数：看作八进制数，转换为十进制；<br>0为前导的浮点数，去掉前导； <br>0x开头：看作十六进制，转换为十进制数</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>true变1，false变0</td>
+</tr>
+<tr>
+<td>String</td>
+<td><strong>只含有效数值</strong>的字符串，按照Number型规则进行转换（但不将0开头的数值看作八进制）；<br>空字符串返回0；<br>否则返回NaN</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>依<a href="#com2">一般规则</a>调用<code>valueOf()</code>或<code>toString()</code> ，然后使用上述规则。</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>对字符串处理得不好，因而有了下列方法</li>
+<li><code>parseInt()</code>
+
+<ul>
+<li>转换类型：数值和字符串。其他类型返回NaN</li>
+<li>第二个参数：转换时使用的基数（推荐指定）</li>
+<li>规则：
+
+<ul>
+<li>数值：将可识别的浮点数、十六进制、八进制转换为对对应基数的整数。</li>
+<li>字符串：从第一个非空格字符开始，到无法形成有效数值之前，提取为数值，然后应用上述数值的规则。若只有空格或空字符，则返回NaN。<br></li>
+</ul></li>
+</ul></li>
+<li><code>parseFloat()</code>
+
+<ul>
+<li>只解析十进制数，忽略首位0。规则类似<code>parseInt()</code></li>
+<li>若该数值能转换为整数，则返回对应整数值。</li>
+</ul></li>
+</ul></li>
+</ol>
+
+<h3>3.4.6String型</h3>
+
+<ul>
+<li>表示0个或多个unicode字符组成的序列</li>
+<li>可以单、双引号表示。</li>
+</ul>
+
+<ol>
+<li>字符字面值（转义序列）
+
+<ul>
+<li>表示非打印字符或特殊意义</li>
+<li>字面量表<sup>P33</sup></li>
+<li>length属性表示字符串长度</li>
+</ul></li>
+<li>字符串特点：
+
+<ul>
+<li>不可改变。一旦创建不能修改，只能新建一个字符串，将其赋给变量，并且销毁原字符串以实现修改。</li>
+</ul></li>
+<li>转化为字符串
+
+<ul>
+<li><code>toString()</code>
+
+<ul>
+<li>调用对象：除去Null型和Undefined型。</li>
+<li>规则：
+
+<ul>
+<li>数值：可有一个基数参数。将可识别的浮点数、十六进制、八进制转换为对应基数数值的字符串形式。</li>
+<li>布尔值：&quot;true&quot;、&quot;false&quot;</li>
+<li>字符串：返回该字符串的一个副本</li>
+<li>对象：调用对象的<code>toString()</code>方法，默认返回 &quot;[object objectname]&quot; </li>
+</ul></li>
+</ul></li>
+<li><code>String()</code>
+
+<ul>
+<li>调用对象：所有类型</li>
+<li>规则：
+
+<ul>
+<li>Null型返回&quot;null&quot;，Undefined型返回&quot;undefined&quot;</li>
+<li>其他类型：有则调用<code>toString()</code>，没有(手动置空)则调用<code>valueOf()</code>，此时若无<code>valueOf()</code>则报错TypeError</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+
+<h3 id="com2">3.4.7Object型</h3>
+
+<ul>
+<li>数据与功能的集合</li>
+<li>创建方式：
+
+<ul>
+<li><code>var object = new Object();</code></li>
+<li><code>var object =  {};</code></li>
+</ul></li>
+<li><p>Object每个实例有如下属性、方法：</p>
+
+<ul>
+<li><code>constructor</code>属性：指向构造函数的指针</li>
+<li><code>hasOwnProperty(属性名)</code>：检査属性是否在当前实例中（而非原型中）</li>
+<li><code>isPrototypeOf(object)</code>：检查对象是否为传入对象的原型</li>
+<li><code>prototypeIsEnumble(属性名)</code>：检查属性能否使用for-in语句枚举</li>
+<li><code>toLocalString()</code>：返回对象字符串表示，与执行环境地区对应。</li>
+<li><code>toString()</code>：在对象需要转换为其他基础类型时调用。该方法默认返回 <strong>&quot;[object objectname]&quot;</strong>。</li>
+<li><code>valueOf()</code>：在对象需要转换为其他基础类型时调用。该方法默认返回调用对象。</li>
+</ul></li>
+<li><p><code>valueOf()</code>和<code>toString()</code><strong>一般调用规则</strong>：先调用<code>valueOf()</code>，若<code>valueOf()</code>为默认值或为空则调用<code>toString()</code>；若<code>toString()</code>为默认则返回其默认值，若为空则抛出TypeError。</p></li>
+<li><p>宿主对象不会继承Object。</p></li>
+</ul>
+
+<h2>3.5操作符</h2>
+
+<ul>
+<li>包括算术操作符、位操作符、关系操作符、相等操作符</li>
+</ul>
+
+<h3>3.5.1一元操作符</h3>
+
+<ol>
+<li><p>递增和递减  ++ --</p>
+
+<ul>
+<li>前置和后置区别</li>
+<li>受体只能是变量，不能是字面量。</li>
+<li>转换规律：所有类型，先调<code>Number()</code>再操作。</li>
+</ul></li>
+<li><p>一元加和减 + -</p>
+
+<ul>
+<li>一元加：返回Number(该值)的结果</li>
+<li>一元减：返回一元加结果的相反数。</li>
+</ul></li>
+</ol>
+
+<h3>3.5.2位操作符</h3>
+
+<ul>
+<li>以32位操作，默认有符号位</li>
+<li>负数以补码形式保存</li>
+<li>NaN与Infinity会当作0处理</li>
+<li>对于非数值，调用<code>Number()</code>转换，取其整数位</li>
+</ul>
+
+<ol>
+<li>按位非 ~
+
+<ul>
+<li>结果与操作数的相反数减一相等。但由于是底层操作，所以更快。</li>
+</ul></li>
+<li>按位与 &amp;</li>
+<li>按位或 |</li>
+<li>按位异或 ^</li>
+<li>左移 &lt;&lt;</li>
+<li>有符号右移 &gt;&gt;
+
+<ul>
+<li>以符号位填充高位</li>
+</ul></li>
+<li>无符号右移 &gt;&gt;&gt;
+
+<ul>
+<li>以0填充高位</li>
+</ul></li>
+</ol>
+
+<h3>3.5.3布尔操作符  与、或、非</h3>
+
+<ol>
+<li>非 !
+
+<ul>
+<li>规则：与<code>Boolean()</code>结果相反</li>
+<li>!!模拟<code>Boolean()</code><br></li>
+</ul></li>
+<li>与 &amp;&amp;
+
+<ul>
+<li> 规则：a&amp;&amp;b：短路则返回短路值，否则返回后一值。</li>
+</ul></li>
+<li>或||
+
+<ul>
+<li>短路则返回短路值，否则返回后一值。</li>
+</ul></li>
+</ol>
+
+<ul>
+<li>优先级：与&gt;或。示例：a||b&amp;&amp;c，先算b&amp;&amp;c，因此，a为真，直接返回a。分析：a&amp;&amp;b||c</li>
+</ul>
+
+<h3>3.5.4乘性操作符  乘、除、模</h3>
+
+<ol>
+<li>乘法
+
+<ul>
+<li>规则
+
+<ul>
+<li>Infinity * 0 = NaN</li>
+<li> Infinity * Infinity = Infinity </li>
+<li>Infinity * 非0数值 = ±Infinity</li>
+</ul></li>
+</ul></li>
+<li>除法
+
+<ul>
+<li>规则
+
+<ul>
+<li>Infinity / Infinity = NaN</li>
+<li>0 / 0 = NaN</li>
+<li>非0数值 / 0 = ±Infinity</li>
+</ul></li>
+</ul></li>
+<li>模运算
+
+<ul>
+<li>规则
+
+<ul>
+<li>Infinity % 非0数值 = NaN</li>
+<li>非0数值 % 0 =NaN</li>
+<li>Infinity % Infinity = NaN</li>
+<li>  非0数值 % Infinity = 该数</li>
+<li>0 % 任何数 = 0</li>
+</ul></li>
+</ul></li>
+<li>非数值类型规则：先转换为数值，再应用以上规则。
+###3.5.5加性操作</li>
+<li><p>加法</p>
+
+<ul>
+<li>规则
+
+<ol>
+<li>-Infinity + Infinity = NaN</li>
+<li>-0 + -0 = -0</li>
+<li>+0 + -0 = +0</li>
+<li>+0 + +0 = +0</li>
+<li>如果<strong>一个加数为字符串</strong>，则另一个也转换为字符串，任何将两个字符串拼接起来。</li>
+<li>如果一个加数是对象、布尔值，先转换为字符串(特殊：此时对象调用一般规则，而非toString)，再应用上述规则</li>
+<li>字符串 + undefined/null = 后者<code>String()</code>，再两者拼接。</li>
+<li>数值 +  undefined/null = 后者<code>Number()</code>，再两者拼接</li>
+</ol></li>
+</ul></li>
+<li><p>减法</p>
+
+<ul>
+<li>规则
+
+<ol>
+<li>Infinity - Infinity = NaN （同上）</li>
+<li>+0 - -0 = -0</li>
+<li>+0 - +0 = +0</li>
+<li>-0 - -0 = +0</li>
+<li>如果有一个操作数为对象、字符串、 布尔值、null、undefined型，则先调用<code>Number()</code>，再计算。</li>
+</ol></li>
+</ul></li>
+</ol>
+
+<h3>3.5.6关系操作符 &lt; &gt; &lt;= &gt;=</h3>
+
+<ul>
+<li>表达式返回布尔值</li>
+<li>规则
+
+<ul>
+<li>当一个操作数含有数值型外的其他类型时：
+
+<ul>
+<li>两个都是字符型：比较其编码值大小</li>
+<li>其他情况：调用<code>Number()</code>转换为数值后比较。</li>
+</ul></li>
+<li>若有一个操作数为NaN，任何关系操作符的表达式返回false</li>
+</ul></li>
+</ul>
+
+<h3>3.5.7相等操作符 ==  !=  ===  !==</h3>
+
+<ol>
+<li><p>相等于不相等 ==  != </p>
+
+<ul>
+<li><p>规则：</p>
+
+<ul>
+<li>null == undefined ; //true。且这两个值参与其他相等比较时不转换。</li>
+<li>只有一个操作数为对象，调用一般规律转换后，应用上述规则进行比较；若两个操作数都为对象，则指向同一个对象为true，否则false。</li>
+<li>其他类型先转换为数值（<code>Number()</code>）再比较</li>
+<li>有一个操作数为NaN，则相等比较返回false，不等比较返回false。（NaN与任何数值不等）<br></li>
+</ul></li>
+</ul></li>
+<li><p>全等于不全等 === !==</p>
+
+<ul>
+<li>规则：
+
+<ul>
+<li>null === undefined;  //false</li>
+<li> 不转换直接比较</li>
+</ul></li>
+</ul></li>
+</ol>
+
+<h3>3.5.8条件操作符</h3>
+
+<ul>
+<li>A?B:C  ： A为真返回B，否则返回C</li>
+</ul>
+
+<h3>3.5.9赋值操作符</h3>
+
+<ul>
+<li>复合操作符
+
+<ul>
+<li>乘/赋值（*=）；</li>
+<li>除/赋值（/=）；</li>
+<li>模/赋值（%=）；</li>
+<li>加/赋值（+=）；</li>
+<li>减/赋值（-=）；</li>
+<li>左移/赋值（&lt;&lt;=）；</li>
+<li>有符号右移/赋值（&gt;&gt;=）；</li>
+<li>无符号右移/赋值（&gt;&gt;&gt;=）。</li>
+</ul></li>
+</ul>
+
+<h3>3.5.10逗号操作符</h3>
+
+<ul>
+<li>在同一条语句内执行多个操作。多用于声明多个变量</li>
+</ul>
+
+<h2>3.6语句</h2>
+
+<h3>3.6.1if语句</h3>
+
+<h3>3.6.2do-while语句</h3>
+
+<ul>
+<li>最常用于循环体中的代码至少要被执行一次的情形。 </li>
+</ul>
+
+<h3>3.6.3while语句</h3>
+
+<h3>3.6.4for语句</h3>
+
+<ul>
+<li>for(循环前执行的分句 ; 循环时判断 ; 循环后执行的分句)</li>
+</ul>
+
+<h3>3.6.5for-in语句</h3>
+
+<ul>
+<li>for(property in object) statements;</li>
+<li>用于枚举对象的属性和方法。顺序通常不可预测。</li>
+<li>对象为null或undefined时则不执行循环体或者抛出错误。</li>
+</ul>
+
+<h1>3.6.6label语句</h1>
+
+<ul>
+<li>格式： label： statement</li>
+<li>作用：由break或continue跳转到标签位置</li>
+</ul>
+
+<h3>3.6.7break和continue</h3>
+
+<ul>
+<li>break：打断循环，并执行循环后的代码</li>
+<li>continue：打断本次循环，从循环头部开始继续本循环。</li>
+<li>break和continue可以与label连用，跳到指定位置。<code>break labelName;</code></li>
+</ul>
+
+<h3>3.6.8with语句</h3>
+
+<ul>
+<li>作用：将代码作用域设置为某一对象中</li>
+<li>格式： with(object){}</li>
+<li>大量使用会降低性能，造成调试困难。不建议在开发大型程序时使用</li>
+</ul>
+
+<h3>3.6.9switch语句</h3>
+
+<ul>
+<li>为每个case后添加一个break语句，以避免同时执行多个case代码。有意合并最好注明。</li>
+<li>本语句在js里的特点：
+
+<ul>
+<li>可在switch后的条件里使用任何类型</li>
+<li>case值不一定是常量，可以是变量和表达式</li>
+<li>switch条件值和case值的比较使用全等操作。</li>
+</ul></li>
+</ul>
+
+<h2>3.7函数</h2>
+
+<ul>
+<li>return后不带返回值则返回undefined。</li>
+<li>严格模式下函数的限制：<sup>P64</sup></li>
+</ul>
+
+<h3 id="arguments">3.7.1参数</h3>
+
+<ul>
+<li>函数体通过arguements对象来访问参数</li>
+<li>arguements是个类似数组但不是数组的对象。能够由arguments[n]来访问对应的单个参数的值，并拥有数组长度属性length。</li>
+<li>arguements的属性：
+
+<ul>
+<li>length：返回arguments对象的长度。</li>
+<li>callee：指向拥有这个arguments 对象的函数。</li>
+</ul></li>
+<li>arguements的值与命名参数值同步。<sup>P65</sup></li>
+<li>没有传递值的命名参数值为undefined。<sup>P66</sup></li>
+<li>多个可选参数解决办法：一般来讲，命名参数虽然容易处理，但在有多个可选参数的情况下就会显示不够灵活。最好的做法是对那些必需值使用命名参数，而使用对象字面量来封装多个可选参数。<sup>P85</sup></li>
+</ul>
+
+<h2>小结</h2>
+
+<ul>
+<li><p>对象的类型转换一般都调用一般规则。如果转换为字符串时则调用toString方法（除去字符串拼接操作（因为操作符运算都有一个getValue操作），此时调用一般规则。），toString为null则（默认不会）调valueOf方法。如：</p>
+
+<pre><code class="javascript"> alert(object); <span class="comment">//toString;</span>
+ console.log(obj + <span class="string">'123'</span>); <span class="comment">//valueOf</span>
+</code></pre></li>
+</ul>
+
+<h2>复习题</h2>
+
+<p>写出控制台输出：</p>
+
+<pre><code class="javascript"><span class="keyword">var</span> obj = {
+    i: <span class="number">10</span>,
+    toString: <span class="keyword">function</span>() {
+        console.log(<span class="string">'toString'</span>);
+        <span class="keyword">return</span>;
+    },
+    valueOf: <span class="keyword">function</span>() {
+        console.log(<span class="string">'valueOf'</span>);
+        <span class="keyword">return</span>;
+    }
+}
+
+alert(obj);
+console.log(+obj);
+console.log(<span class="string">''</span>+obj);
+console.log(String(obj));
+console.log(Number(obj));
+console.log(obj == <span class="string">'10'</span>);
+console.log(obj*<span class="number">2</span>);
+alerts(obj||<span class="literal">true</span>&amp;&amp;<span class="literal">false</span>);
+</code></pre>
+
+<h2><sup><a href="0.html#catalogue">回目录</a></sup></h2>
+
+</body>
+</html>

@@ -1,0 +1,1765 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+   <style type="text/css">
+
+   /*
+
+CSS stylesheet is based on killwing's flavored markdown style:
+
+https://gist.github.com/2937864
+
+*/
+
+body{
+
+margin: 0 auto;
+
+font: 12px/1.5em Tahoma;
+
+letter-spacing:0.1em;
+
+color: #444444;
+
+line-height: 1;
+
+width: 840px;
+
+padding: 5px;
+
+}
+
+h1, h2, h3, h4 {
+
+color: #111111;
+
+font-weight: 400;
+
+}
+
+h1, h2, h3, h4, h5, p {
+
+margin-bottom: 16px;
+
+padding: 0;
+
+}
+
+h1 {
+
+margin: 15px auto;
+
+text-align: center;
+
+font-size: 28px;
+
+}
+
+h2 {
+
+font-size: 24px;
+
+
+
+}
+
+h3 {
+
+font-size: 20px;
+
+margin: 8px 16px ;
+
+}
+
+h4 {
+
+font-size: 16px;
+
+}
+
+h5 {
+
+font-size: 14px;
+
+}
+
+a {
+
+color: #0099ff;
+
+margin: 0;
+
+padding: 0;
+
+vertical-align: baseline;
+
+}
+
+a:link,a:visited{
+
+text-decoration:none;
+
+}
+
+a:hover{
+
+text-decoration:underline;
+
+}
+
+ul, ol {
+
+padding: 0;
+
+margin: 0;
+
+}
+
+li {
+
+line-height: 24px;
+
+margin-left: 40px;
+
+}
+
+li ul, li ol {
+
+margin-left: -5px;
+
+//margin-top:-15px;
+
+          color: #000080;
+
+
+
+}
+
+ul, ol {
+
+font-size: 14px;
+
+line-height: 20px;
+
+max-width: 840px;
+
+}
+
+
+
+p {
+
+font-size: 14px;
+
+line-height: 20px;
+
+max-width: 840px;
+
+margin-top: 3px;
+
+}
+
+
+
+pre {
+
+padding: 0px 4px;
+
+max-width: 800px;
+
+white-space: pre-wrap;
+
+font-family: Consolas, Monaco, Andale Mono, monospace;
+
+line-height: 1.5;
+
+font-size: 13px;
+
+border: 1px solid #ddd;
+
+background-color: #f7f7f7;
+
+border-radius: 3px;
+
+}
+
+code {
+
+font-family: Consolas, Monaco, Andale Mono, monospace;
+
+line-height: 1.5;
+
+font-size: 13px;
+
+border: 1px solid #ddd;
+
+background-color: #f7f7f7;
+
+border-radius: 3px;
+
+}
+
+pre code {
+
+border: 0px;
+
+}
+
+aside {
+
+display: block;
+
+float: right;
+
+width: 800px;
+
+}
+
+blockquote {
+
+border-left:.5em solid #40AA53;
+
+padding: 0 2em;
+
+margin-left:0;
+
+max-width: 800px;
+
+}
+
+blockquote  cite {
+
+font-size:14px;
+
+line-height:20px;
+
+color:#bfbfbf;
+
+}
+
+blockquote cite:before {
+
+content: '\2014 \00A0';
+
+}
+
+
+
+blockquote p {
+
+color: #666;
+
+max-width: 760px;
+
+}
+
+hr {
+
+height: 1px;
+
+border: none;
+
+border-top: 1px dashed #0066CC
+
+}
+
+
+
+button,
+
+input,
+
+select,
+
+textarea {
+
+font-size: 100%;
+
+margin: 0;
+
+vertical-align: baseline;
+
+*vertical-align: middle;
+
+}
+
+button, input {
+
+line-height: normal;
+
+*overflow: visible;
+
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+
+border: 0;
+
+padding: 0;
+
+}
+
+button,
+
+input[type="button"],
+
+input[type="reset"],
+
+input[type="submit"] {
+
+cursor: pointer;
+
+-webkit-appearance: button;
+
+}
+
+input[type=checkbox], input[type=radio] {
+
+cursor: pointer;
+
+}
+
+/* override default chrome & firefox settings */
+
+input:not([type="image"]), textarea {
+
+-webkit-box-sizing: content-box;
+
+-moz-box-sizing: content-box;
+
+box-sizing: content-box;
+
+}
+
+
+
+input[type="search"] {
+
+-webkit-appearance: textfield;
+
+-webkit-box-sizing: content-box;
+
+-moz-box-sizing: content-box;
+
+box-sizing: content-box;
+
+}
+
+input[type="search"]::-webkit-search-decoration {
+
+-webkit-appearance: none;
+
+}
+
+label,
+
+input,
+
+select,
+
+textarea {
+
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+font-size: 13px;
+
+font-weight: normal;
+
+line-height: normal;
+
+margin-bottom: 18px;
+
+}
+
+input[type=checkbox], input[type=radio] {
+
+cursor: pointer;
+
+margin-bottom: 0;
+
+}
+
+input[type=text],
+
+input[type=password],
+
+textarea,
+
+select {
+
+display: inline-block;
+
+width: 210px;
+
+padding: 4px;
+
+font-size: 13px;
+
+font-weight: normal;
+
+line-height: 18px;
+
+height: 18px;
+
+color: #808080;
+
+border: 1px solid #ccc;
+
+-webkit-border-radius: 3px;
+
+-moz-border-radius: 3px;
+
+border-radius: 3px;
+
+}
+
+select, input[type=file] {
+
+height: 27px;
+
+line-height: 27px;
+
+}
+
+textarea {
+
+height: auto;
+
+}
+
+
+
+/* grey out placeholders */
+
+:-moz-placeholder {
+
+color: #bfbfbf;
+
+}
+
+::-webkit-input-placeholder {
+
+color: #bfbfbf;
+
+}
+
+
+
+input[type=text],
+
+input[type=password],
+
+select,
+
+textarea {
+
+-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+
+-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+
+transition: border linear 0.2s, box-shadow linear 0.2s;
+
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+
+}
+
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+
+outline: none;
+
+border-color: rgba(82, 168, 236, 0.8);
+
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+
+}
+
+
+
+/* buttons */
+
+button {
+
+display: inline-block;
+
+padding: 4px 14px;
+
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+font-size: 13px;
+
+line-height: 18px;
+
+-webkit-border-radius: 4px;
+
+-moz-border-radius: 4px;
+
+border-radius: 4px;
+
+-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+background-color: #0064cd;
+
+background-repeat: repeat-x;
+
+background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+
+background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+
+background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+
+background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+
+background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+
+background-image: linear-gradient(top, #049cdb, #0064cd);
+
+color: #fff;
+
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+
+border: 1px solid #004b9a;
+
+border-bottom-color: #003f81;
+
+-webkit-transition: 0.1s linear all;
+
+-moz-transition: 0.1s linear all;
+
+transition: 0.1s linear all;
+
+border-color: #0064cd #0064cd #003f81;
+
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+
+}
+
+button:hover {
+
+color: #fff;
+
+background-position: 0 -15px;
+
+text-decoration: none;
+
+}
+
+button:active {
+
+-webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+-moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+}
+
+button::-moz-focus-inner {
+
+padding: 0;
+
+border: 0;
+
+}
+
+/* table  */
+
+table {
+
+border-spacing: 0;
+
+border: 1px solid #ccc;
+
+}
+
+td, th{
+
+border: 1px solid #ccc;
+
+padding: 5px;
+
+}
+
+/* code syntax highlight.
+
+Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own
+
+*/
+
+pre .literal,
+
+pre .comment,
+
+pre .template_comment,
+
+pre .diff .header,
+
+pre .javadoc {
+
+color: #008000;
+
+}
+
+
+
+pre .keyword,
+
+pre .css .rule .keyword,
+
+pre .winutils,
+
+pre .javascript .title,
+
+pre .nginx .title,
+
+pre .subst,
+
+pre .request,
+
+pre .status {
+
+color: #0000FF;
+
+font-weight: bold
+
+}
+
+
+
+pre .number,
+
+pre .hexcolor,
+
+pre .python .decorator,
+
+pre .ruby .constant {
+
+color: #0000FF;
+
+}
+
+
+
+pre .string,
+
+pre .tag .value,
+
+pre .phpdoc,
+
+pre .tex .formula {
+
+color: #D14
+
+}
+
+
+
+pre .title,
+
+pre .id {
+
+color: #900;
+
+font-weight: bold
+
+}
+
+
+
+pre .javascript .title,
+
+pre .lisp .title,
+
+pre .clojure .title,
+
+pre .subst {
+
+font-weight: normal
+
+}
+
+
+
+pre .class .title,
+
+pre .haskell .type,
+
+pre .vhdl .literal,
+
+pre .tex .command {
+
+color: #458;
+
+font-weight: bold
+
+}
+
+
+
+pre .tag,
+
+pre .tag .title,
+
+pre .rules .property,
+
+pre .django .tag .keyword {
+
+color: #000080;
+
+font-weight: normal
+
+}
+
+
+
+pre .attribute,
+
+pre .variable,
+
+pre .lisp .body {
+
+color: #008080
+
+}
+
+
+
+pre .regexp {
+
+color: #009926
+
+}
+
+
+
+pre .class {
+
+color: #458;
+
+font-weight: bold
+
+}
+
+
+
+pre .symbol,
+
+pre .ruby .symbol .string,
+
+pre .lisp .keyword,
+
+pre .tex .special,
+
+pre .prompt {
+
+color: #990073
+
+}
+
+
+
+pre .built_in,
+
+pre .lisp .title,
+
+pre .clojure .built_in {
+
+color: #0086b3
+
+}
+
+
+
+pre .preprocessor,
+
+pre .pi,
+
+pre .doctype,
+
+pre .shebang,
+
+pre .cdata {
+
+color: #999;
+
+font-weight: bold
+
+}
+
+
+
+pre .deletion {
+
+background: #fdd
+
+}
+
+
+
+pre .addition {
+
+background: #dfd
+
+}
+
+
+
+pre .diff .change {
+
+background: #0086b3
+
+}
+
+
+
+pre .chunk {
+
+color: #aaa
+
+}
+
+
+
+pre .markdown .header {
+
+color: #800;
+
+font-weight: bold;
+
+}
+
+
+
+pre .markdown .blockquote {
+
+color: #888;
+
+}
+
+
+
+pre .markdown .link_label {
+
+color: #88F;
+
+}
+
+
+
+pre .markdown .strong {
+
+font-weight: bold;
+
+}
+
+
+
+pre .markdown .emphasis {
+
+font-style: italic;
+
+}
+
+
+
+   </style>
+
+   
+
+   
+
+</head>
+
+<body>
+
+    <h1 id="c10">第十章 DOM <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<h2>10.1 节点层次</h2>
+
+<ul>
+<li>多层节点结构：DOM 可以将任何HTML 或XML 文档描绘成一个由多层节点构成的结构。节点分为几种不同的类型，每种类型分别表示文档中不同的信息及（或）标记。每个节点都拥有各自的特点、数据和方法，另外也与其他节点存在某种关系。节点之间的关系构成了层次，而所有页面标记则表现为一个以特定节点
+为根节点的树形结构。</li>
+<li>文档节点是每个文档的根节点。</li>
+<li>文档元素：文档节点只有一个子节点，即 文档元素。是文档的最外层元素，文档中的其他所有元素都包含在文档元素中。在HTML 页面中，文档元素始终都是&lt;html&gt;元素。</li>
+<li>每一段标记都可以通过树中的一个节点来表示。</li>
+</ul>
+
+<h3>10.1.1 Node类型</h3>
+
+<ul>
+<li>Node 接口：实现所有节点类型。JavaScript 中的所有节点类型都继承自Node 类型。</li>
+<li>每个节点都有一个nodeType 属性，用于表明节点的类型。节点类型由在Node 类型中定义的12 个数值常量来表示。通过和这些常量比较，可以很容易地确定节点的类型，（ 为了确保跨浏览器兼容，最好还是将nodeType 属性与数字值进行比较）</li>
+</ul>
+
+<ol>
+<li>nodeName 和nodeValue 属性。对于元素节点，nodeName 中保存的始终都是元素的标签名，而nodeValue 的值则始终为null。</li>
+<li>节点关系
+
+<ul>
+<li>每个节点都有一个childNodes 属性，其中保存着一个NodeList 对象。
+
+<ul>
+<li>NodeList 是一种类数组对象(类似arguments)，用于保存一组有序的节点，可以通过位置来访问这些节点。NodeList 对象的
+独特之处在于，它实际上是基于DOM 结构<strong>动态执行查询</strong>的结果，因此DOM结构的变化能够自动反映在NodeList 对象中。访问保存在NodeList 中的节点——可以通过方括号，也可以使用item()
+方法。</li>
+<li>length 属性表示的是访问NodeList 的那一刻，其中包含的节点数量</li>
+</ul></li>
+<li>每个节点都有一个parentNode 属性，该属性指向文档树中的父节点。同胞节点具有相同的父节点。</li>
+<li>previousSibling和nextSibling 属性，可以访问同一NodeList 列表中的其他节点。列表中第一个节点的previousSibling 属性
+值为null，而列表中最后一个节点的nextSibling 属性的值同样也为null。</li>
+<li>父节点的firstChild 和lastChild属性分别指向其childNodes 列表中的第一个和最后一个节点。</li>
+<li>hasChildNodes():在节点包含一或多个子节点的情况下返回true。（比查询childNodes
+列表的length 属性更简单）</li>
+<li>ownerDocument（每个节点都有此属性），该属性指向表示整个文档的文档节点，通过这个属性，我们可以不必在节点层次中通过层层回溯到达顶端，而是可以直接访问文档节点。</li>
+<li><strong>关系指针都是只读的</strong>。</li>
+</ul></li>
+<li> 操作节点：以下四个方法操作的都是某个节点的子节点，<strong>调用对象为参数的父节点</strong>：
+
+<ul>
+<li>appendChild(newNode)，用于向childNodes 列表的末尾添加一个节点。添加节点后，childNodes 的新增
+节点、父节点及以前的最后一个子节点的关系指针都会相应地得到更新。返回新增的节点。</li>
+<li>insertBefore(newNode，refNode)方法：插入节点到childNodes 列表中某个节点前一位置。接受两个参数：要插入的节点和作为参照的节点。插入节点后，被插入的节点会变成参照节点的前一个同胞节点（previousSibling），同时被方法返回。如果参照节点是null，则与appendChild()执行相同的操作。</li>
+<li>replaceChild(newNode，oldNode)。要替换的节点将由这个方法返回并从文档树中被移除，同时由要插入的节点占据其位置。返回oldNode。</li>
+<li>removeChild(oldNode)方法，移除节点。这个方法接受一个参数，即要移除的节点。返回oldNode。</li>
+<li>被替换或删除的节点仍然还在文档中，没有为它指定父节点，成为了一个<strong>“孤儿”</strong>，除非通过appendChild()、insertBefore()或replaceChild()将它将他添加到文档中。</li>
+</ul></li>
+<li> 其他方法
+
+<ul>
+<li>cloneNode()，用于创建调用这个方法的节点的一个完全相同的副本。cloneNode()方法接受一个布尔值参数，表示是否执行深复制。在参数为true的情况下执行深复制，也就是复制节点及其整个子节点树；在参数为false 的情况下执行浅复制，即只复制节点本身。返回新节点。这个新节点就成为了一个“孤儿”。
+
+<ul>
+<li>getElementsBy等方法这是返回对节点的引用。所以将一个已添加进文档的节点添加到另一个节点的子节点中，就会从原来位置移动到新位置。复制只能通过someNode.clone()实现。<br></li>
+</ul></li>
+<li><strong>normalize()</strong>，作用就是处理文档树中的文本节点。当在某个节点上调用这个方法时，就会在该节点的<strong>后代节点中</strong>查找上述两种情况。如果找到了空文本节点，则删除它；如果找到相邻的文本节点，则将它们合并为一个文本节点。</li>
+</ul></li>
+</ol>
+
+<h3>10.1.2 Document类型</h3>
+
+<ul>
+<li>JavaScript 通过Document 类型表示文档。document 对象是HTMLDocument（继承
+自Document 类型）的一个实例，表示整个HTML 页面。</li>
+<li>document 对象是window 对象的一个属性，因此可以将其作为全局对象来访问。</li>
+</ul>
+
+<ol>
+<li>文档的子节点
+
+<ul>
+<li>Document 节点的子节点可以是DocumentType、Element、ProcessingInstruction或Comment。</li>
+<li><strong>documentElement属性</strong>，该属性始终指向HTML 页面中的&lt;html&gt;元素。（也可以通过childNodes列表方式来访问文档元素，documentElement、firstChild 和childNodes[0]的值相同，都指向&lt;html&gt;
+元素。）</li>
+<li>document 对象还有一个<strong>body 属性</strong>，直接指向&lt;body&gt;元素。</li>
+<li>Document 另一个可能的子节点是DocumentType。通常将&lt;!DOCTYPE&gt;标签看成一个与文档其他部分不同的实体，可以通过<code>document.doctype</code>来访问它的信息。(由于浏览器兼容性问题，这个属性的用处很有限。)</li>
+</ul></li>
+<li><p>文档信息</p>
+
+<ul>
+<li>title属性，包含着&lt;title&gt;元素中的文本——显示在浏览器窗口的标题栏或标签页上。</li>
+<li>URL、domain 和referrer。
+
+<ul>
+<li>URL 属性中包含页面完整的URL（即地址栏中显示的URL）</li>
+<li>domain 属性中只包含页面的域名。通过将domain值设为松散型域名，从而实现不同子域页面通信。</li>
+<li>referrer属性中则保存着链接到当前页面的那个页面的URL。在没有来源页面的情况下，referrer 属性中可能会包含空字符串。</li>
+<li>所有这些信息都<strong>存在于HTTP 头部</strong>，只不过是通过这些属性让我们能够在JavaScrip 中访问它们而已。</li>
+</ul></li>
+</ul></li>
+<li><p>查找元素</p>
+
+<ul>
+<li>getElementById()，接收一个参数：要取得的元素的ID。找到则返回该元素，不存在带有相应ID 的元素则返回null。注意，这里的ID 必须与页面中元素的id特性（attribute）严格匹配，包括大小写。
+
+<ul>
+<li>如果页面中多个元素的ID 值相同，getElementById()只返回文档中第一次出现的元素。</li>
+</ul></li>
+<li><p>getElementsByTagName()。接受一个参数，即要取得元素的标签名，返回一个HTMLCollection <strong>对象</strong></p>
+
+<ul>
+<li><p>动态”集合HTMLCollection 对象可以使用方括号语法或item()方法来访问对象中的项，元素的数量则可以通过length取得。还有一个namedItem()，使用这个方法可以通过元素的name特性取得集合中的项。</p>
+
+<ul>
+<li>对 <strong>HTMLCollection</strong> 而言，我们可以向方括号中传入数值或字符串形式的索引值。<strong>在后台，对数值索引就会调用item()，而对字符串索引就会调用namedItem()</strong>。要想取得文档中的所有元素，可以向getElementsByTagName()中传入&quot;*&quot;，返回的HTMLCollection 中，就包含了整个页面中的所有元素——按照它们出现的先后顺序。在JavaScript 及CSS中，星号（*）通常表示“全部”。</li>
+</ul>
+
+<pre><code class="javascript">&lt;img src=<span class="string">"myimage.gif"</span> name=<span class="string">"myImage"</span>&gt;
+<span class="keyword">var</span> myImage =document.getElementsByTagName(<span class="string">"img"</span>).namedItem(<span class="string">"myImage"</span>);
+<span class="keyword">var</span> myImage =document.getElementsByTagName(<span class="string">"img"</span>)[<span class="string">"myImage"</span>];
+</code></pre></li>
+</ul></li>
+<li><p>getElementsByName()。返回带有给定name 特性的所有元素（namedItem()方法则只会取得第一项）。最常使用getElementsByName()方法的情况是取得单选按钮。</p></li>
+</ul></li>
+<li><p><strong>特殊集合</strong>：这些集合都是HTMLCollection 对象（访问内部元素方法见上文）：</p>
+
+<ol>
+<li>document.anchors，包含文档中所有带name 特性的&lt;a&gt;元素；</li>
+<li>document.forms，包含文档中所有的&lt;form&gt;元素</li>
+<li>document.images，包含文档中所有的&lt;img&gt;元素</li>
+<li>document.links，包含文档中所有带href 特性的&lt;a&gt;元素。</li>
+</ol></li>
+<li><p>DOM 一致性检测</p>
+
+<ul>
+<li>hasFeature()。接受两个参数：要检测的DOM 功能的名称及版本号。</li>
+</ul></li>
+<li><p>文档写入</p>
+
+<ul>
+<li>write()和writeln()方法都接受一个字符串参数，即要写入到输出流中的文本。
+
+<ul>
+<li>不能直接包含字符串&quot;&lt;/script&gt;&quot;，这会导致该字符串被解释为脚本块的结束，后面的代码将无法执行。要转义为&quot;&lt;\/script&gt;&quot;。</li>
+<li>如果在文档加载结束后再调用document.write()，那么输出的内容将会重写整个页面</li>
+</ul></li>
+<li>open()和close()分别用于打开和关闭网页的输出流。如果是在页面加载期间使用write()或writeln()方法，则不需要用到这两个方法</li>
+</ul></li>
+</ol>
+
+<h3>10.1.3 Element类型</h3>
+
+<ul>
+<li>nodeName属性和tagName属性返回元素的标签名（在HTML 中，标签名始终都以全部大写表示）</li>
+</ul>
+
+<ol>
+<li><p>HTML 元素</p>
+
+<ul>
+<li>所有 HTML 元素都由HTMLElement 类型表示，不是直接通过这个类型，也是通过它的子类型来表示</li>
+<li><p>每个HTML元素中都存在的下列<strong>标准</strong>特性。</p>
+
+<ol>
+<li>id，元素在文档中的唯一标识符。</li>
+<li>title，有关元素的附加说明信息，一般通过工具提示条显示出来。</li>
+<li>lang，元素内容的语言代码，很少使用。</li>
+<li>dir，语言的方向，也很少使用。</li>
+<li>className，与元素的class特性对应，即为元素指定的CSS类。修改className 时，如果新类关联了与此前不同的CSS 样式，那么就会立即应用新的样式。</li>
+</ol>
+
+<pre><code class="javascript"><span class="keyword">var</span> div = document.getElementById(<span class="string">"myDiv"</span>);
+alert(div.id); <span class="comment">//"myDiv""</span>
+</code></pre></li>
+<li><p>所有HTML 元素以及与之关联的类型。<sup>P263</sup></p></li>
+</ul></li>
+<li><p>特性操作</p>
+
+<ul>
+<li>getAttribute(name)：接受特性名，返回该特性值。
+
+<ul>
+<li>在通过JavaScript 以编程方式操作DOM 时，开发人员经常不使用getAttribute()，而是只使用对象的属性。只有在取自定义特性值的情况下，才会使用getAttribute()方法。 </li>
+</ul></li>
+<li>setAttribute(name,value)，这个方法接受两个字符串：要设置的特性名和值。如果特性已经存在，setAttribute()会以指定的值替换现有的值；如果特性不存在，setAttribute()则创建该属性并设置相应的值。通过这个方法设置的特性名会被统一转换为小写形式。</li>
+<li>removeAttribute(name)，这个方法用于彻底删除元素的特性。传入属性名。</li>
+<li>hasAttributes(name)：检查是否具有特性。</li>
+<li>以上方法<strong>可传入Attr节点代替传名字</strong></li>
+<li> 以上所有方法都可以操作<strong>自定义特性</strong>。（自定义特性应该加上data-前缀以便验证）（不能用div.data-*形式访问到自定义特性）</li>
+</ul></li>
+<li><p>Element.attributes 属性</p>
+
+<ul>
+<li>Element 类型是使用attributes 属性的唯一一个DOM 节点类型。attributes 属性中包含一个NamedNodeMap动态集合。集合含有Attr 节点，表示元素的特性。</li>
+<li>NamedNodeMap 拥有下列方法。
+
+<ol>
+<li>getNamedItem(name)：返回nodeName 属性等于name 的Attr节点；</li>
+<li>removeNamedItem(name)：从列表中移除nodeName 属性等于name 的Attr节点；</li>
+<li>setNamedItem(attrNode)：向列表中添加Attr节点，以节点的nodeName 属性为索引；</li>
+<li>item(pos)：返回位于数字pos 位置处的节点</li>
+</ol></li>
+<li>attributes 属性中包含一系列节点，每个节点的nodeName 就是特性的名称，而节点的nodeValue就是特性的值。</li>
+<li>由于attributes 的方法不够方便，因此开发人员更多的会使用getAttribute()、removeAttribute()和setAttribute()方法。</li>
+</ul></li>
+<li><p>创建元素</p>
+
+<ul>
+<li>document.createElement(标签名)方法可以创建新元素。这个方法只接受一个 要创建元素的标签名。会返回一个DOM 元素的引用。同时也为新元素设置了ownerDocuemnt 属性。由于新元素尚未被添加到文档树中，成为一个孤节点，因此设置这些特性不会影响浏览器的显示。</li>
+</ul></li>
+<li><p>元素的子节点</p>
+
+<ul>
+<li><p>通过某个特定的标签名取得子节点或后代节点</p>
+
+<pre><code class="javascript"><span class="keyword">var</span> ul = document.getElementById(<span class="string">"myList"</span>);
+<span class="keyword">var</span> items = ul.getElementsByTagName(<span class="string">"li"</span>);
+</code></pre>
+
+<p>要注意的是，如果包含更多层次的后代元素，那么各个层次中包含的&lt;li&gt;元素也都会返回。</p></li>
+</ul></li>
+</ol>
+
+<h3>10.1.4 Text类型</h3>
+
+<ul>
+<li>Text 节点具有以下特征：
+
+<ol>
+<li>nodeType 的值为3；</li>
+<li>nodeName 的值为&quot;#text&quot;；</li>
+<li><strong>nodeValue(或data 属性) 为节点所包含的文本</strong>；</li>
+<li>parentNode 是一个Element；</li>
+<li>不支持（没有）子节点。</li>
+</ol></li>
+<li>length 属性，保存着节点中字符的数目。</li>
+<li>方法：
+
+<ul>
+<li><strong>appendData(text)</strong>：将text 添加到节点的末尾。</li>
+<li>deleteData(offset, count)：从offset 指定的位置开始删除count 个字符。</li>
+<li>insertData(offset, text)：在offset 指定的位置插入text。</li>
+<li>replaceData(offset, count, text)：用text 替换从offset 指定的位置开始到offset+count 为止处的文本。</li>
+<li>splitText(offset)：从offset 指定的位置将当前文本节点分成两个文本节点。</li>
+<li>substringData(offset, count)：提取从offset 指定的位置开始到offset+count 为止处的字符串。</li>
+</ul></li>
+<li>在默认情况下，每个可以包含内容的元素最多只能有一个文本节点，而且必须确实有内容存在。开始与结束标签之间只要存在内容，就会创建一个文本节点。</li>
+</ul>
+
+<pre>
+    <code class="html"><span class="comment">&lt;!-- 没有内容，也就没有文本节点 --&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;!-- 有空格，因而有一个文本节点 --&gt;
+&lt;div&gt; &lt;/div&gt;
+&lt;!-- 有内容，因而有一个文本节点 --&gt;
+&lt;div&gt;Hello World!&lt;/div&gt;
+</span>
+</code>
+</pre>
+
+<ul>
+<li>一般情况下，每个元素只有一个文本子节点。不过，在某些情况下也可能包含多个文本子节点。浏览器在解析文档时永远不会创建相邻的文本节点。这种情况只会作为执行DOM操作的结果出现。</li>
+</ul>
+
+<ol>
+<li><p>创建文本节点</p>
+
+<ul>
+<li>document.createTextNode()创建新文本节点，这个方法接受一个参数——要插入节点中的文本。返回该文本元素。</li>
+<li>最后一步，就是将这个元素添加到了文档的&lt;body&gt;
+元素中，这样就可以在浏览器中看到新创建的元素和文本节点了。</li>
+</ul></li>
+<li><p>规范化文本节点</p>
+
+<ul>
+<li>normalize()。如果
+在一个包含两个或多个文本节点的父元素上调用normalize()方法，则会将所有文本节点合并成一个
+节点，结果节点的nodeValue 等于将合并前每个文本节点的nodeValue 值拼接起来的值。</li>
+</ul></li>
+<li><p>分割文本节点</p>
+
+<ul>
+<li>splitText()：将一个文本节点分成两个文本节点，传入位置参数。原来的文本节点（nodeValue）将包含从开始到指定位置之前的内容，新文本节点（nodeValue）将包含剩下的文本。返回新文本节点，该节点与原节点的parentNode 相同。</li>
+</ul></li>
+</ol>
+
+<h3>10.1.5 Comment类型</h3>
+
+<ul>
+<li>Comment 类型与Text 类型继承自相同的基类，因此它拥有除splitText()之外的所有字符串操
+作方法。</li>
+<li>获取节点内容：可以通过nodeValue 或data 属性来取得注释的内容。</li>
+<li>创建：使用document.createComment()并为其传递注释文本也可以创建注释节点。</li>
+<li>注意：浏览器也不会识别位于&lt;/html&gt;标签后面的注释。如果要访问注释节点，一定要保证它们是&lt;html&gt;元素的后代（即位于&lt;html&gt;和&lt;/html&gt;之间）。</li>
+</ul>
+
+<h3>10.1.6 CDATASection类型</h3>
+
+<ul>
+<li>CDATASection 类型只针对基于XML 的文档，表示的是CDATA 区域。</li>
+<li>CDATASection 类型继承自Text 类型，因此拥有除splitText()之外的所有字符串操作方法。</li>
+<li>不支持（没有）子节点。</li>
+<li>可以使用document.createCDataSection()来创建CDATA 区域，只需
+为其传入节点的内容即可。</li>
+</ul>
+
+<h3>10.1.7 DocumentType类型</h3>
+
+<ul>
+<li>包含着与文档的doctype 有关的所有信息</li>
+<li>不支持（没有）子节点。nodeName 的值为doctype 的名称（html文档name为&#39;html&#39;）；</li>
+<li>3 个属性：name、entities 和notations。其中，name 表示文档类型的名称；
+entities 是由文档类型描述的实体的NamedNodeMap 对象；notations 是由文档类型描述的符号的
+NamedNodeMap 对象。</li>
+</ul>
+
+<h3>10.1.8 DocumentFragment类型</h3>
+
+<ul>
+<li>文档片段（document fragment）是一种“轻量级”的文档，可以包含和控制节点，但不会像完整的文档那样占用额外的资源。DocumentFragment 在文档中没有对应的标记。可以将它作为一个“仓库”来使用，即可以在里面保存将来可能会添加到文档中的节点。</li>
+<li>文档片段的意义：一次性将子节点添加到文档中，避免浏览器反复渲染。只需先建fragment，为其加子节点，最后将fragment其加入文档树就行。</li>
+<li>文档片段继承了Node 的所有方法，通常用于执行那些针对文档的DOM操作。添加到文档片段
+中的新节点不属于文档树。</li>
+<li>可以通过appendChild()或insertBefore()将文档片段中内容添加到文档中。在将文档片段作为参数传递给这两个方法时，实际上只会将文档片段的所有子节点添加到相应位置上；文档片段本身永远不会成为文档树的一部分。</li>
+<li>nodeValue 的值为null；parentNode 的值为null；子节点可以是Element、ProcessingInstruction、Comment、Text、CDATASection 或EntityReference。</li>
+<li>使用document.createDocumentFragment()方法创建文档片段</li>
+</ul>
+
+<h3>10.1.9 Attr类型</h3>
+
+<ul>
+<li> 开发人员最常使用的是getAttribute()
+、setAttribute()和remveAttribute()方法。我们并不建议直接访问特性节点，使用getAttribute()、setAttribute()和removeAttribute()<sup>见10.1.3-3</sup>  方法远比操作特性节点更为方便。</li>
+<li>Attr 类型表示元素的特性，就是存在于元素的attributes 属性中的节点。</li>
+<li>nodeName 的值是特性的名称； nodeValue 的值是特性的值； parentNode 的值为null；在 HTML 中不支持（没有）子节点；在 XML 中子节点可以是Text 或EntityReference。</li>
+<li>不被认为是DOM 文档树的一部分。</li>
+<li>document.createAttribute()时为特性name 赋值</li>
+<li>通过Attr的value属性设置特性的值</li>
+<li><p>setAttributeNode(attrNode)将新创建的特性添加到元素中</p>
+
+<pre><code class="javascript"><span class="keyword">var</span> attr = document.createAttribute(<span class="string">"align"</span>);
+attr.value = <span class="string">"left"</span>;
+element.setAttributeNode(attr);
+</code></pre>
+
+<h2>10.2 DOM 操作技术</h2>
+
+<h3>10.2.1 动态脚本</h3></li>
+<li><p>动态脚本，指的是在页面加载时不存在，
+但将来的某一时刻通过修改DOM 动态添加的脚本</p></li>
+<li><p>有两种方式：插入外部文件和直接插入JavaScript 代码。</p>
+
+<ul>
+<li><p>外部文件：</p>
+
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span><span class="params">(url)</span>{</span>
+<span class="keyword">var</span> script = document.createElement(<span class="string">"script"</span>);
+script.type = <span class="string">"text/javascript"</span>;
+script.src = url;
+document.body.appendChild(script);<span class="comment">//把&lt;script&gt;元素添加到页��</span>�中之前，是不会下载外部文件的。
+}
+</code></pre></li>
+<li><p>内部代码方式：使用&lt;script&gt;元素的text 属性来指定JavaScript 代码。</p>
+
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">loadScriptString</span><span class="params">(code)</span>{</span>
+    <span class="keyword">var</span> script = document.createElement(<span class="string">"script"</span>);
+    script.type = <span class="string">"text/javascript"</span>;
+    <span class="keyword">try</span> {
+        script.appendChild(document.createTextNode(code));<span class="comment">//IE抛�</span>��错误
+    } catch (ex){
+        script.text = code;
+    }
+    document.body.appendChild(script);
+}
+</code></pre>
+
+<p>这样执行代码与在全局作用域中把相同的字符串传递给eval()是一样的。</p></li>
+</ul></li>
+</ul>
+
+<h3>10.2.2 动态样式</h3>
+
+<ul>
+<li>动态样式是指在页面刚加载时不存在的样
+式；动态样式是在页面加载完成后动态添加到页面中的。</li>
+<li><p>外部方式：</p>
+
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">loadStyles</span><span class="params">(url)</span>{</span>
+    <span class="keyword">var</span> link = document.createElement(<span class="string">"link"</span>);
+    link.rel = <span class="string">"stylesheet"</span>;
+    link.type = <span class="string">"text/css"</span>;
+    link.href = url;
+    <span class="keyword">var</span> head =document.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];
+    head.appendChild(link);
+}
+</code></pre></li>
+<li><p>嵌入CSS方式： </p>
+
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">loadStyleString</span><span class="params">(css)</span>{</span>
+    <span class="keyword">var</span> style = document.createElement(<span class="string">"style"</span>);
+    style.type = <span class="string">"text/css"</span>;
+    <span class="keyword">try</span>{<span class="comment">//IE抛 </span> 错
+        style.appendChild(document.createTextNode(css));  
+    } <span class="keyword">catch</span> (ex){
+        style.styleSheet.cssText = css;
+    }
+    <span class="keyword">var</span> head = document.getElementsByTagName("head"<span class="number">)[0];
+</span>    head.appendChild(style);
+}
+loadStyleString("body{background-color:red}");
+</code></pre></li>
+</ul>
+
+<h3>10.2.3 操作表格</h3>
+
+<pre><code class="javascript"><span class="comment">//createtable</span>
+<span class="keyword">var</span> table = document.createElement(<span class="string">"table"</span>);
+table.border = <span class="number">1</span>;
+table.width = <span class="string">"100%"</span>;
+<span class="comment">//create tbody</span>
+<span class="keyword">var</span> tbody = document.createElement(<span class="string">"tbody"</span>);
+table.appendChild(tbody);
+<span class="comment">//create first row</span>
+tbody.insertRow(<span class="number">0</span>);
+tbody.rows[<span class="number">0</span>].insertCell(<span class="number">0</span>);
+tbody.rows[<span class="number">0</span>].cells[<span class="number">0</span>].appendChild(document.createTextNode(<span class="string">"Cell 1,1"</span>));
+tbody.rows[<span class="number">0</span>].insertCell(<span class="number">1</span>);
+tbody.rows[<span class="number">0</span>].cells[<span class="number">1</span>].appendChild(document.createTextNode(<span class="string">"Cell 2,1"</span>));
+<span class="comment">//create second row</span>
+tbody.insertRow(<span class="number">1</span>);
+tbody.rows[<span class="number">1</span>].insertCell(<span class="number">0</span>);
+tbody.rows[<span class="number">1</span>].cells[<span class="number">0</span>].appendChild(document.createTextNode(<span class="string">"Cell 1,2"</span>));
+tbody.rows[<span class="number">1</span>].insertCell(<span class="number">1</span>);
+tbody.rows[<span class="number">1</span>].cells[<span class="number">1</span>].appendChild(document.createTextNode(<span class="string">"Cell 2,2"</span>));
+<span class="comment">//add to document</span>
+document.body.appendChild(table);
+</code></pre>
+
+<h3>10.2.4 使用NodeList</h3>
+
+<ul>
+<li>NodeList 及其“近亲”NamedNodeMap 和HTMLCollection，都是在访问DOM文档时实时运行的查询。</li>
+<li>DOM操作往往是JavaScript 程序中开销最大的部分，而因访问NodeList 导致的问题为最多。NodeList 对象都是“动态的”，这就意味着每次访问NodeList 对象，都会运行一次查询。有鉴于此，最好的办法就是尽量减少DOM操作。</li>
+<li><p>避免无限循环。</p>
+
+<pre><code class="javascript"><span class="keyword">var</span> divs = document.getElementsByTagName(<span class="string">"div"</span>);
+<span class="keyword">for</span> (i=<span class="number">0</span>; i &lt; divs.length; i++){
+    div = document.createElement(<span class="string">"div"</span>);
+    document.body.appendChild(div);
+}
+</code></pre>
+
+<p>由于divs.length每次查询会得到更新，所以会出现无限循环。</p></li>
+</ul>
+
+<h1 id="c11">第十一章 DOM扩展 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<h2>11.1 选择符API</h2>
+
+<h3>11.1.1 querySelector()方法</h3>
+
+<ul>
+<li>querySelector()方法接收一个CSS 选择符，<strong>返回</strong>与该模式匹配的<strong>第一个元素</strong>，如果没有找到匹配的元素，返回null。</li>
+<li>通过Document 类型调用querySelector()方法时，会在文档元素的范围内查找匹配的元素。而
+通过Element 类型调用querySelector()方法时，只会在该元素<strong>后代</strong>元素的范围内查找匹配的元素。</li>
+</ul>
+
+<h3>11.1.2 querySelectorAll()方法</h3>
+
+<ul>
+<li>参数和querySelector一样，但**返回的是一个NodeList **的实例。如果没有找到匹配的元素，NodeList 就是空的。</li>
+<li>要取得返回的NodeList 中的每一个元素，可以使用item()方法，也可以使用方括号语法</li>
+</ul>
+
+<h3>11.1.3 matchesSelector()方法</h3>
+
+<ul>
+<li>接收一个CSS 选择符，如果调用元素与该选择符匹配，返回true；否则，返回false。</li>
+<li>使用这个方法能够方便地检测它是否会被querySelector()或querySelectorAll()方法返回。</li>
+</ul>
+
+<h2>11.2 元素遍历</h2>
+
+<ul>
+<li>原因：对于元素间的空格，IE9 及之前版本不会返回文本节点，而其他所有浏览器都会返回文本节点。这样，就导致了在使用childNodes 和firstChild 等属性时的行为不一致。为了弥补这一差异，定义了一组属性。</li>
+<li>添加了以下5 个属性，利用这些元素<strong>不必担心空白文本节点</strong>：
+
+<ul>
+<li>childElementCount：返回子元素（不包括文本节点和注释）的个数。</li>
+<li>firstElementChild：指向第一个子元素；firstChild 的元素版。</li>
+<li>lastElementChild：指向最后一个子元素；lastChild 的元素版。</li>
+<li>previousElementSibling：指向前一个同辈元素；previousSibling 的元素版。</li>
+<li> nextElementSibling：指向后一个同辈元素；nextSibling 的元素版。</li>
+</ul></li>
+</ul>
+
+<h2>11.3 HTML5</h2>
+
+<h3>11.3.1 与类相关的扩充</h3>
+
+<ol>
+<li><p>getElementsByClassName()方法</p>
+
+<ul>
+<li>接收一个参数，即一个包含一或多个类名的字符串，返回带有指定类的所有元素的NodeList。传入多个类名时，类名的先后顺序不重要。</li>
+<li>在document 对象上调用getElementsByClassName()始终会返回与类名匹配的所有元素，在元素上调用该方法就只会返回后代元素中匹配的元素。</li>
+</ul></li>
+<li><p>classList 属性</p>
+
+<ul>
+<li>让<strong>类名</strong>操作更简单也更安全（免去对类名字符串的直接操作）。</li>
+<li>classList 属性是新集合类型DOMTokenList 的实例，有一个表示自己包含多少元素的length 属性，而要取得每个元素可以使用item()方法，也可以使用方括号语法。</li>
+<li>有如下方法：
+
+<ul>
+<li>add(value)：将给定的字符串值添加到列表中。如果值已经存在，就不添加了。</li>
+<li>contains(value)：表示列表中是否存在给定的值，如果存在则返回true，否则返回false。</li>
+<li>remove(value)：从列表中删除给定的字符串。</li>
+<li>toggle(value)：如果列表中已经存在给定的值，删除它；如果列表中没有给定的值，添加它。</li>
+</ul></li>
+<li>有了 classList 属性，除非你需要全部删除所有类名，或者完全重写元素的class 属性，否则也
+就用不到className 属性了。</li>
+</ul></li>
+</ol>
+
+<h3>11.3.2 焦点管理</h3>
+
+<ul>
+<li>元素获得焦点的方式有页面加载、用户输入（通常是通过按Tab 键）和在代码中调用focus()方法。</li>
+<li>document.activeElement 属性，这个属性始终会引用DOM 中当前获得了焦点的元素。默认情况下，文档刚刚加载完成时，document.activeElement 中保存的是document.body 元素的引用。文档加载期间，document.activeElement 的值为null。</li>
+<li>document.hasFocus()，这个方法用于确定<strong>文档</strong>是否获得了焦点。通过检测文档是否获得了焦点，可以知道用户是不是正在与页面交互。</li>
+</ul>
+
+<h3>11.3.3 HTMLDocument的变化</h3>
+
+<ol>
+<li><p>document.readyState 属性，通过它来实现一个指示文档已经加载完成的指示器。有两个可能的值：</p>
+
+<ul>
+<li>loading，正在加载文档；</li>
+<li>complete，已经加载完文档。</li>
+</ul></li>
+<li><p>兼容模式。用document.compatMode属性判断兼容模式，有两个值：</p>
+
+<ul>
+<li>&quot;CSS1Compat&quot;：在标准模式下</li>
+<li>&quot;BackCompat&quot;： 在混杂模式下</li>
+</ul></li>
+<li><p>head 属性</p>
+
+<ul>
+<li>document.head 属性，引用文档的&lt;head&gt;元素</li>
+</ul></li>
+</ol>
+
+<h3>11.3.4 字符集属性</h3>
+
+<ul>
+<li>charset 属性表示文档中实际使用的字符集，也可以用来指定新字符集。默认情况下，这个属性的值为&quot;UTF-16&quot;，但可以通过&lt;meta&gt;元素、响应头部或直接设置charset 属性修改这个值</li>
+<li>defaultCharset，表示根据默认浏览器及操作系统的设置，当前文档默认的字符集应该是什么。如果文档没有使用默认的字符集，那charset 和defaultCharset 属性的值可能会不一样。</li>
+</ul>
+
+<h3>11.3.5 自定义数据属性</h3>
+
+<ul>
+<li>HTML5 规定可以为元素添加非标准的属性，但要添加前缀data-，目的是为元素提供与渲染无关的
+信息，或者提供语义信息。</li>
+<li><p><strong>可以通过元素的dataset 属性来访问自定义属性的值</strong></p>
+
+<pre><code class="javascript"><span class="comment">//取得自</span>定义属性的值
+<span class="keyword">var</span> appId = div.dataset.myAttr;
+</code></pre></li>
+</ul>
+
+<h3>11.3.6 插入标记</h3>
+
+<ul>
+<li>在需要给文档插入大量新HTML 标记的情况下，通过DOM操作仍然非常麻烦，因为不仅要创建一系列DOM 节点，而且还要小心地按照正确的顺序把它们连接起来。相对而言，使用插入标记的技术，直接插入HTML 字符串不仅更简单，速度也更快。</li>
+</ul>
+
+<ol>
+<li>innerHTML 属性
+
+<ul>
+<li>在读模式下，innerHTML 属性返回与调用元素的所有子节点（包括元素、注释和文本节点）对应
+的HTML 标记。在写模式下，innerHTML 会根据指定的值创建新的DOM树，然后用这个DOM树完全
+替换调用元素原先的所有子节点</li>
+<li>并不是所有元素都支持innerHTML 属性。不支持innerHTML 的元素有：&lt;col&gt;、&lt;colgroup&gt;、
+&lt;frameset&gt;、&lt;head&gt;、&lt;html&gt;、&lt;style&gt;、&lt;table&gt;、&lt;tbody&gt;、&lt;thead&gt;、&lt;tfoot&gt;和&lt;tr&gt;</li>
+</ul></li>
+<li>outerHTML 属性
+
+<ul>
+<li>在读模式下，outerHTML 返回调用它的元素及所有子节点的HTML 标签。在写模式下，outerHTML
+会根据指定的HTML 字符串创建新的DOM 子树，然后用这个DOM子树完全替换调用元素。</li>
+</ul></li>
+<li><p>insertAdjacentHTML()方法</p>
+
+<ul>
+<li>接收两个参数：插入位置和要插入的HTML 文本。第一个参数必须是下列值之一：
+
+<ul>
+<li>&quot;beforebegin&quot;，在当前元素之前插入一个紧邻的同辈元素；</li>
+<li> &quot;afterend&quot;，在当前元素之后插入一个紧邻的同辈元素。</li>
+<li> &quot;afterbegin&quot;，在当前元素下插入一个新的子元素或在第一个子元素之前再插入新的子元素；</li>
+<li> &quot;beforeend&quot;，在当前元素下插入一个新的子元素或在最后一个子元素之后再插入新的子元素；</li>
+</ul></li>
+</ul></li>
+<li><p><strong>内存与性能问题</strong></p>
+
+<ul>
+<li>在使用innerHTML、outerHTML 属性和insertAdjacentHTML()方法时，最好先手工<strong>删除要被替换的元素的所有事件处理程序和JavaScript 对象属性</strong>。</li>
+<li>使用innerHTML 属性比DOM 操作效率要高得多。这是因为在设置innerHTML 或outerHTML 时，就会创建一个HTML解析器。这个解析器是在浏览器级别的代码（通常是C++编写的）基础上运行的，因此比执行JavaScript快得多。不可避免地，创建和销毁HTML 解析器也会带来性能损失，所以最好能够将设置innerHTML
+或outerHTML 的次数控制在合理的范围内。</li>
+</ul></li>
+</ol>
+
+<h3>11.3.7 scrollIntoView()方法</h3>
+
+<ul>
+<li>scrollIntoView()可以在所有HTML 元素上调用，当滚动浏览器窗口或某个容器元素时，调用
+元素就可以出现在视口中，以吸引注意力。</li>
+<li>如果给这个方法传入true ，或者不传入任何参数，那么窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐。如果传入false 作为参数，调用元素会尽可能全部出现在视口中，（可能的话，调用元素的底部会与视口顶部平齐。）不过顶部不一定平齐。</li>
+</ul>
+
+<h2>11.4 专有扩展（略）</h2>
+
+<h1 id="c12">第十二章 DOM2和DOM3 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>DOM2和DOM3模块<sup>P305</sup></li>
+</ul>
+
+<h2>12.1 DOM 变化</h2>
+
+<ul>
+<li>document.implementation.hasFeature(“模块名”，”版本号“)：检测是否支持DOM模块。</li>
+</ul>
+
+<h3>12.1.1 针对XML命名空间的变化（略）</h3>
+
+<h3>12.1.2 其他方面的变化</h3>
+
+<ol>
+<li>DocumentType 类型的变化
+
+<ul>
+<li>新增了3 个属性：publicId、systemId 和internalSubset。（极少使用）</li>
+</ul></li>
+<li>Document 类型的变化
+
+<ul>
+<li>importNode()：从一个
+文档中取得一个节点，然后将其导入到另一个文档，使其成为这个文档结构的一部分。（如果直接在调用appendChild()时传入的节点属于不同的文档（ownerDocument 属性的值不一样），则会导致错误。但在调用importNode()时传入不同文档的节点则会返回一个新节点，这个新节点的所有权归当前文档所有。）</li>
+<li>defaultView 属性（IE：parentWindow）：保存着一个指针，指向拥有给
+定文档的窗口（或框架）。</li>
+<li>document.implementation 对象规定了两个新方法：createDocumentType()和createDocument()。
+
+<ul>
+<li>createDocumentType()用于创建一个新的DocumentType节点，接受3 个参数：文档类型名称、publicId、systemId。</li>
+<li>创建新文档时需要用到createDocument()方法。这个方法接受3 个参数：针对文档中元素的namespaceURI、文档元素的标签名、新文档的文档类型</li>
+<li>createHTMLDocument()。这个方法的用途是创建一个完整的HTML 文档，包括&lt;html&gt;、&lt;head&gt;、&lt;title&gt;和&lt;body&gt;元素。这个方法只接受一个参数，即新创建文档的标题（放在&lt;title&gt;元素中的字符串），返回新的HTML 文档。</li>
+</ul></li>
+</ul></li>
+<li>Node 类型的变化
+
+<ul>
+<li>isSupported()方法用于确定当前节点具有什么能力。这个方法也接受相同的两个参数：特性名和特性版本号。如果浏览器实现了相应特性，而且能够基于给定节点执行该特性，isSupported()就返回true。（我们建议在确定某个特性是否可用时，最好还是使用能力检测。）</li>
+<li>isSameNode()和isEqualNode()。这两个方法都接受一个节点参数，并在传入节点与引用的节点相同或相等时返回true。相同指两个节点引用的是同一个对象。相等指两个节点是相同的类型，具有相等的属性，而且它们的attributes 和childNodes 属性也相等（相同位置包含相同的值）</li>
+<li>setUserData()和getUserData()。setUserData()会将数据指定给节点，它接受3 个参数：要设置的键、实际的数据（可以是任何数据类型）和处理函数。然后，使用 getUserData()并传入相同的键，就可以取得该数据。
+
+<ul>
+<li>处理函数会在带有数据的节点被复制、删除、重命名或引入一个文档时调用，因而你可以事先决定在上述操作发生时如何处理用户数据。处理函数接受5 个参数：表示操作类型的数值（1 表示复制，2 表示导入，3 表示删除，4 表示重命名）、数据键、数据值、源节点和目标节点。在删除节点时，源节点是null；除在复制节点时，目标节点均为null。在函数内部，你可以决定如何存储数据。</li>
+</ul></li>
+</ul></li>
+<li>框架的变化
+
+<ul>
+<li>someframe.contentDocument。这个属性指向表示框架内容的文档对象。</li>
+</ul></li>
+</ol>
+
+<h2>12.2 样式</h2>
+
+<h3>12.2.1 访问元素的样式</h3>
+
+<ul>
+<li>style 对象是CSSStyleDeclaration 的实例，包含着<strong>通过HTML 的style 特性</strong>指定的所有样式信息，但不包含与外部样式表或嵌入样式表经层叠而来的样式。</li>
+<li>对于使用短划线（分隔不同的词汇，例如background-image）的CSS 属性名，必须将其转换成驼峰大小写形式，才能通过JavaScript 来访问。</li>
+<li>其中一个不能直接转换的CSS 属性就是float。相应的属性名应该是cssFloat。(IE：styleFloat)</li>
+</ul>
+
+<ol>
+<li>DOM 样式属性和方法。
+
+<ul>
+<li>style 对象的属性方法 ：style 对象能够提供支持style 特性的任何元素的样式信息，但它不包含那些从其他样式表层叠而来并影响到当前元素的样式信息。<sup>P315</sup> ?
+
+<ul>
+<li>cssText：通过它能够访问到style 特性中的CSS 代码。在读取模式下，cssText 返回浏览器对style
+特性中CSS 代码的内部表示。在写入模式下，赋给cssText 的值会<strong>重写</strong>整个style 特性的值，以前通过style 特性指定的样式信息都将丢失。是设置 cssText 是为元素应用多项变化最快捷的方式，因为可以一次性地应用所有变化。这个方法只能获取写在html标签中的写在style属性中的值（style=”…”），而无法获取定义在&lt;style type=&quot;text/css&quot;&gt;里面的属性。</li>
+<li>length：应用给元素的CSS 属性的数量。设计 length 属性的目的，就是将其与item()方法配套使用，以便迭代在元素中定义的CSS 属性。</li>
+<li>parentRule：表示CSS 信息的CSSRule 对象。本节后面将讨论CSSRule 类型。</li>
+<li>getPropertyCSSValue(propertyName)：返回包含给定属性值的CSSValue 对象。（少用）</li>
+<li>getPropertyPriority(propertyName)：如果给定的属性使用了!important 设置，则返回&quot;important&quot;；否则，返回空字符串。</li>
+<li>getPropertyValue(propertyName)：返回给定属性的字符串值。</li>
+<li>item(index)：返回给定位置的CSS 属性的名称。等同于style[index]。</li>
+<li>removeProperty(propertyName)：从样式中删除给定属性。</li>
+<li>setProperty(propertyName,value,priority)：将给定属性设置为相应的值，并加上优先
+权标志（&quot;important&quot;或者一个空字符串）。</li>
+</ul></li>
+</ul></li>
+<li>计算的样式
+
+<ul>
+<li>获取定义在&lt;style type=&quot;text/css&quot;&gt;和style属性的计算值（涉及权重？）。</li>
+<li> document.defaultView.getComputedStyle()方法，这个方法接受两个参数：要取得计算样式的元素和一个伪元素字符串（例
+如&quot;:after&quot;，可为null）。返回一个CSSStyleDeclaration 对象（与style 属性的类型相同），其中包含当前元素的所有计算的样式。</li>
+<li>IE 不支持getComputedStyle()方法，但它有一种类似的概念。在IE 中，每个具有style 属性的元素还有一个currentStyle 属性。这个属性是CSSStyleDeclaration 的实例，包含当前元素全部计算后的样式</li>
+<li>所有计算的样式都是只读的；不能修改计算后样式对象中的CSS 属性。</li>
+</ul></li>
+</ol>
+
+<h3>12.2.2 操作样式表</h3>
+
+<ul>
+<li>CSSStyleSheet 类型表示的是通过&lt;link&gt;元素包含的样式表和在&lt;style&gt;元素中定义的样式表。</li>
+<li>CSSStyleSheet 继承自StyleSheet，后者可以作为一个基础接口来定义非CSS 样式表。从
+StyleSheet 接口继承而来的属性如下。除了 disabled 属性之外，其他属性都是只读的。
+
+<ul>
+<li>disabled：表示样式表是否被禁用。这个属性是可读/写的，将这个值设置为true 可
+以禁用样式表。</li>
+<li>href：如果样式表是通过&lt;link&gt;包含的，则是样式表的URL；否则，是null。</li>
+<li>media：当前样式表支持的所有媒体类型的集合。与所有DOM 集合一样，这个集合也有一个
+length 属性和一个item()方法。也可以使用方括号语法取得集合中特定的项。如果集合是空
+列表，表示样式表适用于所有媒体。在IE 中，media 是一个反映&lt;link&gt;和&lt;style&gt;元素media
+特性值的字符串。</li>
+<li>ownerNode：指向拥有当前样式表的节点的指针，样式表可能是在HTML 中通过&lt;link&gt;或
+&lt;style/&gt;引入的（在XML 中可能是通过处理指令引入的）。如果当前样式表是其他样式表通过
+@import 导入的，则这个属性值为null。IE 不支持这个属性。</li>
+<li>parentStyleSheet：在当前样式表是通过@import 导入的情况下，这个属性是一个指向导入
+它的样式表的指针。</li>
+<li>title：ownerNode 中title 属性的值。</li>
+<li>type：表示样式表类型的字符串。对CSS 样式表而言，这个字符串是&quot;type/css&quot;。</li>
+</ul></li>
+<li><p>CSSStyleSheet 类型还支持下列属性和方法：</p>
+
+<ul>
+<li>cssRules：样式表中包含的样式规则的集合。（IE ：rules 属性）</li>
+<li>ownerRule：如果样式表是通过@import 导入的，这个属性就是一个指针，指向表示导入的规
+则；否则，值为null。IE 不支持这个属性。</li>
+<li>deleteRule(index)：删除cssRules 集合中指定位置的规则。（IE ：removeRule()方法。）</li>
+<li>insertRule(rule,index)：向cssRules 集合中指定的位置插入rule 字符串。（IE ：addRule()方法。）</li>
+</ul></li>
+<li><p>应用于文档的所有样式表是通过 document.styleSheets 集合来表示的。通过这个集合的length
+属性可以获知文档中样式表的数量，而通过方括号语法或item()方法可以访问每一个样式表</p></li>
+<li><p>也可以直接通过&lt;link&gt;或&lt;style&gt;元素取得CSSStyleSheet 对象。DOM 规定了一个包含
+CSSStyleSheet 对象的属性，名叫sheet；（IE：styleSheet 属性）。<sup>P318</sup></p></li>
+</ul>
+
+<ol>
+<li><p>CSS 规则</p>
+
+<ul>
+<li><p>CSSRule：CSSRule 对象表示样式表中的每一条规则。cssRules的子类CSSStyleRule 对象包含下列属性。</p>
+
+<ul>
+<li>cssText：返回整条规则对应的文本。</li>
+<li>parentRule：如果当前规则是导入的规则，这个属性引用的就是导入规则；否则，这个值为
+null。IE 不支持这个属性。</li>
+<li>parentStyleSheet：当前规则所属的样式表。IE 不支持这个属性。</li>
+<li>selectorText：返回当前规则的选择符文本。</li>
+<li>style：一个CSSStyleDeclaration 对象，可以通过它设置和取得规则中特定的样式值。</li>
+<li>type：表示规则类型的常量值。对于样式规则，这个值是1。IE 不支持这个属性。</li>
+</ul>
+
+<pre><code class="javascript">div.box {
+background-color: blue;
+width: <span class="number">100</span>px;
+height: <span class="number">200</span>px;
+}
+
+<span class="keyword">var</span> sheet = document.styleSheets[<span class="number">0</span>];
+<span class="keyword">var</span> rules = sheet.cssRules || sheet.rules; <span class="comment">//取得</span>规则列表
+var rule = rules[0]; //取得第一条规则
+alert(rule.selectorText); //<span class="string">"div.box"
+alert(rule.style.cssText); //完整的CSS 代码
+alert(rule.style.backgroundColor); //"</span>blue"
+rule.style.backgroundColor = "red"
+</code></pre></li>
+</ul></li>
+<li><p>创建规则</p>
+
+<ul>
+<li>insertRule()方法，向现有样式表中添加新规则。接受两个参数：规则文本和表示在哪里插入规则的索引。
+<code>sheet.insertRule(&quot;body { background-color: silver }&quot;, 0); //DOM 方法</code></li>
+<li>随着要添加规则的增多，这种方法就会变得非常繁琐。因此，要添加的规则非常多，建议还是采用第10 章介绍过的动态加载样式表的技术。</li>
+</ul></li>
+<li><p>删除规则</p>
+
+<ul>
+<li>deleteRule()，这个方法接受一个参数：要删除的规则的位置。例
+如，要删除样式表中的第一条规则。（IE：removeRule()）</li>
+<li>删除规则也不是实际Web 开发中常见的做法。考虑到删除规则可能会影响CSS
+层叠的效果</li>
+</ul></li>
+</ol>
+
+<h3>12.2.3 元素大小</h3>
+
+<ol>
+<li>偏移量
+
+<ul>
+<li>元素的可见大小由其高度、宽度决定，包括所有内边距、滚动条和边框大小（注意，不包括外边距）</li>
+<li>通过下列4 个属性可以取得元素的偏移量。
+
+<ul>
+<li>offsetHeight：元素在垂直方向上占用的空间大小，以像素计。包括元素的高度、（可见的）
+水平滚动条的高度、上边框高度和下边框高度。</li>
+<li>offsetWidth：元素在水平方向上占用的空间大小，以像素计。包括元素的宽度、（可见的）垂
+直滚动条的宽度、左边框宽度和右边框宽度。</li>
+<li>offsetLeft：元素的左外边框至包含元素的左内边框之间的像素距离。</li>
+<li>offsetTop：元素的上外边框至包含元素的上内边框之间的像素距离。</li>
+</ul></li>
+<li>offsetLeft 和offsetTop 与包含元素有关，包含元素的引用保存在offsetParent中。offsetParent 属性不一定与parentNode 的值相等。（例如，&lt;td&gt;元素的offsetParent 是作为其祖先元素的&lt;table&gt;元素，因为&lt;table&gt;是在DOM层次中距&lt;td&gt;最近的一个具有大小的元素。）</li>
+<li>要想知道某个元素在页面上的偏移量，将这个元素的offsetLeft 和offsetTop 与其offsetParent
+的相同属性相加，如此循环直至根元素，就可以得到一个基本准确的值。（对于简单的CSS 布局的页面，这两函数可以得到非常精确的结果。对于使用表格和内嵌
+框架布局的页面，由于不同浏览器实现这些元素的方式不同，因此得到的值就不太精确了。）</li>
+<li>所有这些偏移量属性都是只读的，而且每次访问它们都需要重新计算。因此，应
+该尽量避免重复访问这些属性。</li>
+</ul></li>
+<li>客户区大小 
+
+<ul>
+<li>document.documentElement 或document.body（在IE7 之前的版本中）的
+clientWidth 和clientHeight。其中，clientWidth 属性是元素内容区宽度加上左右内边距宽度；clientHeight 属性是元素内容区高度加上上下内边距高度。（<strong>无border、滚动条</strong>）</li>
+<li> 客户区大小就是元素内部的空间大小，因此滚动条占用的空间不计算在内</li>
+</ul></li>
+<li>滚动大小
+
+<ul>
+<li>有些元素（例如&lt;html&gt;元素），即使没有执行任何代码也能自动地添加滚动条；但另外一些元素，则需要通过CSS 的overflow 属性进行设置才能滚动。</li>
+<li>以下是4 个与滚动大小相关的属性。document.documentElement的属性：
+
+<ul>
+<li> scrollHeight：在没有滚动条的情况下，元素内容的总高度。</li>
+<li> scrollWidth：在没有滚动条的情况下，元素内容的总宽度。</li>
+<li> scrollLeft：被隐藏在内容区域左侧的像素数。通过设置这个属性可以改变元素的滚动位置。</li>
+<li> scrollTop：被隐藏在内容区域上方的像素数。通过设置这个属性可以改变元素的滚动位置。</li>
+</ul></li>
+<li>在确定文档的总高度时（包括基于视口的最小高度时），必须取得scrollWidth/clientWidth 和
+scrollHeight/clientHeight 中的最大值，才能保证在跨浏览器的环境下得到精确的结果</li>
+<li>某节点距离浏览器上边缘真时相对高度为：someNode.offsetTop - someNode(document.body).scrollTop</li>
+</ul></li>
+<li>确定元素大小
+
+<ul>
+<li>getBoundingClientRect()方
+法。这个方法返回会一个矩形对象，包含4 个属性：left、top、right 和bottom。表示元素在页面中相对于视口的位置。(只能用于含有对应position样式的节点)</li>
+</ul></li>
+</ol>
+
+<h2>12.3 遍历（略）</h2>
+
+<ul>
+<li>NodeIterator
+和TreeWalker。这两个类型能够基于给定的起点对DOM 结构执行深度优先（depth-first）的遍历操作。</li>
+</ul>
+
+<h2>12.4 范围（略）</h2>
+
+<h2><a href="0.html#catalogue">回目录</a></h2>
+
+
+</body>
+
+</html>

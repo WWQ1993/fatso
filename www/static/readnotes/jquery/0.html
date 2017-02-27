@@ -1,0 +1,1330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <style type="text/css">
+   /*
+CSS stylesheet is based on killwing's flavored markdown style:
+https://gist.github.com/2937864
+*/
+body{
+margin: 0 auto;
+font: 12px/1.5em Tahoma;
+letter-spacing:0.1em;
+color: #444444;
+line-height: 1;
+width: 840px;
+padding: 5px;
+}
+h1, h2, h3, h4 {
+color: #111111;
+font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+margin-bottom: 16px;
+padding: 0;
+}
+h1 {
+margin: 15px auto;
+text-align: center;
+font-size: 28px;
+}
+h2 {
+font-size: 24px;
+
+}
+h3 {
+font-size: 20px;
+margin: 8px 16px ;
+}
+h4 {
+font-size: 16px;
+}
+h5 {
+font-size: 14px;
+}
+a {
+color: #0099ff;
+margin: 0;
+padding: 0;
+vertical-align: baseline;
+}
+a:link,a:visited{
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+}
+ul, ol {
+padding: 0;
+margin: 0;
+}
+li {
+line-height: 24px;
+margin-left: 40px;
+}
+li ul, li ol {
+margin-left: -5px;
+//margin-top:-15px;
+          color: #000080;
+
+}
+ul, ol {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+}
+
+p {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+margin-top: 3px;
+}
+
+pre {
+padding: 0px 4px;
+max-width: 800px;
+white-space: pre-wrap;
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+code {
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+pre code {
+border: 0px;
+}
+aside {
+display: block;
+float: right;
+width: 800px;
+}
+blockquote {
+border-left:.5em solid #40AA53;
+padding: 0 2em;
+margin-left:0;
+max-width: 800px;
+}
+blockquote  cite {
+font-size:14px;
+line-height:20px;
+color:#bfbfbf;
+}
+blockquote cite:before {
+content: '\2014 \00A0';
+}
+
+blockquote p {
+color: #666;
+max-width: 760px;
+}
+hr {
+height: 1px;
+border: none;
+border-top: 1px dashed #0066CC
+}
+
+button,
+input,
+select,
+textarea {
+font-size: 100%;
+margin: 0;
+vertical-align: baseline;
+*vertical-align: middle;
+}
+button, input {
+line-height: normal;
+*overflow: visible;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+border: 0;
+padding: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+cursor: pointer;
+-webkit-appearance: button;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+
+input[type="search"] {
+-webkit-appearance: textfield;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+-webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+font-weight: normal;
+line-height: normal;
+margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+display: inline-block;
+width: 210px;
+padding: 4px;
+font-size: 13px;
+font-weight: normal;
+line-height: 18px;
+height: 18px;
+color: #808080;
+border: 1px solid #ccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+select, input[type=file] {
+height: 27px;
+line-height: 27px;
+}
+textarea {
+height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+transition: border linear 0.2s, box-shadow linear 0.2s;
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+outline: none;
+border-color: rgba(82, 168, 236, 0.8);
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+/* buttons */
+button {
+display: inline-block;
+padding: 4px 14px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+line-height: 18px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+background-color: #0064cd;
+background-repeat: repeat-x;
+background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+background-image: linear-gradient(top, #049cdb, #0064cd);
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+border: 1px solid #004b9a;
+border-bottom-color: #003f81;
+-webkit-transition: 0.1s linear all;
+-moz-transition: 0.1s linear all;
+transition: 0.1s linear all;
+border-color: #0064cd #0064cd #003f81;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+button:hover {
+color: #fff;
+background-position: 0 -15px;
+text-decoration: none;
+}
+button:active {
+-webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+button::-moz-focus-inner {
+padding: 0;
+border: 0;
+}
+/* table  */
+table {
+border-spacing: 0;
+border: 1px solid #ccc;
+}
+td, th{
+border: 1px solid #ccc;
+padding: 5px;
+}
+/* code syntax highlight.
+Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own
+*/
+pre .literal,
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+color: #008000;
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+color: #0000FF;
+font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .python .decorator,
+pre .ruby .constant {
+color: #0000FF;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+color: #D14
+}
+
+pre .title,
+pre .id {
+color: #900;
+font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+color: #458;
+font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+color: #000080;
+font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+color: #008080
+}
+
+pre .regexp {
+color: #009926
+}
+
+pre .class {
+color: #458;
+font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+color: #999;
+font-weight: bold
+}
+
+pre .deletion {
+background: #fdd
+}
+
+pre .addition {
+background: #dfd
+}
+
+pre .diff .change {
+background: #0086b3
+}
+
+pre .chunk {
+color: #aaa
+}
+
+pre .markdown .header {
+color: #800;
+font-weight: bold;
+}
+
+pre .markdown .blockquote {
+color: #888;
+}
+
+pre .markdown .link_label {
+color: #88F;
+}
+
+pre .markdown .strong {
+font-weight: bold;
+}
+
+pre .markdown .emphasis {
+font-style: italic;
+}
+
+   </style>
+   
+   
+</head>
+<body>
+    <h1>《jQuery类库》读书笔记<sup><a href="http://wwq1993.github.io/">回主页</a></sup></h1>
+
+<p><br></p>
+
+<h1>书籍信息</h1>
+
+<ul>
+<li>名称：JavaScript权威指南</li>
+<li>作者：【美】弗兰纳根（David Flanagan）</li>
+<li>译者：淘宝前端团队</li>
+<li>出版信息：机械工业出版社</li>
+</ul>
+
+<hr>
+
+<h1 id="catalogue">目录</h1>
+
+<p><a href="0.html#c1">一</a> jQuery基础<br>
+<a href="0.html#c2">二</a> jQuery的getter和setter<br>
+<a href="0.html#c3">三</a> 修改文档结构<br>
+<a href="0.html#c4">四</a>  使用jQuery处理事件<br>
+<a href="0.html#c5">五</a>  动画效果<br>
+<a href="0.html#c6">六</a>  jQuery中的Ajax<br>
+<a href="0.html#c7">七</a>  工具函数<br>
+<a href="0.html#c8">八</a>  jQuery选择器和选取方法<br>
+<a href="0.html#c9">九</a> jQuery的插件扩展<br>
+<a href="0.html#c10">十</a>  jQuery UI类库   </p>
+
+<hr>
+
+<h1>书评</h1>
+
+<blockquote>
+<p>号称“圣经”，最权威的JS书籍。</p>
+</blockquote>
+
+<hr>
+
+<h1 id="c1">一 jQuery基础 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>全局函数：jQuery() 它的快捷别名：$</li>
+<li>jQuery()是工厂函数，不是构造函数，它返回一个新创建的对象，但并没有和new关键字一起使用。</li>
+<li>在jQuery编程中，链式调用这个习惯用语很普遍。</li>
+</ul>
+
+<h2>19.1.1 jQuery()函数</h2>
+
+<ul>
+<li>jQuery()方法：有4种不同的调用方式。
+
+<ul>
+<li>传递CSS选择器。返回当前文档中匹配该选择器的元素集。还可以将一个元素或jQuery对象作为第二参数传递给$()方法，这时返回的是该特定元素或元素集的子元素中匹配选择器的部分。这第二参数是可选的，定义了元素查询的<strong>起始点</strong>，经常称为上下文（context）。</li>
+<li>传递Element、Document、Window对象。返回封装好的jQuery对象。也可以传递一个元素数组给$()方法。在这种情况下，返回的jQuery对象表示该数组中的元素集。</li>
+<li>传递HTML文本字符串。jQuery会根据传入的文本创建好HTML元素并封装为jQuery对象返回。（注意：在这种调用方式下，不可传入纯文本，因为jQuery会把纯文本当成CSS选择器来解析。当使用这种调用风格时，传递给$()方法的字符串必须至少包含一个带有尖角括号的HTML标签）。<br>
+
+<ul>
+<li>$()接受可选的第二参数。可以传递Document对象来指定与所创建元素相关联的文档。</li>
+<li>第二参数还可以是object对象。此时，假设该对象的属性表示HTML属性的键/值对，这些属性将设置到所创建的对象上。</li>
+<li>当第二参数对象的属性名是“css”、“html”、“text”、“width”、“height”、“offset”、“val”或“data”，或者属性名是jQuery事件处理程序注册方法名时，jQuery将调用新创建元素上的同名方法，并传入属性值。</li>
+</ul></li>
+<li>传入一个函数。当文档加载完毕且DOM可操作时，传入的函数将被调用。有时还可以看见$(f)的老式和完整写法：$(document).ready(f)。
+
+<ul>
+<li>函数在被调用时，this指向document对象，唯一的参数指向jQuery函数，此时$成为该函数的参数，可使用jQuery.noConflict(); // 还原 $()为初始值。</li>
+<li>通过$()注册的函数将DOMContentLoaded事件触发时由jQurey触发。</li>
+</ul></li>
+</ul></li>
+<li>jQuery.each() 用于通用遍历，jQuery.parseJSON()用来解析JSON文本。</li>
+<li>重要的术语和短语
+
+<ul>
+<li>“jQuery函数”：是jQuery或$()的值。该函数可以用来创建jQuery对象，用来注册DOM就绪时需要调用的处理程序，还用做jQuery命名空间。我通常用$()来引用它。它可以用做命名空间，因此jQuery函数也可称为“全局jQuery对象”，但要注意千万别把它与“jQuery对象”混淆。</li>
+<li>“jQuery对象”是由jQuery函数返回的对象。一个jQuery对象表示<strong>一组文档元素</strong>，也叫做“jQuery结果”、“jQuery集”或“包装集”。</li>
+<li>“选中元素”当传递CSS选择器给jQuery函数时，它返回的jQuery对象表示匹配该选择器的文档元素集。在描述jQuery对象的方法时，我经常会使用“选中元素”这个说法，用来指代这些匹配的元素。注意“选中”是指CSS选择器，与用户执行的操作没有任何关系。</li>
+<li>“jQuery函数”指定义在jQuery命名空间中的函数，比如jQuery.noConflict()。jQuery函数也可称为“静态方法”。</li>
+<li>“jQuery方法”是由jQuery函数<strong>返回的jQuery对象的方法</strong>。jQuery类库最重要的部分就是它定义的这些强大的方法。</li>
+</ul></li>
+</ul>
+
+<h2>19.1.2 查询与查询结果</h2>
+
+<ul>
+<li>$()的返回值是一个jQuery对象。jQuery对象是类数组：它们拥有length属性和介于0～length-1之间的数值属性。</li>
+<li>可以用标准的数组标识方括号来访问jQuery对象的内容</li>
+<li>可以使用size()方法来替代length属性，用get()方法来替代方括号索引。可以使用toArray()方法来将jQuery对象转化为真实数组。</li>
+<li>属性：
+
+<ul>
+<li> selector属性是创建jQuery对象时的选择器字符串（如果有的话）。</li>
+<li>是传递给$()方法的第二参数，如果没有传递的话，默认是Document对象。</li>
+<li>为jquery的属性，检测该属性是否存在可以简单快捷地将jQuery对象与其他类数组对象区分开来。jquery属性值是字符串形式的jQuery版本号。</li>
+</ul></li>
+<li>$()与querySelectorAll():使用$()代替querySelectorAll()依旧是很好的选择：
+
+<ul>
+<li>querySelectorAll()在新近的浏览器中才实现。$()在新、老浏览器中都能工作。</li>
+<li>因此$()支持的CSS3选择器可以用在所有浏览器中，而不仅是那些支持CSS3的浏览器。</li>
+<li>$()返回的类数组对象（jQuery对象）比querySelectorAll()返回的类数组对象（NodeList）更加有用。</li>
+</ul></li>
+<li>遍历jQuery对象中的所有元素时，可以调用each()方法。each()方法有点类似ECMAScript 5 (ES5)中的forEach()数组方法。它接受一个回调函数作为唯一参数，然后它对jQuery对象中的每一个元素（按照在文档中的顺序）调用回调函数。
+
+<ul>
+<li>回调函数作为匹配元素的方法来调用，因此在回调函数里this关键字指代Element对象。</li>
+<li>each()方法还会将索引值和该元素作为第一个和第二个参数传递给回调函数。注意：this和第二参数都是原生文档元素，而不是jQuery对象；如果想使用jQuery方法来操作该元素，需要先用$()封装它。</li>
+<li>如果回调函数在任一个元素上返回false，遍历将中止。</li>
+<li>尽管each()方法很强大，但用得并不多
+
+<ul>
+<li>jQuery方法通常隐式遍历匹配的元素集并操作它们。需要使用each()的典型场景是需要用不同的方式来操作匹配的元素。</li>
+<li>jQuery的一些方法允许传递回调函数。</li>
+</ul></li>
+</ul></li>
+<li>jQuery的map()方法和Array.pro-totype.map()方法很相近。它接受回调函数作为参数，并为jQuery对象中的每一个元素都调用回调函数，同时将回调函数的返回值收集起来，并将这些返回值封装成一个新的jQuery对象返回。map()调用回调函数的方式和each()方法相同。
+
+<ul>
+<li>如果回调函数返回null或undefined，该值将被忽略，在本次回调中不会有任何新元素添加到新的jQuery对象中。</li>
+<li>如果回调函数返回数组或类数组对象（比如jQuery对象），将会<strong>扁平化</strong>它并将其中的元素一个个添加到新的jQuery对象中。</li>
+<li>由map()返回的jQuery对象可以不包含文档元素，但它依旧可以像<strong>类数组</strong>对象一样使用。（类数组调用.toArray()转换为数组）</li>
+</ul></li>
+<li>jQuery的另一个基础方法是index()。接受一个元素作为参数，返回值是该元素在此jQuery对象中的索引值。找不到则返回-1
+
+<ul>
+<li>如果传递一个jQuery对象作为参数，index()方法会对该对象的第一个元素进行搜索。</li>
+<li>如果传入的是字符串，index()会把它当成CSS选择器，并返回该jQuery对象中匹配该选择器的一组元素中第一个元素的索引值。</li>
+<li>如果什么参数都不传入，index()方法返回该jQuery对象中第一个毗邻元素的索引值。</li>
+<li>is()方法。它接受一个选择器作为参数，如果选中元素中至少有一个匹配该选择器时，则返回true。可以在each()回调函数中使用它</li>
+</ul></li>
+</ul>
+
+<h1 id="c2">二  jQuery的getter和setter <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>jQuery对象上最简单、最常见的操作是获取（get）或设置（set）HTML属性、CSS样式、元素内容和位置高宽的值。</li>
+<li>jQuery使用同一个方法既当getter用又做setter用：如果传入一个新值给该方法，则它设置此值；如果没指定值，则它返回当前值。</li>
+<li>用做setter时，这些方法会给jQuery对象中的每一个元素设置值，然后返回该jQuery对象以方便链式调用。</li>
+<li>用做getter时，这些方法只会查询元素集中的第一个元素，返回单个值（遍历所有元素使用map()）。getter不会返回调用自身的jQuery对象，因此它只能出现在链式调用的末尾。</li>
+<li>用做setter时，这些方法经常接受<strong>对象</strong>参数。在这种情况下，该对象的每一个属性都指定一个需要设置的名/值对。</li>
+<li>用做setter时，这些方法经常接受函数参数。在这种情况下，会调用该函数来计算需要设置的值。调用该函数时的this值是对应的元素，第一个参数是该元素的索引值，当前值则作为第二参数传入。</li>
+</ul>
+
+<h2>19.2.1 获取和设置HTML属性</h2>
+
+<ul>
+<li>attr()方法是jQuery中用于HTML<strong>属性</strong>的getter/setter。
+
+<ul>
+<li>一个相关函数是removeAttr()，可用来从所有选中元素中移除某个属性。</li>
+<li>例子：
+
+<ul>
+<li>$(&quot;val&quot;).attr(&quot;属性名&quot;); // 获取第一个元素的某属性</li>
+<li>$(&quot;val&quot;).attr(&quot;属性名&quot;, &quot;val&quot;); // 设置属性值</li>
+<li>$(&quot;val&quot;).attr({&quot;属性名1&quot;: &quot;val&quot;, &quot;属性名2&quot;: &quot;val&quot;...}}//设置多个属性。</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2>19.2.2 获取和设置CSS属性</h2>
+
+<ul>
+<li>css()方法作用于元素的CSS样式，而不是元素的HTML属性。</li>
+<li>在获取样式值时，css()返回的是元素的当前样式（或称为“计算”样式）：返回值可能来自style属性也可能来自样式表。 注意：不能获取复合样式的值（但可以设置），比如“font”或“margin”。而应该获取单个样式的值，比如“font-weight”、“font-family”、“margin-top”或“margin-left”。</li>
+<li>在设置样式时，css()方法会将样式简单添加到该元素的style属性中。</li>
+<li>css()方法允许在CSS样式名中使用连字符或使用驼峰格式。 例子<sup>P1684</sup></li>
+</ul>
+
+<h2>19.2.3 获取和设置CSS类</h2>
+
+<ul>
+<li>addClass()和remove-Class()用来从选中元素中添加和删除类。</li>
+<li>toggle-class()的用途是，当元素还没有某些类时，给元素添加这些类；反之，则删除。</li>
+<li>hasClass()用来判断某类是否存在。hasClass()只能接受单个类名作为参数，并且不支持函数参数。</li>
+<li>比较classList：jQuery的方法可以工作在所有浏览器中，而不仅仅是那些支持HTML5 classList属性的浏览器。jQuery的方法可操作多个元素并支持链式调用。</li>
+</ul>
+
+<h2>19.2.4 获取和设置HTML表单值</h2>
+
+<ul>
+<li>val()方法用来设置和获取HTML表单元素的value属性，还可用于获取和设置复选框、单选按钮以及&lt;select&gt;元素的选中状态：例子：<sup>P1690</sup></li>
+</ul>
+
+<h2>19.2.5 设置和获取元素内容</h2>
+
+<ul>
+<li>text()和html()方法用来获取和设置元素的纯文本或HTML内容。当不带参数调用时，text()返回所有匹配元素的所有子孙文本节点的纯文本内容。该方法甚至可以工作在不支持textContent或innerText属性的浏览器中。</li>
+<li>如果不带参数调用html()方法，它会返回第一个匹配元素的HTML内容。jQuery使用inner-HTML属性来实现：x.html()和x[0].innerHTML一样高效。</li>
+</ul>
+
+<h2>19.2.6 获取和设置元素的位置高宽</h2>
+
+<ul>
+<li><p>offset()方法可以获取或设置元素的位置。该方法相对<strong>文档</strong>来计算位置值，返回一个对象，带有<strong>left</strong>和<strong>top</strong>属性，用来表示X和Y坐标。如果传入带有这些属性的对象给该方法，它会给元素设置指定的位置。在有必要时，会设置CSS的position属性来使得元素可定位。</p>
+
+<ul>
+<li><pre><code class="javascript">$(<span class="string">"h1"</span>).offset(<span class="keyword">function</span>(index, curpos) {  
+     <span class="keyword">return</span> {
+         left: curpos.left + <span class="number">25</span>*index,
+         top:curpos.top
+     };
+ });
+</code></pre></li>
+</ul></li>
+<li><p>position()方法很像offset()方法，但它只能用做getter，它返回的元素位置是相对于其偏移父元素的，而不是相对于文档的。，jQuery对象的offsetParent()方法则会把每个元素映射到最近的定位祖先元素或&lt;body&gt;元素。</p></li>
+<li><p>width()和height()方法返回基本的宽度和高度，不包含内边距、边框和外边距。innerWidth()和innerHeight()返回元素的宽度和高度，包含内边距的宽度和高度（“内”表示这些方法度量的是边框以内的尺寸）。outerWidth()和outerHeight()通常返回的是包含元素内边距和边框的尺寸。如果向两个方法中的任意一个传入true值，它们还可以返回包含元素外边距的尺寸。</p>
+
+<ul>
+<li>当jQuery对象的第一个元素是Window或Document对象时，width()和height()返回的是窗口的视口大小或文档的整体尺寸。其他方法只适用于元素，不适用窗口和文档。</li>
+<li>width()和height()方法可以是setter也可以是getter。如果传递值给这些方法，它们会给jQuery对象中的每一个元素设置宽度或高度。（注意：不能给Window和Document对象设置宽度或高度。）如果传入数值，会把它当成单位为像素的尺寸。如果传入字符串，会把它用做CSS的width和height属性的值，因此可以使用任何CSS单位。最后，和其他setter类似，可以传入函数，用来计算要设置的宽度或高度。</li>
+</ul></li>
+<li><p>scrollTop()和scrollLeft()，可获取或设置元素的滚动条位置。这些方法可用在Window对象以及Document元素上，当用在Document对象上时，会获取或设置存放该Document的Window对象的滚动条位置。与其他setter不同，不可传递函数给scrollTop()或scrollLeft()。</p></li>
+</ul>
+
+<h2>19.2.7 获取和设置元素数据</h2>
+
+<ul>
+<li>将数据与任意元素关联：jQuery定义了一个名为data()的getter/setter方法，可用来设置或获取与文档元素、Document或Window对象相关联的数据。</li>
+<li>传递名称和值两个参数给data()方法即可。还可以传递一个对象给data() setter，此时，该对象的每一个属性都将用做名/值对，用来与jQuery对象的元素关联。注意，传递对象给data()时，该对象的属性将替换掉与元素相关联的旧数据。与很多其他setter方法不同，data()不接受函数参数（函数作为第二参数会被储存下来）。</li>
+<li>data()方法也可以用做getter。当不带参数调用时，它会返回一个对象，含有与jQuery对象中的第一个元素相关联的所有名/值对。当传入一个字符串参数调用data()时，它会返回对于第一个元素与该字符串参数相关联的数据值。</li>
+<li>removeData()方法用来从元素中删除数据。（使用data()设置值为null或undefined和实际上删除该值不是同一回事。）如果传递字符串给removeData()，该方法会删除元素中与该字符串相关联的值。如果不带参数调用removeData()，它会删除与元素相关联的所有数据。</li>
+<li>也可以使用其函数形式：
+
+<ul>
+<li>$(e).data(...) // 方法形式</li>
+<li>$.data(e, ...) // 函数形式</li>
+</ul></li>
+</ul>
+
+<h1 id="c3">三 修改文档结构 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<h2>19.3.1 插入和替换元素</h2>
+
+<ul>
+<li><p>下面演示的每一个方法都接受一个参数，用于指定需要插入文档中的内容。该参数可以是用于指定新内容的纯文本或HTML字符串，也可以是jQuery对象、元素或文本节点。根据调用的方法不同，会在选中元素的里面、前面或后面位置中插入内容。如果待插入的内容是已存在于文档中的元素，会从当前位置移走它。如果它需要插入多次，在必要时会复制该元素。这些方法都返回调用自身的jQuery对象。注意，在replaceWith()运行后，该jQuery对象中的元素将不再存在于文档中</p>
+
+<ul>
+<li>append：在目标结尾插入内容</li>
+<li>prepend：在目标起始处插入内容</li>
+<li>after：在目标后面插入</li>
+<li>before：在目标之前插入</li>
+<li>replaceWith：将目标替换为</li>
+</ul></li>
+<li><p>如果传入函数，该函数会为每个选中元素调用一次。this值将指向该元素，在jQuery对象中元素的索引值将作为第一参数。对于append()、prepend()和replaceWith()，第二参数将是该元素当前内容的HTML字符串形式。对于before()和after()，该函数在调用时没有第二参数。</p></li>
+<li><p>反向方法：appendTo()、preprendTo()、insertAfter()、insertBefore()、replaceAll()：传入字符串作为选择器，或传入jQuery对象、元素、文本节点来指明目标元素。返回一个新的对象，表示操作后的新内容。当内容被插入多个地方时，返回的jQuery对象将为每一个地方保留一个元素。</p></li>
+</ul>
+
+<h2>19.3.2 复制元素</h2>
+
+<ul>
+<li>如果插入的元素已经是文档的一部分，这些元素只会简单地移动而不是复制到新位置</li>
+<li>clone()方法：如果想复制元素到新位置而不是移动它，必须首先用clone()方法来得到一个副本。clone()创建并返回每一个选中元素（包含元素所有子孙）的一个副本。返回的jQuery对象的元素还不是文档的一部分，可以用上一节中的方法将其插入文档中
+
+<ul>
+<li>clone()不会复制事件处理程序和与元素关联的其他数据。如果想复制这些额外的数据，请传入true参数。</li>
+</ul></li>
+</ul>
+
+<h2>19.3.3 包装元素</h2>
+
+<ul>
+<li>jQuery定义了3个包装函数。这些方法通常传入一个新创建的包装元素或用来创建新包装元素的HTML字符串。如果需要，HTML字符串可以包含多个嵌套元素，但必须是<strong>单个最内层的元素</strong>。如果传入函数给这些方法，它会在每个元素的上下文中调用一次，this指向该元素，元素的索引值是唯一参数，应该返回需要返回表示包装元素的字符串、Element或jQuery对象。
+
+<ul>
+<li>wrap()包装每一个选中元素。</li>
+<li>wrapInner()包装每一个选中元素的内容。</li>
+<li>wrapAll()则将选中元素作为一组来包装。</li>
+</ul></li>
+</ul>
+
+<h2>19.3.4 删除元素</h2>
+
+<ul>
+<li>empty()会删除每个选中元素的所有子节点（包括文本节点），但不会修改元素自身。</li>
+<li>remove()方法会从文档中移除选中元素（以及所有元素的内容）。通常不带参数调用remove()，此时会从文档中移除jQuery对象中的所有元素。然而，如果传入一个参数，该参数会被当成选择器，jQuery对象中只有匹配该选择器的元素才会被移除。
+
+<ul>
+<li>remove()方法会移除所有事件处理程序以及绑定数据。detach()方法和remove()类似，但不会移除事件处理程序和数据。</li>
+<li>想临时从文档中移除元素以便后续再次插入时，detach()可能会更有用。</li>
+</ul></li>
+<li>unwrap()方法：用来实现元素的移除，其方式是wrap()或wrapAll()方法的反操作：移除每一个选中元素的父元素，不影响选中元素及其兄弟节点。与re-move()和detach()不同，unwrap()不接受可选的选择器参数。</li>
+</ul>
+
+<h1 id="c4">四 使用jQuery处理事件 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<h2>19.4.1 事件处理程序的简单注册</h2>
+
+<ul>
+<li>优点：调用jQuery的事件注册方法可以给所有选中元素注册处理程序。很明显，这比使用addEventListener()或attachEvent()一次注册一个事件处理程序简单很多。</li>
+<li>下面是jQuery定义的简单事件处理程序注册的方法：<br>
+blur() focusin() mousedown() mouseup()change() focusout() mouseenter() resize()click() keydown() mouseleave() scroll()dbclick() keypress() mousemove() select()error() keyup() mouseout() submit()focus() load() mouseover() unload()
+
+<ul>
+<li>focus和blur事件不支持冒泡，但focusin和focusout事件支持。</li>
+<li>mouseover和mouseout事件支持冒泡，但这经常不方便，因为很难知道鼠标是从自己感兴趣的元素中移开了，还只是从该元素的子孙元素中移开了。mouseenter和mouse-leave是非冒泡事件，可以解决刚才的问题。</li>
+<li>这几个事件类型最初是由IE引入的，jQuery确保它们可在所有浏览器下正确工作。</li>
+<li>resize和unload事件类型只在Window对象中触发，在$(window)上调用</li>
+<li>scroll()方法经常也用于$(window)对象上，但它也可以用在有滚动条的任何元素上（比如，当CSS的overflow属性设置为“scroll”或“auto”时）。</li>
+<li>load()方法可在$(window)上调用，用来给窗口注册加载事件处理程序，但经常更好的选择是，直接将初始化函数传给$()。还可以在iframe和图片上使用load()方法。</li>
+<li>error()方法可用在&lt;img&gt;元素上，用来注册当图片加载失败时调用的处理程序。</li>
+<li>调用hover(f,g)就和调用mouseenter(f)然后调用mouseleave(g)一样。如果仅传入一个参数给hover()，该参数函数会同时用做enter和leave事件的处理程序。</li>
+<li>toggle()。该方法将事件处理程序函数绑定到单击事件。可指定两个或多个处理程序函数，当单击事件发生时，每次会调用一个处理程序函数。例如，如果调用toggle(f,g,h)，第一次单击事件触发时，会调用函数f()，第二次会调用g()，第三次则调用h()，然后调用f()来处理第四次单击事件。该方法可用来显示或隐藏选中元素</li>
+<li>可以传递HTML字符串给$()方法来创建该字符串所描述的元素，还可传入一个对象（当做第二个参数），该对象由属性组成，这些属性可设置到新创建的元素上。这第二个参数可以是传递给attr()方法的任意对象。此外，如果这些属性中有任何一个与上面列举的事件注册方法同名，该属性值会被当做处理程序函数，并注册为命名事件类型的处理程序。</li>
+</ul></li>
+</ul>
+
+<h2>19.4.2 jQuery事件处理程序</h2>
+
+<ul>
+<li>每个事件处理程序都传入一个jQuery事件对象作为第一个参数（通常只有一个参数）。该对象的字段提供了与该事件相关的详细信息（比如鼠标指针的坐标）。</li>
+<li>如果处理程序返回false，与该事件相关联的默认行为，以及该事件接来下的冒泡都会被取消（等于调用preventDefault()和stopPropagation()方法。）。当事件处理程序返回一个值（非undefined值）时，jQuery会将该值存储在Event对象的result属性中，该属性可以被后续调用的事件处理程序访问。</li>
+</ul>
+
+<h2>19.4.3 jQuery事件对象</h2>
+
+<ul>
+<li>传入参数的一些属性：
+
+<ul>
+<li>    metaKey：如果原生事件对象没有metaKey属性，jQuery会使其与ctrlKey属性的值一样。在Mac OS中，Command键设置meta键的属性。</li>
+<li>pageX, pageY：如果原生事件对象没有定义这两个属性，但定义了鼠标指针的视口坐标clientX和clientY，jQuery会计算出鼠标指针的文档坐标并把它们存储在pageX和pageY中。</li>
+<li>target, currentTarget, relatedTarget：
+
+<ul>
+<li>target属性表示在其上发生事件的文档元素（直接触发事件的元素）。如果原生事件对象的目标是文本节点，jQuery返回包含该文本节点的元素。</li>
+<li>currentTarget是注册事件的元素，与this应该始终一样。如果currentTarget和target不一样，那么正在处理的事件是从触发它的元素冒泡上来的。此时使用is()方法来检测target元素可能会很有用：if ($(event.target).is(&quot;a&quot;)) return; // 忽略在链接上启动的事件</li>
+<li>涉及mouseover和mouseout等过渡事件时，relatedTarget表示其他元素。</li>
+</ul></li>
+<li>timeStamp事件发生时的时间，单位是毫秒，由Date.get-Time()方法返回。</li>
+<li>which：指明在事件发生期间，按下的是哪个鼠标按钮或键盘按键。
+
+<ul>
+<li>对键盘事件来说，如果原生事件没有定义which，但定义了charCode或keyCode，which将被设置为定义过的charCode或keyCode。</li>
+<li>对鼠标事件来说，如果which没有定义但定义了button属性，会根据button的值来设置which。0表示没有按钮按下。1表示鼠标左键按下，2表示鼠标中键按下，3表示鼠标右键按下。（注意，单击鼠标右键时，有些浏览器不会产生鼠标事件。）</li>
+</ul></li>
+<li>data如果注册事件处理程序时指定了额外的数据，处理程序可以用该字段的值来访问。</li>
+<li>handler当前正被调用的事件处理程序函数的引用。</li>
+<li>result该事件最近调用的处理程序的返回值，忽略没有返回值的处理程序</li>
+<li>originalEvent浏览器生成的原生事件对象的引用。</li>
+</ul></li>
+</ul>
+
+<h2>19.4.4 事件处理程序的高级注册</h2>
+
+<ul>
+<li>bind()来为命名的事件类型绑定处理程序，该处理程序会绑定到jQuery对象中的每一个元素上。</li>
+<li>在最简形式下，bind()需要一个事件类型字符串作为其第一个参数，以及一个事件处理程序函数作为其第二个参数。</li>
+<li>还可以带有三个参数。在这种形式下，事件类型是第一个参数，处理程序函数是第三个参数。在这两个参数中间可以传入任何值，jQuery会在调用处理程序前，将指定的值设置为Event对象的data属性。通过这种方式传递额外的数据给处理程序，不需要使用闭包，有时很有用。</li>
+<li>bind()还有其他高级特性。如果第一个参数是由空格分隔的事件类型列表，则处理程序函数会为每一个命名的事件类型注册。</li>
+<li><p>允许为注册的事件处理程序指定命名空间。要绑定事件处理器到命名空间中时，添加句点（.）和命名空间名到事件类型字符串中即可。处理程序的命名空间对于开发可复用jQuery代码的类库或模块的程序员来说特别有用</p>
+
+<ul>
+<li><p>甚至还可以给处理程序分配多个命名空间，如下所示：</p>
+
+<pre><code class="javascript"> <span class="comment">// 在命名空间 "myMod" 和 "yourMod"中作为 mouseout 处理程序绑定 f$('a').bind</span>('mouseout.myMod.yourMod', f);
+</code></pre></li>
+</ul></li>
+<li><p>bind()的最后一个特性是，第一个参数可以是对象，该对象把事件名映射到处理程序函数。当使用bind()的这种形式时，传入对象的属性名可以是空格分隔的事件类型的字符串，也可包括命名空间。如果在第一个对象参数之后还指定了第二个参数，其值会用做每一个事件绑定的数据参数。</p></li>
+<li><p>one()方法：和bind()一样，二者的工作原理也类似，除了在调用事件处理程序之后会自动注销它。使用one()注册的事件处理器永远只会触发一次。</p></li>
+<li><p>jQuery不打算模拟捕获事件的特性。</p>
+
+<h2>19.4.5 注销事件处理程序</h2>
+
+<ul>
+<li>使用unbind()来注销bind()。不带参数时，unbind()会注销jQuery对象中所有元素的（所有事件类型的）所有事件处理程序：$(&#39;*&#39;).unbind(); // 从所有元素中移除所有jQuery事件处理程序</li>
+<li>$(&#39;a&#39;).unbind(&quot;mouseover mouseout&quot;);不应该在模块化代码中使用，因为模块的使用者有可能使用其他模块，在其他模块中有可能在相同的元素上给相同的事件类型注册了其他处理程序。如果模块使用命名空间来注册事件处理程序，则可以为unbind()传入一个参数，来做到只注销命名空间下的处理程序。</li>
+<li>如果想小心地只取消绑定自己注册的事件处理程序，但没有使用命名空间，必须保留事件处理程序函数的一个引用，并使用unbind()带两个参数的版本。在这种形式下，第一个参数是事件类型字符串（不带命名空间），第二个参数是处理程序函数：$(&#39;#mybutton&#39;).unbind(&#39;click&#39;, myClickHandler);可以传递单一对象参数给unbind()。在这种情况下，unbind()会轮询为该对象的每一属性调用一次。属性名会用做事件类型字符串，属性值会用做处理程序函数</li>
+<li>最后，还有一种方式来调用unbind()。如果传递一个jQuery Event对象给unbind()，它会取消绑定传入事件的事件处理程序。调用unbind(ev)等价于unbind(ev.type, ev.handler)。</li>
+</ul></li>
+</ul>
+
+<h2>19.4.6 触发事件</h2>
+
+<ul>
+<li>手动触发事件最简单的方式是不带参数调用事件注册的简单方法（比如click()或mouseover()）。这些事件方法在带有一个参数时会注册事件处理程序，不带参数调用时则会触发事件处理程序。通过这种方式手动调用时，冒泡事件依旧会冒泡。这意味着触发一组选中元素的事件，同时也会触发这些元素祖先节点的处理程序。</li>
+<li>，jQuery的事件触发机制是同步的——不涉及事件队列。当触发一个事件时，在调用的触发方法返回之前，事件处理程序会立刻调用。</li>
+<li>trigger()：传入事件类型字符串作为第一个参数（在传入的字符串中不能指定多个事件类型。），trigger()会在目标jQuery对象中的所有元素上触发为该类型事件注册的所有处理程序。
+
+<ul>
+<li>还可以传入Event对象（或任何有type属性的对象）。type属性会用来判断触发什么类型的处理程序。如果传入的是jQuery事件对象，该对象会传递给触发的处理程序。如果传入的是普通对象，会创建一个新的jQuery Event对象，普通对象的属性会添加到新对象中。这样，可以很容易传递额外数据给事件处理程序</li>
+<li>给事件处理程序传递额外数据的另一种方式是，在手动触发事件时，给trigger()传入第二个参数。给trigger()传入的第二个参数会成为每个触发的事件处理程序的第二个参数。如果传入数组作为第二个参数，数组的每一项会作为独立参数传递给触发的处理程序</li>
+<li>    使用jQuery.event.trigger()工具函数，来全局触发事件。</li>
+<li>trigger()（及调用它的便捷方法）在调用事件处理程序后，会执行与触发事件相关联的默认操作（假设事件处理程序没有返回false或调用事件对象的preventDefault()）。</li>
+<li>如果想调用事件处理程序，但不执行默认操作，可以使用triggerHandler()替代trigger()。该方法和trigger()类似，除了首先会调用Event对象的preventDefault()和cancelBubble()方法。这意味着通过triggerHandler()</li>
+</ul></li>
+</ul>
+
+<h2>19.4.7 自定义事件</h2>
+
+<ul>
+<li>对于书写模块化代码，实现发布/订阅模型或观察者模式时，这种自定义事件处理程序的间接调用被证明是非常有用的。使用自定义事件时，通常你会发现，使用jQuery.event.trigger()函数替代trigger()方法，来全局触发处理器会更有用</li>
+</ul>
+
+<h2>19.4.8 实时事件</h2>
+
+<ul>
+<li>如果使用bind()给文档中的所有&lt;a&gt;元素绑定了事件处理程序，接着又创建了带有&lt;a&gt;元素的新文档内容，这些新元素和老元素不会拥有相同的事件处理程序，其行为将不一样。需要使用delegate()和undelegate()方法来替代bind()和unbind()。</li>
+<li>通常，在$(docu-ment)上调用delegate()，并传入一个jQuery选择器字符串、一个jQuery事件类型字符串以及一个jQuery事件处理程序函数。它会在document或window上（或jQuery对象中的任何元素上）注册一个内部处理程序。当指定类型的事件冒泡到该内部处理程序时，它会判断事件目标（该事件所发生在的元素）是否匹配选择器字符串。</li>
+<li>delegate()方法拥有4参数版本用来干同样的事。使用这种版本时，将数据值作为第三参数传入，处理程序函数则作为第4参数。</li>
+<li>实时事件依赖于事件冒泡。当事件冒泡到document对象时，它有可能已经传递给了很多静态事件处理程序。如果这些处理程序中有任何一个调用了Event对象的cancelBubble()方法，实时事件处理程序将永远不会调用。</li>
+<li>jQuery定义了一个名为live()的方法，也可以用来注册实时事件。</li>
+<li>注销实时事件处理程序，使用die()或undelegate()。
+
+<ul>
+<li>可以带一个或两个参数调用die()。带有一个事件类型参数时，die()会移除匹配选择器和事件类型的所有实时事件处理程序。带有事件类型和处理程序函数参数时，它只会移除掉指定的处理程序。</li>
+<li>undelegate()类似die()，但更显式地分开con-text（内部事件处理程序所注册的元素）和选择器字符串。undelegate()也不带任何参数调用。在这种情况下，它会注销从选中元素委托的所有实时事件处理程序。</li>
+</ul></li>
+</ul>
+
+<h1 id="c5">五  动画效果<sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>可以使用毫秒数值或字符串来指定时长。字符串“fast”表示200ms。字符串“slow”表示600ms。如果指定的字符串时长jQuery无法识别，则采用默认时长400ms。可以给jQuery.fx.speeds添加新的字符串到数值映射关系来定义新的时长名字：jQuery.fx.speeds[&quot;medium-fast&quot;] = 300;</li>
+<li>jQuery动画方法可以接受可选的时长和回调参数。
+
+<ul>
+<li>jQuery动画方法经常使用动画时长来作为可选的第一个参数。如果省略时长参数，通常会得到默认值400ms。注意，省略时长时，有部分方法会立刻跳到最后一帧，没有中间的动画效果。（ jQuery.fx.off = true; 以禁用动画）</li>
+<li>jQuery动画是异步的。调用fadeIn()等动画方法时，它会立刻返回，动画则在“后台”执行。由于动画方法会在动画完成之前返回，因此可以向很多jQuery动画方法传入第二个参数（也是可选的），该参数是一个函数，会在动画<strong>完成</strong>时调用。该函数在调用时不会有任何参数传入，但this值会设置为发生动画的文档元素。对于每个选中元素都会调用一次该回调函数。</li>
+</ul></li>
+<li>jQuery动画默认是队列化的。如果一个元素已经在动画过程中，再调用一个动画方法时，新动画不会立刻执行，而会延迟到当前动画结束后才执行。</li>
+<li>还可以传入一个对象来调用动画方法，该对象的属性指定动画选项。使用通用的animate()方法时，经常传入选项对象作为参数，其实，这也可以用于更简单的动画方法。使用选项对象可以设置高级选项，比如控制动画的队列和缓动。</li>
+</ul>
+
+<h2>19.5.1 简单动画</h2>
+
+<ul>
+<li>fadeIn()、fadeOut()、fadeTo()：
+
+<ul>
+<li>    fadeIn()、fadeOut()：两者都接受可选的时长和回调参数。</li>
+<li>fadeTo()：第一参数必须是时长（或选项对象），第二参数是opacity目标值，回调函数则是可选的第三个参数。fadeTo()会将元素的当前opacity值变化到目标值。</li>
+</ul></li>
+<li>show()、hide()、toggle()
+
+<ul>
+<li>hide()方法则会将元素从布局中移除，就好像把CSS的display属性设置为none一样。hide()在将元素的opacity减少到0时，同时它还会将元素的宽度和高度收缩到0。</li>
+<li>当不带参数调用时，hide()和show()方法只是简单地立刻隐藏或显示选中元素。带有时长（或选项对象）参数时，它们会让隐藏或显示有个动画过程。</li>
+<li>toggle()可以改变在上面调用它的元素的可视。必须传入时长或选项对象给toggle()来产生动画效果。给toggle()传入true和不带参数调用show()是一样的，传入false则和不带参数调用hide()是一样的。</li>
+</ul></li>
+<li>slideDown()、slideUp()、slideToggle()
+
+<ul>
+<li>slideUp：将其高度动态变化到0，然后设置CSS的display属性为“none”。</li>
+<li>slideDown()执行反向操作，来使得隐藏的元素再次可见。</li>
+<li>slideToggle()使用向上滑动或向下滑动动画来切换元素的可见性。
+##19.5.2 自定义动画</li>
+</ul></li>
+<li>animate()方法：第一个参数指定动画内容，剩余参数指定如何定制动画。第一个参数是必需的：它必须是一个对象，该对象的属性指定要变化的CSS属性和它们的目标值。animate()方法会将每个元素的这些CSS属性从初始值变化到指定的目标值。第二个参数是可选的，可以传入一个选项对象给animate()方法。此外，可以将动画时长（数值或字符串）作为第二个参数传入。可以指定缓动函数名为第三个参数。最后可以将回调函数指定为第四个参数。</li>
+<li><p>通常，animate()方法接受两个对象参数。第一个指定动画内容，第二个指定如何定制动画。</p>
+
+<ul>
+<li>动画属性对象
+
+<ul>
+<li>必须是对象。该对象的属性名必须是CSS属性名，这些属性的值必须是动画的目标值。</li>
+<li>动画只支持数值属性：对于颜色、字体或display等枚举属性是无法实现动画效果的。</li>
+<li>如果属性值是数值，则默认单位是像素。如果属性值是字符串，可以指定单位。</li>
+<li>还可以指定相对值，用“+=”前缀表示增加，或用“-=”表示减少。</li>
+<li>在jQuery动画属性对象中，还可以使用三个其他值。“hide”值会保存属性的当前值，然后将该属性的值变化到0。“show”值会将CSS属性的值还原到之前保存的值。如果一段动画使用了“show”，jQuery会在动画完成时调用show()方法。如果一段动画使用了“hide”，jQuery会在动画完成时调用hide()方法。</li>
+</ul></li>
+<li>动画选项对象
+
+<ul>
+<li>duration属性：指定动画持续的毫秒时间，该属性的值还可以是“fast”、“slow”或任何在jQuery.fx.speeds中定义的名称</li>
+<li>complete属性：它指明在动画<strong>完成</strong>时的回调函数。</li>
+<li>和complete属性类似，step属性指定在动画每一步或每一帧调用的回调函数。在回调函数中，this指向正在连续变化的元素，第一个参数则是正在变化的属性的当前值。</li>
+<li>queue属性指定动画是否需要队列化——是否需要等到所有尚未发生的动画都完成后再执行该动画。默认情况下，所有动画都是队列化的。将queue属性设置为false可以取消队列化。非队列化的动画会立刻执行。随后队列化的动画不会等待非队列化的动画执行完成后才执行。</li>
+<li> easing属性指定缓动函数名。easing:&quot;linear&quot;。</li>
+</ul></li>
+</ul></li>
+<li><p>“缓动函数”，来将基于时间的完成百分比映射到动画效果的百分比。jQuery在调用缓动函数时会传入一个基于时间的0～1之间的值。缓动函数会返回另一个0～1之间的值，jQuery会根据该返回值来计算CSS属性的值。通常，缓动函数在传入0时会返回0，在传入1时会返回1。当然，在0～1之间缓动函数可以是非线性的，这可以让动画有加速和减速效果。</p>
+
+<ul>
+<li>jQuery的默认缓动函数是正弦函数“swing”。还实现了一个线性缓动函数，名字为“linear”。</li>
+<li>可以添加自定义缓动函数：jQuery.easing[&quot;squareroot&quot;] = Math.sqrt;</li>
+<li>在jQuery UI类库中，有一个“jQuery缓动插件”定义了一套更复杂的缓动函数。</li>
+</ul></li>
+<li><p>还允许为不同的CSS动画属性指定不同的缓动函数。这有两种方式来实现：</p>
+
+<ul>
+<li><p>实现方式一：使用 specialEasing 选项来指定自定义缓动函数</p>
+
+<pre><code class="javascript">$(<span class="string">"img"</span>).animate(
+  { width:<span class="string">"hide"</span>, height:<span class="string">"hide"</span>, opacity:<span class="string">"hide"</span> }, 
+  { specialEasing: { width: <span class="string">"linear"</span>, height: <span class="string">"linear"</span> }}
+);
+</code></pre></li>
+<li><p>实现方式二：在第一个对象参数中传入 [目标值, 缓动函数] 数组</p>
+
+<pre><code class="javascript">$(<span class="string">"img"</span>).animate({    
+    width: [<span class="string">"hide"</span>, <span class="string">"linear"</span>],   
+    height: [<span class="string">"hide"</span>, <span class="string">"linear"</span>],   
+    opacity: <span class="string">"hide"</span>
+});
+</code></pre>
+
+<h2>19.5.3 动画的取消、延迟和队列</h2></li>
+</ul></li>
+<li><p>stop()方法：它用来停止选中元素上的当前正在执行的任何动画。</p>
+
+<ul>
+<li>接受两个可选的布尔值参数。</li>
+<li>第一个参数默认false。如果是true，会清除该选中元素上的动画队列：除了停止当前动画，还会取消任何等待执行的动画。如果忽略该参数，只停止当前动画，等待执行的动画不会被取消。</li>
+<li>第二个参数用来指定正在连续变化的CSS属性是否保留当前值，还是应该变化到最终目标值。传入true可以让它们变化到最终值。传入false（或省略该参数）会让它们保持为当前值。</li>
+</ul></li>
+<li><p>delay()：这会直接添加一个时间延迟到动画队列中：第一个参数是时长（以毫秒为单位的数值或字符串），第二个参数是队列名，是可选的</p></li>
+<li><p>jQuery队列是按顺序执行的函数列表。每一个队列都与一个文档元素（或者是Document或Window对象）关联，每一个元素的队列都与其他元素的队列彼此独立。</p>
+
+<ul>
+<li>可以使用queque()方法给队列添加一个新函数。当函数到达队列头部时，它会自动从队列中去除并被调用。当函数被调用时，this指向与队列相关联的元素。被调用的函数会传入唯一一个回调函数作为参数。当函数完成运行时，它必须调用回调函数。这可以运行队列中的下一个操作，如果不调用回调函数，该队列会停止运行，剩余的函数将永远不会被调用。</li>
+<li>dequeue()方法“手动”取消队列中的下一个函数</li>
+<li>clearQueue()方法用来清除队列。给queue()方法传入一个函数组成的数组而不是单一函数时，会用传入的函数数组来替换当前队列。如果在调用queue()方法时，不传入任何参数，则会返回当前队列数组。</li>
+<li>jQuery还将queue()和dequeue()定义成了工具函数。如果想给元素e的队列添加一个函数f，可以使用以下方法或函数：
+
+<ul>
+<li>$(e).queue(f); // 创建一个持有e的jQuery对象，并调用queue()方法</li>
+<li>jQuery.queue(e, f); // 直接调用jQuery.queue()工具函数</li>
+</ul></li>
+<li>queue()、dequeue()和clearQueue()方法都可以有一个可选的队列名来作为第一个参数。 </li>
+<li>jQuery动画方法使用的队列名是“fx”，这是没有指定队列名时默认使用的队列。当想要<strong>顺序执行异步操作</strong>时，jQuery队列机制非常有用：原来需要给每一个异步操作传入回调函数来触发队列中的下一个函数，现在可以直接使用jQuery队列来管理异步序列。只须传入非“fx”的队列名，并记得队列中的函数不会自动执行。必须显式调用dequeue()方法来运行第一个函数，然后每一步操作在完成时必须把下一个操作从队列中移出。</li>
+</ul></li>
+</ul>
+
+<h1 id="c6">六 jQuery中的Ajax<sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>jQuery定义了一个高级工具方法和四个高级工具函数。这些高级工具都基于同一个强大的底层函数：jQuery.ajax()。</li>
+</ul>
+
+<h2>19.6.1 load()方法</h2>
+
+<ul>
+<li>load()是所有jQuery工具中最简单的：向它传入一个URL，它会异步加载该URL的内容，然后将内容插入每一个选中元素中，替换掉已经存在的任何内容。</li>
+<li>如果传给该方法的第一个参数是函数而不是字符串，则load()方法是事件处理程序注册方法而不是Ajax方法。</li>
+<li>如果只想显示被加载文档的一部分，可以在URL后面添加一个空格和一个jQuery选择器。当URL加载完成后，jQuery会用指定的选择器来从加载好的HTML中选取需要显示的部分</li>
+<li>load()方法还接受两个可选参数。
+
+<ul>
+<li>一个可选参数表示数据，可以追加到URL后面，或者与请求一起发送。如果传入的是字符串，则会追加到URL后面（放在“?”或“&amp;”后面）。如果传入对象，该对象会被转化为一个用“&amp;”分隔的名/值对后与请求一起发送。）通常情况下，load()方法发送HTTP <strong>GET</strong>请求，但是如果传入数据对象，则它会发送POST请求。</li>
+<li>load()方法的另一个可选参数是回调函数。当Ajax请求成功或未成功，以及（当请求成功时）URL加载完毕并插入选中元素时，会调用该回调函数。如果没有指定任何数据，回调函数可以作为第二个参数传入。否则，它必须是第三个参数。
+
+<ul>
+<li>在jQuery对象的每一个元素上都会调用回调函数，每次传入三个参数：被加载URL的完整文本内容、状态码字符串，以及用来加载该URL的XMLHttpRequest对象。其中，状态参数是jQuery的状态码，不是HTTP的状态码，其值是类似“success”、“error”和“timeout”的字符串。
+
+<ul>
+<li>“success”表示请求成功完成。</li>
+<li>“notmodified”该状态码表示请求已正常完成，但服务器返回的响应内容是HTTP 304“Not Modified”，表示请求的URL内容和上次请求的相同，没有变化。只有在选项中设置ifModified为true时，该状态码才会出现。jQuery认为“notmodified”状态码是成功的</li>
+<li>“error”表示请求没有成功完成，原因是某些HTTP错误。</li>
+<li>“timout”如果Ajax请求没有在选定的超时区间内完成，会调用错误回调，并传入该状态码。</li>
+<li>“parsererror”该状态码表示HTTP请求已成功完成，但jQuery无法按照期望的方式解析。</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2>19.6.2 Ajax工具函数</h2>
+
+<ul>
+<li>jQuery的其他Ajax高级工具不是方法，而是函数</li>
+<li>jQuery.getScript()加载并执行JavaScript代码文件。jQuery.getJSON()加载URL，将其解析为JSON，并将解析结果传递到指定的回调函数中。这两个函数都会调用一个更通用的URL获取函数：jQuery.get()。</li>
+<li>jQuery.post()和jQuery.get()很类似，除了执行的是HTTP POST而不是GET请求。与load()方法一样，所有这些函数都是<strong>异步：在任何数据加载前它们就会返回调用者，加载结果则通过调用指定的回调函数来通知。</strong></li>
+<li>传递给jQuery.getScript()的回调函数，仅在请求成功完成时才会被调用。如果需要在发生错误以及成功时都得到通知，则需要使用底层的jQuery.ajax()函数。该节描述的其他三个工具函数也是如此。</li>
+<li><p>jQuery.getScript()</p>
+
+<ul>
+<li>第一个参数是JavaScript代码文件的URL。它会异步加载文件，加载完成后在全局作用域执行该代码。</li>
+<li>它能同时适用于同源和跨源脚本。</li>
+<li>可以传入回调函数作为第二个参数，在这种情况下，jQuery会在代码加载和执行完成后调用一次该回调函数</li>
+<li>jQuery.getScript()通常会使用XMLHttpRequest对象来获取要执行的脚本内容。但对于跨域请求，jQuery会使用&lt;script&gt;元素来加载脚本。</li>
+<li>在同源情况下，jQuery.getScript()函数的返回值也是该XMLHttpRequest对象。对于跨源请求，不存在XMLHttpRequest对象，并且脚本的内容获取不到。在这种情况下，回调函数的第一个和第三个参数是undefined，jQuery.getScript()的返回值也是undefined</li>
+</ul></li>
+<li><p>jQuery.getJSON()</p>
+
+<ul>
+<li>jQuery.getJSON()获取到文本后，不会将其当做脚本执行，而会将其解析为JSON（使用jQuery.parseJSON()函数）。</li>
+<li>。jQuery.getJSON()只有在传入了回调函数时才有用。当成功加载URL，以及将内容成功解析为JSON后，解析结果会作为第一个参数传入回调函数中。回调函数的第二个和第三个参数是“success”状态码和XMLHttpRequest对象</li>
+<li>与jQuery.getScript()不同，jQuery.getJSON()接受一个可选的数据对象参数，就和传入load()方法中的一样。如果传入数据到jQuery.getJSON()中，该数据必须是第二个参数，回调函数则是第三个。如果不传入任何数据，则回调函数可以是第二个参数。如果数据是字符串，则它会被添加到URL的“?”或“&amp;”后面。如果数据是一个对象，则它会转化为字符串（参见下面方框中的内容），然后添加到URL上。</li>
+<li>如果传递给jQuery.getJSON()的URL或数据字符串在末尾或“&amp;”字符前含有“=?”字符串，则表明这是一个JSONP请求。jQuery会创建一个回调函数，并用该回调函数的函数名替换掉“=?”中的“？”号，接着jQuery.getJSON()的行为就会像请求脚本文件一样，而不是JSON对象。这对静态JSON数据文件无效，它只能与支持JSONP的服务器脚本一起才能工作。由于JSONP被当做脚本来处理，因此这意味着JSON格式的数据可以跨域请求。</li>
+</ul></li>
+<li><p>传递数据给jQuery的Ajax工具<sup>P1781</sup></p>
+
+<ul>
+<li>jQuery的大多数Ajax方法都接受一个参数（或选项）用来指定与URL一起发送给服务器的数据。通常，该数据的形式是URL编码的、用“&amp;”分隔的名/值对。（这个数据格式就是已知的“appli-cation/x-www-form-urlencoded”MIME类型。)</li>
+<li>对于HTTP GET请求，该数据字符串会添加到请求URL后面。对于POST请求，则在所有发送的HTTP请求头后面，当做请求的内容体发送它。</li>
+<li>获取该格式的数据字符串的一种方式是，调用包含表单或表单元素的jQuery对象的serialize()方法。P<sup>1782</sup></li>
+<li>如果将jQuery Ajax函数的数据参数（或选项）设置为对象而不是字符串，jQuery通常会调用jQuery.param()来将对象转化成字符串</li>
+<li>jQuery.param()能处理更复杂的JavaScript对象。如果对象的某个属性值是数组，该数组中的每一项都会在结果字符串中拥有自己的一个名/值对，并且属性名后会添加方括号。如果对象的某个属性值是对象，则内嵌对象的属性名会放置在方括号里并添加到外层属性名中。</li>
+<li>可以传递true给jQuery.param()的第二个参数，或设置traditional选项为true。这可以阻止对值为数组或对象的属性进行进一步序列化。</li>
+<li>偶尔，需要将Document（或一些其他不需要自动转换的对象）作为POST请求的内容体传递。在这种情况下，可以设置contentType选项来指定数据类型，并将processData选项设置为false，以阻止jQuery将数据对象传递给jQuery.param()。</li>
+</ul></li>
+<li><p>jQuery.get()和jQuery.post()</p>
+
+<ul>
+<li>jQuery.get()和jQuery.post()获取指定URL的内容，如果有数据的话，还可传入指定数据，最后则将结果传递给指定的回调函数。</li>
+<li>jQuery.get()使用HTTP GET请求来实现，jQuery.post()使用HTTP POST请求，其他两者则都是一样的。</li>
+<li>与jQuery.getJSON()一样，这两个方法也接受相同的三个参数：必需的URL，可选的数据字符串或对象，以及一个技术上可选但实际上总会使用的回调函数。</li>
+<li>调用的回调函数会被传入三个参数：第一个参数是返回的数据；第二个是“success”字符串；第三个则是XMLHttpRequest对象（如果有的话）</li>
+<li>接受可选的第4个参数，该参数指定被请求数据的类型。第4个参数会影响在传入回调函数前数据的处理。与上面这些专用函数相比，jQuery.get()和jQuery.post()更灵活。</li>
+</ul></li>
+<li><p>jQuery的Ajax数据类型：可以给jQuery.get()或jQuery.post()传递下面6种类型作为参数。此外，使用dataType选项也可以传递这些类型给jQuery.ajax()方法。</p>
+
+<ul>
+<li>“text”将服务器的响应作为纯文本返回，不做任何处理。</li>
+<li>“html”该类型和“text”一样：响应是纯文本。load()方法使用该类型，将返回的文本插入到文档自身中。</li>
+<li>&quot;xml&quot;请求的URL被认为指向XML格式的数据</li>
+<li>“script”请求的URL被认为指向JavaScript文件，返回的文本在传入回调函数前，会当做脚本执行。jQuery.getScript()使用该类型。</li>
+<li>“json”请求的URL被认为指向JSON格式的数据文件。会使用jQuery.parseJSON()来解析返回的内容，得到JSON对象后传入回调函数。jQuery.GETJSON()使用该类型。如果类型是“json”同时URL或数据字符串含有&quot;=？&quot;，该类型会转换成“jsonp”。</li>
+<li>“jsonp”请求的URL被认为指向服务器脚本，该脚本支持JSONP协议，可以将JSON格式的数据作为参数传递给客户端指定的函数。）在该类型下，传递给回调函数的是解析好的对象。由于JSONP请求可以通过&lt;script&gt;元素来实现，因此该类型可以用来做跨域请求，就和“script”类型一样。使用该类型时，URL或数据字符串经常会包含一个类似“&amp;jsonp=?”或“&amp;callback=?”的参数。jQuery会将参数中的“?”替换为自动产生的回调函数名。</li>
+<li>如果调用jQuery.get()、jQuery.post()或jQuery.ajax()函数时没有指定以上类型中的任何一个，jQuery会检查HTTP响应中的Content-Type头。如果该头部信息包含“xml”字符串，则传入回调函数中的是XML文档。否则，如果头部包含“json”字符串，则数据被被解析成JSON并把解析后的对象传给回调函数。否则，如果头部含有“javascript”字符串，则数据被当做脚本执行。如果以上都不符合，则数据会被当做纯文本处理。</li>
+</ul></li>
+</ul>
+
+<h2>19.6.3 jQuery.ajax()函数</h2>
+
+<ul>
+<li>所有Ajax工具最后都会调用jQuery.ajax()——这是整个类库中最复杂的函数。</li>
+<li>仅接受一个参数：一个选项对象，该对象的属性指定Ajax请求如何执行的很多细节。</li>
+<li><p>jQuery.getScript(url,callback)与以下jQuery.ajax()的调用等价：</p>
+
+<pre><code class="javascript">jQuery.ajax({
+
+type:<span class="string">"GET"</span>,<span class="comment">//HTTP请�</span>��方法
+
+url:url,//要获取数据的url
+
+data:null,//不给url添加任何数据
+
+dataType:<span class="string">"script",//一旦获取到数据，立刻当做脚本执行
+
+success:callback//完成时调用该函数
+
+});
+</code></pre></li>
+<li><p>jQuery.get()和jQuery.post()也接受上面这5个基本选项。然而，如果直接调用jQuery.ajax()的话，它可以支持更多其他选项。</p></li>
+<li><p>可以通过给jQuery.ajaxSetup()传入一个选项对象来设置任意选项的默认值:</p>
+
+<pre><code class="javascript">jQuery.ajaxSetup({
+
+    timeout:<span class="number">2000</span>,<span class="comment">//在两秒后��</span>�消所有Ajax请求
+
+    cache:false//通过给URL添加时间戳来禁用浏览器缓存
+
+});
+</code></pre></li>
+<li><p>jQuery 1.5中的Ajax</p>
+
+<ul>
+<li>jQuery.ajax()和所有之前描述的Ajax工具函数现在都返回一个jqXHR对象。
+
+<ul>
+<li>该对象模拟XMLHttpRequest的API，甚至对于那些没有使用XMLHttpRequest对象的请求（比如$.getScript()发起的请求）也进行了模拟。更进一步的是，jqXHR对象定义了success()和error()方法，可用来注册请求成功或失败时的回调函数。</li>
+</ul></li>
+<li>通用选项：jQuery.ajax()中最常用的选项如下：
+
+<ul>
+<li>type ：指定HTTP的请求方法。默认是&quot;GET&quot;。另一个常用值是&quot;POST&quot;。可以指定其他HTTP的请求方法，比如&quot;DELETE&quot;或&quot;PUSH&quot;，但不是所有浏览器都支持它们。</li>
+<li>url：要获取的URL。对于GET请求，data选项会添加到该URL后。对于JSONP请求，当cache选项为false时，jQuery可以添加参数到URL中。</li>
+<li>data：添加到URL中（对GET请求）或在请求的内容体中（对POST请求）发送的数据。这可以是字符串或对象。通常会把对象转化为字符串。</li>
+<li>dataType 指定响应数据的预期类型，以及jQuery处理该数据的方式。合法值是 &quot;text&quot;、&quot;html&quot;、&quot;script&quot;、&quot;json&quot;、&quot;jsonp&quot;和&quot;xml&quot;。该选项没有默认值。</li>
+<li>timeout ：超时时间，单位是毫秒。如果设置了该选项，当请求没有在指定超时时间内完成时，请求会取消同时触发error回调，回调中的状态码参数为&quot;timeout&quot;。默认超时时间是0，表示除非请求完成，否则永远不会取消。</li>
+<li>cache ：对于GET请求，如果该选项设置为false，jQuery会添加一个“_=”参数到URL中，或者替换已经存在的同名参数。该参数的值是当前时间（毫秒格式）。这可以禁用基于浏览器的缓存，因为每次请求的URL都不一样。</li>
+<li>ifModified： 当该选项设置为true时，jQuery会为请求的每一个URL记录Last-Modified和If-None-Match响应头的值，并会在接下来的请求中为相同的URL设置这些头部信息。这可以使得，如果上次请求后URL的内容没有改变，则服务器会发送回HTTP 304&quot;Not Modified&quot;响应。默认情况下，该选项未设置，jQuery不会设置或记录这些头部信息。</li>
+<li>global：该选项指定jQuery是否应该触发上面描述的Ajax请求过程中的事件。默认值是true；设置该选项为false会禁用Ajax相关的所有事件</li>
+</ul></li>
+<li>回调：下面的选项指定在Ajax请求的不同阶段调用的函数。success选项已经很熟悉了：这是传入给jQuery.getJSON()等方法的回调函数。注意jQuery也会将Ajax请求过程的消息当做事件发送（除非设置了global选项为false）。
+
+<ul>
+<li>context ：该选项指定回调函数在调用时的上下文对象——就是this。该选项没有默认值，如果不设置，this会指向选项对象。设置context选项也会影响Ajax事件触发的方式（参考19.6.4节）。如果设置该选项，值应该为Window、Document或触发事件所在的Element。</li>
+<li>beforeSend：该选项指定Ajax请求发送到服务器之前激活的回调函数。第一个参数是XMLHttpRequest对象，第二个参数是该请求的选项对象。beforeSend回调使得程序有机会在XMLHttpRequest对象上设置自定义HTTP头部。如果该回调函数返回false，Ajax请求会取消。注意跨域的&quot;script&quot;和&quot;jsonp&quot;请求没有使用XMLHttpRequest对象，因此不会触发beforeSend回调。</li>
+<li>success：该选项指定Ajax请求成功完成时调用的回调函数。
+
+<ul>
+<li>第一个参数是服务器发送的数据（参数的类型取决于dataType选项或服务器响应的Content-Type头信息。如果类型是&quot;xml&quot;，则第一个参数是Document对象。如果类型是&quot;json&quot;或&quot;jsonp&quot;，第一个参数是服务器返回的JSON格式响应的解析结果。如果类型是&quot;script&quot;，则响应内容是所加载脚本的文本内容（该脚本已经执行了，因此，在这种情况下通常可以忽略响应内容）。对于其他类型，响应内容直接就是请求资源的文本内容。）</li>
+<li>第二个参数是jQuery状态码；（第二个参数的状态码通常是字符串&quot;success&quot;，但是如果设置了ifModified选项，该参数就可能是&quot;notmodified&quot;。在这种情况下，服务器不发送响应并且不定义第1个参数。&quot;script&quot;和&quot;jsonp&quot;类型的垮域请求通过＜script＞元素而不是XMLHttpRequest执行，因此对于那些请求，不会定义第三个参数。）</li>
+<li>第三个参数是用来发送该请求的XMLHttpRequest对象。</li>
+</ul></li>
+<li>error：该选项指定Ajax请求不成功时调用的回调函数。
+
+<ul>
+<li>该回调的第一个参数是该请求的XMLHttpRequest对象（如果用到的话）。</li>
+<li>第二个参数是jQuery的状态码。对于HTTP错误，该状态码可能是&quot;error&quot;，对于超时，则是&quot;timeout&quot;，&quot;parsererror&quot;则表示解析服务器响应时出了问题。例如，如果XML文档或JSON对象不符合格式，则状态码为&quot;parsererror&quot;。在这种情况下，error回调的第三个参数是抛出的Error对象。</li>
+<li>注意dataType为&quot;script&quot;的请求在返回无效JavaScript代码时不会触发错误。脚本中的任何错误都会直接忽略，调用的回调则是success而不是error。</li>
+</ul></li>
+<li>complete：该选项指定Ajax请求完成时激活的回调函数。每一个Ajax请求或者成功时调用success回调，或者失败时调用error回调。在调用success或error后，jQuery会调用complete回调。传给complete回调的第一个参数是XMLHttpRequest对象，第二个参数则是状态码。</li>
+</ul></li>
+<li>不常用的选项和钩子：下述Ajax选项不经常使用。某些特定选项通常不可能设置，另一些选项则提供了自定义钩子，使得可以修改jQuery Ajax请求的默认处理方式。
+
+<ul>
+<li>async：脚本化的HTTP请求本身就是异步的。然而，XMLHttpRequest对象提供了一个选项，可用来阻塞当前进程，直到接收到响应。如果想开启这一阻塞行为，可以设置该选项为false。设置该选项不会更改jQuery.ajax()的返回值：如果有使用XMLHttpRequest对象的话，该函数会始终返回该对象。对于同步请求，可以自己从XMLHttpRequest对象中提取服务器的响应和HTTP状态码，如果想要获取jQuery解析的响应和状态码，可以指定一个complete回调（就和给异步请求指定的一样）。</li>
+<li>dataFilter：该选项指定一个函数，用来过滤或预处理服务器返回的数据。
+
+<ul>
+<li>第一个参数是从服务器返回的原始数据（字符串或XML请求返回的Document对象）</li>
+<li>第二个参数是dataType选项的值。如果指定该函数，则它必须返回一个值，该值会用来替换掉服务器的响应。注意dataFilter()函数会在JSON解析和脚本执行前执行。同时注意对于跨域的&quot;script&quot;和&quot;jsonp&quot;请求不会调用dataFilter()。</li>
+</ul></li>
+<li>jsonp：当设置dataType选项为&quot;jsonp&quot;时，url或data选项通常会包含一个类似&quot;jsonp=?&quot;的参数。如果jQuery在URL或data选项中没有找到类似参数时，会使用该选项指定的名字插入一个。该选项的默认值是&quot;callback&quot;。在使用JSONP时，如果服务器需要一个不同的参数名，而URL或data选项中又没有指定时，需要设置该选项。</li>
+<li>jsonpCallback ：对于dataType为&quot;jsonp&quot;的请求（或URL中带有类似&quot;jsonp=?&quot;这种JSONP参数的&quot;json&quot;请求），jQuery必须将URL中的“?”替换成包装函数名，服务器会将数据传递给该包装函数。通常，jQuery会根据当前时间来生成一个唯一的函数名。如果想用自己的函数来替代jQuery生成的，则可以设置该选项。但是，一旦这样做了，会阻止jQuery在触发正常事件时调用success或complete回调。</li>
+<li>processData：当设置data选项为对象（或将对象作为第二个参数传递给jQuery.get()和相关方法）时，jQuery通常会将该对象转换成字符串，该字符串遵守标准的HTML&quot;application/x-www-form-urlencoded&quot;格式。如果想省略掉该步骤（比如想将Document对象作为POST请求体发送），请设置该选项为false。</li>
+<li>scriptCharset：对于跨域的&quot;script&quot;和&quot;jsonp&quot;请求，会使用\＜script＞元素，该选项用来指定\＜script＞元素的charset属性值。该选项对正常的基于XMLHttpRequest的请求不会有任何作用。</li>
+<li>tranditional：jQuery 1.4改变了数据对象序列化为&quot;application/x-www-form-urlencoded&quot;字符串的方式。设置该选项为true，可以让jQuery回复到原来的方式。</li>
+<li>username,password：如果请求需要密码验证，请使用这两个选项来指定用户名和密码。</li>
+<li>xhr：该选项指定一个工厂函数，用来获取XMLHttpRequest对象。该工厂函数在调用时不带参数，而且必须返回一个实现了XMLHttpRequest API的对象。这个非常底层的钩子可以创建自己对XMLHttpRequest的包装，可以给方法添加特性或测量。</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2>19.6.4　Ajax事件（待完成）</h2>
+
+<h1 id="c7">七 工具函数<sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>jQuery类库定义了不少工具函数（还有两个属性），在编写程序时挺有用。 将这些工具函数列举如下：
+
+<ul>
+<li>jQuery.browser：browser属性不是一个函数而是一个对象，可用于客户端嗅探。
+
+<ul>
+<li>如果浏览器是IE，该对象会拥有一个msie属性，值为true。</li>
+<li>如果浏览器是Firefox或与其相关，会有一个值为true的mozilla属性。</li>
+<li>同样，在Safari和Chrome中，webkit属性为true；</li>
+<li>在Opera中，opera属性为true。</li>
+<li>除了与浏览器相关的属性，还有一个version属性，包含浏览器的版本号。</li>
+<li>尽量不要使用客户端嗅探，但是可以通过以下代码使用该属性来解决浏览器相关的bug：if($.browser.mozilla＆＆parseInt($.browser.version)＜4){//在此解决一个假设的Firefox bug..}</li>
+</ul></li>
+<li>jQuery.contains()：该函数接受两个文档元素作为参数。如果第一个元素包含第二个元素，则返回true；否则返回false</li>
+<li>jQuery.each()：和each()方法不同，each()方法只能遍历jQuery对象，而jQuery.each()工具函数可以遍历数组元素或对象属性。
+
+<ul>
+<li>第一个参数是要遍历的数组或对象；</li>
+<li>第二个参数是要在每个数组元素或对象属性上调用的函数。</li>
+<li>该函数在调用时会带有两个参数：数组元素的序号或对象的属性名，以及数组元素的值或对象的属性值。</li>
+<li>函数中的this值和第二个参数是一样的。</li>
+<li>如果该函数返回false，jQuery.each()会停止当前遍历并立刻返回。</li>
+<li>jQuery.each()总是返回第一个参数的值。</li>
+<li>jQuery.each()会使用普通的for/in循环来遍历对象属性，所以会遍历所有可枚举的属性，包括继承的属性。</li>
+<li>jQuery.each()在遍历数组元素时，会以序号从小到大来遍历，不会跳过稀疏数组中的undefined属性。</li>
+</ul></li>
+<li>jQuery.extend()：该函数接受对象作为参数。它会将第二个及其以后参数对象的属性复制到第一个参数对象中，如果同名的属性在第一个参数对象中已经存在，则会覆盖它。该函数会忽略任何值为undefined或null的属性。如果仅传入了一个对象，该对象的属性会被复制到jQuery对象自身中。该对象的返回值是属性被复制到的对象。如果一个参数的值为true，会执行深拷贝：第三个（及其以后）对象的属性会被复制到第二个对象上。该函数用来复制对象以及合并带有几组默认值的选项对象时非常有用。</li>
+<li>jQuery.globalEval()：该函数会在全局上下文中执行JavaScript代码字符串，就像它是＜script＞元素的内容一样。（实际上，jQuery实现该函数时，就是通过创建一个\＜script＞元素并临时把它插入文档中来实现的。）</li>
+<li>jQuery.grep()：该函数和ES5中Array对象的filter()方法类似。它接受数组作为第一个参数，以及一个判断函数作为第二个参数，该判断函数会在数组的每一个元素上调用，调用时会传入元素值和元素序号作为参数。jQuery.grep()返回一个新数组，新数组由调用判断函数时返回true（或其他真值）的元素组成。如果给jQuery.grep()传入true作为第三个参数，则它会反转判断函数，返回的数组将会由判断函数调用时为false或其他假值的元素组成。</li>
+<li>jQuery.inArray()：该函数和ES5中Array对象的indexOf()方法类似。它的第一个参数可以是任意值，第二个参数则是数组（或类数组对象），返回值是第一个参数值在数组中第一次出现的序号，如果该参数值不存在的话，则返回-1。</li>
+<li>jQuery.isArray()：当参数是原生Array对象时，返回true。</li>
+<li>jQuery.isEmptyObject()：当参数对象没有可枚举的属性时，返回true。</li>
+<li>jQuery.isFunction()：当参数是原生Function对象时，返回true。注意，在IE8及以前版本中，window.alert()和window.attachEvent()等浏览器方法返回false。</li>
+<li>jQuery.isPlainObject()：如果参数是“纯”对象，而不是某些特定类型或类的对象的实例时，返回true。</li>
+<li>jQuery.makeArray()：如果参数是类数组对象，该函数会将对象的属性复制到一个新的（真）数组中，并返回该数组。如果参数不是类数组对象，该函数会仅返回一个新数组，该数组只包含传入的参数一个元素。</li>
+<li>jQuery.map()：该函数和ES5中Array对象的map()方法类似。它接受数组或类数组对象作为第一个参数；第二个参数则为映射函数。每一个数组元素与其序号都会传入这映射函数中，返回值就是由映射函数返回的值组成的新数组。jQuery.map()与ES5 map()方法存在两点不同。首先，如果映射函数返回的是null，该值不会被包含在返回的数组中。其次，如果映射函数返回的是数组，该数组的元素会被添加到结果数组中，而不是数组本身中。</li>
+<li>jQuery.merge()：该函数接受两个数组或类数组对象。它会将第二个参数的元素添加到第一个上面，并返回第一个参数。第一个数组会修改，第二个不会。可以使用该函数来浅拷贝类数组对象</li>
+<li>jQuery.parseJSON()：该函数会解析JSON格式的字符串，返回解析结果。当传入的格式有误时，它会抛出异常。在定义它的浏览器中jQuery使用标准的JSON.parse()函数。注意jQuery只定义JSON解析函数，而没有定义JSON序列化函数。</li>
+<li>jQuery.proxy()：该函数和ES5中Function对象的bind()方法类似。它接受函数作为第一个参数，对象作为第二个参数，并返回一个新函数，该函数会作为第二个参数对象的方法调用。它没有像bind()方法那样实现参数的部分应用。</li>
+<li>jQuery.proxy()在调用时还可以传入对象作为第一个参数，传入属性名作为第二个参数。该名称代表的属性值应该是一个函数。通过这种方式调用，函数jQuery.proxy(o,n)的返回值与jQuery.proxy(o[n],o)一样。</li>
+<li>jQuery.proxy()的目的是用来与jQuery的事件处理程序绑定机制一起使用。如果绑定了一个代理函数，可以使用原始函数来解除绑定它。</li>
+<li>jQuery.support：这个属性类似jQuery.browser,它用来做可移植的特性探测，而不是脆弱的浏览器探测。jQuery.support的值是一个对象，该对象的属性都是布尔值，用来指明浏览器特性的存在情况。jQuery.support的绝大部分属性都是jQuery内部使用的底层特性。这可能会引起插件开发者的兴趣，但对应用开发者来说大部分都用途不大。一个例外是jQuery.support.boxModel:当浏览器使用CSS标准的&quot;context-box&quot;模型时，该属性为true，而在IE6和IE7的怪异模式下时为false。</li>
+<li>jQuery.trim()：该函数和ES5中给字符串添加的trim()方法类似。它接受字符串作为唯一参数，返回的字符串开头和结尾处的空白字符都已移除。</li>
+</ul></li>
+</ul>
+
+<h1 id="c8">八  jQuery选择器和选取方法   <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<h2>19.8.1　jQuery选择器</h2>
+
+<ul>
+<li>选择器语法有三层结构。</li>
+<li>简单选择器：
+
+<ul>
+<li>简单选择器的开头部分（显式或隐式地）是标签类型声明。</li>
+<li>如果选择器没有以标签名或通配符开头，则隐式含有一个通配符。</li>
+<li>所有jQuery选择过滤器<sup>表19-1</sup></li>
+<li>组合选择器
+
+<ul>
+<li>A B:子孙元素</li>
+<li>A&gt;B:直接子元素</li>
+<li>A+B:紧跟的兄弟元素</li>
+<li>A~B:会选择跟在目标元素后面的所有匹配的元素</li>
+</ul></li>
+<li>选择器组：是一个逗号分隔的列表，由一个或多个简单选择器或组合选择器构成。选择器组匹配的元素只要匹配该选择器组中的任何一个选择器就行</li>
+</ul></li>
+</ul>
+
+<h3>19.8.2　选取方法</h3>
+
+<ul>
+<li>选取方法：它们会修改选中元素集，对其进行提取、扩充或仅作为新选取操作的起点。</li>
+<li>提取选中元素最简单的方式是按位置提取。<br>
+
+<ul>
+<li>first()返回的jQuery对象仅包含选中元素中的第一个，</li>
+<li>last()返回的jQuery对象则只包含最后一个元素。</li>
+<li>更通用的是，eq()方法返回的jQuery对象只包含指定序号的单个选中元素。（在jQuery 1.4中，负序号也是允许的，会从选区的末尾开始计数。）</li>
+<li>注意这些方法返回的jQuery对象只含有一个元素。这与常见的数组序号是不一样的，数组序号返回的单一元素没有经过jQuery包装</li>
+<li>通过位置提取选区更通用的方法是slice()。接受开始和结束序号（负序号会从结尾处计算），返回的jQuery对象包含从开始到结束序号（但不包含结束序号）处的元素集。如果省略结束序号，返回的对象会包含从开始序号起的所有元素</li>
+</ul></li>
+<li>filter()是通用的选区过滤方法，有3种调用方式：
+
+<ul>
+<li>传递选择器字符串给filter()，它会返回一个jQuery对象，仅包含也匹配该选择器的选中元素。</li>
+<li>传递另一个jQuery对象给filter()，它会返回一个新的jQuery对象，该对象包含这两个jQuery对象的交集。也可以传递元素数组甚至单一文档元素给filter()。</li>
+<li>传递判断函数给filter()，会为每一个匹配元素调用该函数，filter()则返回一个jQuery对象，仅包含判断函数为true（或任意真值）的元素。在调用判断函数时，this值为当前元素，参数是元素序号</li>
+</ul></li>
+<li>not()方法与filter()相反
+
+<ul>
+<li>如果传递jQuery对象、元素数组或单一元素给not()，它会返回除了显式排除的元素之外的所有选中元素。</li>
+<li>如果传递判断函数给not()，该判断函数的调用就与在filter()中一样，只是返回的jQuery对象仅包含那些使得判断函数返回false或其他假值的元素</li>
+</ul></li>
+<li>提取选区的另一种方式是has()方法。
+
+<ul>
+<li>如果传入选择器，has()会返回一个新的jQuery对象，仅包含有子孙元素匹配该选择器的选中元素。</li>
+<li>如果传入文档元素给has()，它会将选中元素集调整为那些是指定元素祖先节点的选中元素</li>
+</ul></li>
+<li>add()方法会扩充选区，而不是对其进行过滤或提取。可以将传给$()函数的任何参数（除了函数）照样传给add()方法。add()方法会返回原来的选中元素，加上传给$()函数的那些参数所选中（或创建）的那些元素。add()会移除重复元素，并对该组合选区进行排序，以便里面的元素按照文档中的顺序排列</li>
+<li><p>将选中元素集用做上下文：上面描述的filter()、add()、和not()方法会在各自的选中元素集上执行交集、并集和差集运算。jQuery还定义一些其他选取方法可将当前选中元素集作为上下文来使用。对选中的每一个元素，这些方法会使用该选中元素作为上下文或起始点来得到新的选中元素集，然后返回一个新的jQuery对象，包含所有新的选中元素的并集。与add()方法类似，会移除重复元素并进行排序，以便元素会按照在文档中出现的顺序排列好。</p>
+
+<ul>
+<li>最通用的是find()。它会在每一个当前选中元素的<strong>子孙元素中</strong>寻找与指定选择器字符串匹配的元素，然后它返回一个新的jQuery对象来代表所匹配的子孙元素集。注意这些新选中的元素不会并入已存在的选中元素集中。同时注意find()和filter()不同，filter()不会选中新元素，只是简单地将当前选中的元素集进行缩减</li>
+<li>children()方法返回每一个选中元素的直接子元素，可以用可选的选择器参数进行过滤</li>
+<li>contents()方法返回每一个元素的所有子节点，包括文本节点。如果选中元素集中有＜iframe＞元素，contents()还会返回该＜iframe＞内容的文档对象。注意contents()不接受可选的选择器字符串参数——因为它返回的文档节点不完全是元素，而选择器字符串仅用来描述元素节点。</li>
+<li><p>next()和prev()方法返回每一个选中元素的下一个和上一个兄弟元素（如果有的话）。如果传入了选择器，会只选中匹配该选择器的兄弟元素：</p>
+
+<pre><code class="javascript">$(<span class="string">"h1"</span>).next(<span class="string">"p"</span>)<span class="comment">//与$("h1+p")</span>相同
+$("h1").prev()//＜h1＞元素前面的兄弟元素
+</code></pre></li>
+<li><pre><code>    nextAll()和prevAll()返回每一个选中元素前面或后面的所有兄弟元素（如果有的话）。siblings()方法则返回每一个选中元素的所有兄弟元素（选中元素本身不是自己的兄弟元素）。如果给这些方法传入选择器，则只会返回匹配的所有兄弟元素
+</code></pre></li>
+<li><p>nextUntil()和prevUntil()方法接受一个选择器参数，会选取选中元素后面或前面的所有兄弟元素，直到找到某个匹配该选择器的兄弟元素为止。如果省略该选择器，这两个方法的作用就和不带选择器的nextAll()和prevAll()一样。</p></li>
+<li><p>parent()方法返回每一个选中元素的父节点。接受一个可选的选择器字符串参数</p></li>
+<li><p>parents()方法返回每一个选中元素的祖先节点（向上直到＜html＞元素）。接受一个可选的选择器字符串参数</p></li>
+<li><p>parentsUntil()返回每一个选中元素的祖先元素，直到出现匹配指定选择器的第一个祖先元素。</p></li>
+<li><p>closest()方法必须传入一个选择器字符串，会返回每一个选中元素的祖先元素中匹配该选择器的最近一个祖先元素（如果有的话）。对该方法而言，元素被认为是自身的祖先元素。还可以给closest()传入一个祖先元素作为第二个参数，用来阻止jQuery往上查找时超越该指定元素</p></li>
+</ul></li>
+<li><p>恢复到之前的选中元素集</p>
+
+<ul>
+<li>本节讲述的方法都返回新的jQuery对象。可以链式调用下去</li>
+<li>在链式调用的后面所操作的元素集，可能已经不是该链式调用开始时的元素集了。</li>
+<li>选取方法在创建或返回一个新的jQuery对象时，它们会给该对象添加一个到它派生自的旧jQuery对象的内部引用。这会创建一个jQuery对象的链式表或栈。end()方法用来弹出栈，返回保存的jQuery对象。在链式调用中调用end()会将匹配元素集还原到之前的状态。</li>
+<li>可以将新的元素集作为数组或类数组对象传递给pushStack()方法。指定的元素会成为新的选中元素，之前选中的元素集则会压入栈中，之后可以用end()方法还原它们</li>
+<li>andSelf()返回一个新的jQuery对象，包含当前的所有选中元素，加上之前的所有选中元素（会去除重复的）。</li>
+</ul></li>
+</ul>
+
+<h1 id="c9">九 jQuery的插件扩展   <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>开发jQuery插件非常简单。关键点是要知道jQuery.fn是所有jQuery对象的原型对象。如果给该对象添加一个函数，该函数会成为一个jQuery方法。</li>
+<li><p>下面是一些值得留意的jQuery插件约定：</p>
+
+<ul>
+<li><p>不要依赖$标识符：包含的页面有可能调用了jQuery.noConflict()函数，$()可能不再等同于jQuery()函数。在上面这种简短的插件里，只要使用jQuery代替$就行。如果开发的扩展很长，则最好用一个匿名函数将扩展代码都包装起来，以避免创建全局变量。如果这样做，可以将jQuery作为参数传递给匿名函数，参数名采用$:</p>
+
+<pre><code class="javascript">(<span class="keyword">function</span>($){<span class="comment">//带有参数</span>名为$的匿名函数
+
+/<span class="regexp">/在此书写插件代码
+
+}(jQuery));//</span>使用jQuery对象作为参数调用该匿名函数
+
+</code></pre></li>
+<li><p>如果插件代码不返回自己的值，请确保返回jQuery对象以便链式调用。通常这就是this对象，只要不加修改地返回即可。</p></li>
+<li><p>如果扩展方式拥有两个以上参数或配置选项，请允许用户能使用对象的方式传递选项</p></li>
+<li><p>不要污染jQuery方法的命名空间。优雅的jQuery插件会用一套有用的API定义最少量的方法。通常，一个jQuery插件只会在jQuery.fn上定义一个方法。该方法会接受字符串作为第一个参数，然后将该字符串作为函数名解析，然后将剩余参数传给该解析函数。当可以将插件限定为一个方法时，该方法名应该与插件同名。如果需要定义多个方法，则使用插件名作为每一个方法名的前缀。</p></li>
+<li><p>如果插件需要绑定事件处理程序，请将所有这些处理程序放在事件命名空间中。使用插件名作为命名空间名。</p></li>
+<li><p>如果插件需要使用data()方法与元素关联数据，请将所有数据值放在单一对象中，然后用与插件名相同的键值将该对象作为单一值存储。</p></li>
+<li><p>用&quot;jquery.plugin.js&quot;这种文件命名方式保存插件代码到一个文件中（将&quot;plugin&quot;替换为插件名）。</p></li>
+</ul></li>
+</ul>
+
+<h1 id="c10">十  jQuery UI类库  <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>jQuery限定自己只提供核心DOM、CSS、事件处理以及Ajax功能。这提供了一个很棒的基础，可用来构建高层面的抽象，比如用户界面组件，jQuery UI类库就是这么做的。该类库及其文档可以在这里找到：<a href="http://jqueryui.com%E3%80%82">http://jqueryui.com。</a></li>
+<li>jQuery UI定义了一些用户界面组件：输入区域的自动完成、输入日期的日期选取器、用来组织信息的手风琴和标签页、可视化展现数字的滑块和进度条，以及用来和用户紧急通信的模态对话框。除了这些组件，jQuery UI还实现了更一般化的“交互”，可以使得任何文档元素轻松就实现可拖曳、可放置、可改变大小、可选取或可排序。最后，jQuery UI还给jQuery自身的效果方法提供了一些新的视觉效果方法（还使得可以变化颜色），同时定义很多新的缓动函数。</li>
+<li>可以把jQuery UI想象成一组相关的jQuery插件，只是最后打包成一个JavaScript文件。要使用它很简单，在网页中，将jQuery UI脚本放在jQuery代码后面引入进来就行。下载页面<a href="http://jqueryui.com">http://jqueryui.com</a> 允许选取计划使用的组件，然后会构建一个自定义的下载包，与整个jQuery UI类库相比，这可以减少页面的加载时间。</li>
+<li>jQuery UI是完全皮肤化的，它的皮肤直接采用CSS文件的形式。因此除了要加载jQuery UI的JavaScript代码到网页中，还需要引入选中皮肤的CSS文件。jQuery UI站点标注了一些预先打包好的皮肤包，还有一个“皮肤工作坊”页面，可以让你自定义和下载自己的皮肤。</li>
+<li>jQuery UI组件和交互功能采用jQuery插件的方法构建，每一个都定义一个jQuery方法。通常，在已存在的文档元素中调用该方法时，会将该元素转化为组件。</li>
+<li>要想灵活自如地使用jQuery UI组件，需要熟悉三件东西：它的配置选项、它的方法以及它的事件。所有jQuery UI组件都是可配置的，有一些组件有很多配置选项。可以通过给组件方法传递选项对象（和在动画操作里，传递选项对象给animate()类似）来自定义组件的行为和外观。</li>
+<li>jQuery UI组件通常会定义至少有几个“方法”来与组件交互。但是，为了避免jQuery方法的迅速增多，jQuery UI组件不会将它们的“方法”定义成真正的方法。每个组件只会有一个方法（与上例中的datapicker()方法一样）。当需要调用组件的一个“方法”时，需要给该组件定义的真正方法传递预期“方法”的名称。例如，想要禁用日期选取组件，不能调用disableDatapicker()方法，而需要调用datepicker(&quot;disable&quot;)。</li>
+<li>jQuery UI组件通常会定义自定义事件，响应用户交互时触发它们。可以使用常用的bind()方法来给这些自定义事件绑定事件处理程序，通常还可以将事件处理程序函数作为选项对象的属性，该选项对象会传递给组件方法。事件处理程序的第一个参数依旧是Event对象。某些组件还会传递一个&quot;UI&quot;对象作为事件处理程序的第二个参数。该对象通常提供了当前组件的状态信息。</li>
+<li>jQuery UI文档中有时描述的“事件”并不是真正的自定义事件，可能描述为回调函数会更好，这些回调函数是通过配置选项对象设置的。例如，日期选取组件支持不少回调函数，可以在不同的时间点调用它。但是，这些函数中没有一个拥有标准的事件处理程序签名，不能使用bind()来为这些“事件”注册处理程序。正确的做法是，在初始调用datapicker()方法，给组件传递配置选项时，就指定合适的回调函数。</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,834 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <style type="text/css">
+   /*
+CSS stylesheet is based on killwing's flavored markdown style:
+https://gist.github.com/2937864
+*/
+body{
+margin: 0 auto;
+font: 12px/1.5em Tahoma;
+letter-spacing:0.1em;
+color: #444444;
+line-height: 1;
+width: 840px;
+padding: 5px;
+}
+h1, h2, h3, h4 {
+color: #111111;
+font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+margin-bottom: 16px;
+padding: 0;
+}
+h1 {
+margin: 15px auto;
+text-align: center;
+font-size: 28px;
+}
+h2 {
+font-size: 24px;
+
+}
+h3 {
+font-size: 20px;
+margin: 8px 16px ;
+}
+h4 {
+font-size: 16px;
+}
+h5 {
+font-size: 14px;
+}
+a {
+color: #0099ff;
+margin: 0;
+padding: 0;
+vertical-align: baseline;
+}
+a:link,a:visited{
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+}
+ul, ol {
+padding: 0;
+margin: 0;
+}
+li {
+line-height: 24px;
+margin-left: 40px;
+}
+li ul, li ol {
+margin-left: -5px;
+//margin-top:-15px;
+          color: #000080;
+
+}
+ul, ol {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+}
+
+p {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+margin-top: 3px;
+}
+
+pre {
+padding: 0px 4px;
+max-width: 800px;
+white-space: pre-wrap;
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+code {
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+pre code {
+border: 0px;
+}
+aside {
+display: block;
+float: right;
+width: 800px;
+}
+blockquote {
+border-left:.5em solid #40AA53;
+padding: 0 2em;
+margin-left:0;
+max-width: 800px;
+}
+blockquote  cite {
+font-size:14px;
+line-height:20px;
+color:#bfbfbf;
+}
+blockquote cite:before {
+content: '\2014 \00A0';
+}
+
+blockquote p {
+color: #666;
+max-width: 760px;
+}
+hr {
+height: 1px;
+border: none;
+border-top: 1px dashed #0066CC
+}
+
+button,
+input,
+select,
+textarea {
+font-size: 100%;
+margin: 0;
+vertical-align: baseline;
+*vertical-align: middle;
+}
+button, input {
+line-height: normal;
+*overflow: visible;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+border: 0;
+padding: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+cursor: pointer;
+-webkit-appearance: button;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+
+input[type="search"] {
+-webkit-appearance: textfield;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+-webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+font-weight: normal;
+line-height: normal;
+margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+display: inline-block;
+width: 210px;
+padding: 4px;
+font-size: 13px;
+font-weight: normal;
+line-height: 18px;
+height: 18px;
+color: #808080;
+border: 1px solid #ccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+select, input[type=file] {
+height: 27px;
+line-height: 27px;
+}
+textarea {
+height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+transition: border linear 0.2s, box-shadow linear 0.2s;
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+outline: none;
+border-color: rgba(82, 168, 236, 0.8);
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+/* buttons */
+button {
+display: inline-block;
+padding: 4px 14px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+line-height: 18px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+background-color: #0064cd;
+background-repeat: repeat-x;
+background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+background-image: linear-gradient(top, #049cdb, #0064cd);
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+border: 1px solid #004b9a;
+border-bottom-color: #003f81;
+-webkit-transition: 0.1s linear all;
+-moz-transition: 0.1s linear all;
+transition: 0.1s linear all;
+border-color: #0064cd #0064cd #003f81;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+button:hover {
+color: #fff;
+background-position: 0 -15px;
+text-decoration: none;
+}
+button:active {
+-webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+button::-moz-focus-inner {
+padding: 0;
+border: 0;
+}
+/* table  */
+table {
+border-spacing: 0;
+border: 1px solid #ccc;
+}
+td, th{
+border: 1px solid #ccc;
+padding: 5px;
+}
+/* code syntax highlight.
+Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own
+*/
+pre .literal,
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+color: #008000;
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+color: #0000FF;
+font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .python .decorator,
+pre .ruby .constant {
+color: #0000FF;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+color: #D14
+}
+
+pre .title,
+pre .id {
+color: #900;
+font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+color: #458;
+font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+color: #000080;
+font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+color: #008080
+}
+
+pre .regexp {
+color: #009926
+}
+
+pre .class {
+color: #458;
+font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+color: #999;
+font-weight: bold
+}
+
+pre .deletion {
+background: #fdd
+}
+
+pre .addition {
+background: #dfd
+}
+
+pre .diff .change {
+background: #0086b3
+}
+
+pre .chunk {
+color: #aaa
+}
+
+pre .markdown .header {
+color: #800;
+font-weight: bold;
+}
+
+pre .markdown .blockquote {
+color: #888;
+}
+
+pre .markdown .link_label {
+color: #88F;
+}
+
+pre .markdown .strong {
+font-weight: bold;
+}
+
+pre .markdown .emphasis {
+font-style: italic;
+}
+
+   </style>
+   
+   
+</head>
+<body>
+    <h1 id="c7">第七章 函数表达式 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>Firefox、Safari、Chrome和Opera 都给函数定义了一个非标准的name 属性，可以访问到给函数指定的名字。这个属性的值永远等于跟在function关键字后面的标识符。</li>
+<li>函数声明提升（会将整个function后的语句全部提升，此句全被看作左值），意思是在执行代码之前会先读取函数声明。(整个函数声明可以看作左值)</li>
+<li> 某函数返回匿名函数可以看作返回一个指向该匿名函数的临时指针。</li>
+</ul>
+
+<h2>7.1 递归</h2>
+
+<ul>
+<li>arguments.callee 是一个指向正在执行的函数的指针，因此可以用它来实现对函数的递归调用。使用arguments.callee 总比使用函数名更保险。</li>
+<li>可以用函数定义表达式&amp;非匿名函数代替。<code>var factorial = function f(num){ //内部调用f  };</code>。外部调用factorial</li>
+</ul>
+
+<h2>7.2 闭包</h2>
+
+<ul>
+<li>实质：垃圾回收机制中标记清除有此规则：“它会去掉环境中的变量和被环境中的变量引用的变量的（删除）标记”。意味着离开环境且未被其他环境引用的变量会被删除，否则会保留。</li>
+<li>闭包是指有权访问另一个函数作用域中的变量的函数。此处是保留整个父级活动对象。</li>
+<li>作用域链本质上是一个指向变量对象的指针列表，它只
+引用但不实际包含变量对象。当函数执行完毕后，局部活动对象就会被销毁</li>
+<li>闭包特点：在另一个函数内部定义的函数会将包含函数（即外部函数）的活动对象添加到它的作用域链中。外部<strong>函数在执行完毕（返回）后，执行环境还给父级</strong>，其活动对象也不会被销毁，因为匿名函数的作用域链仍然在引用这个活动对象。当函数返回了一个闭包时，这个函数的作用域将会一直在内存中保存到闭包不存在为止。</li>
+</ul>
+
+<h3>7.2.1 闭包与变量</h3>
+
+<ul>
+<li>闭包的副作用，即闭包只能取得包含函数中任何变量的最后一个值。（是对外部函数变量对象的即时访问而非复制到自己变量对象中造成的）</li>
+<li>解决办法：内层函数再嵌套内层函数。<sup>P181</sup></li>
+</ul>
+
+<h3>7.2.2 关于this对象</h3>
+
+<ul>
+<li><p>匿名函数的执行环境具有全局性，因此其this 对象通常指向window。也是由变量向上搜索规则决定的。对象不会产生执行环境，所以没有对应的变量对象。</p>
+
+<pre><code class="javascript"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;
+<span class="keyword">var</span> object = {
+    name : <span class="string">"My Object"</span>,
+    getNameFunc : <span class="keyword">function</span>(){
+        <span class="keyword">return</span> <span class="keyword">function</span>(){
+            <span class="keyword">return</span> <span class="keyword">this</span>.name;
+        };
+    }
+};
+alert(object.getNameFunc()()); <span class="comment">//"The Window"（在非</span>严格模式下）
+</code></pre>
+
+<p>分析：<strong>this指向调用该函数的对象。</strong>匿名函数是object.getNameFunc()调用的，在object.getNameFunc()函数中没有name属性（object的name属性不算在该函数可访问的作用域中，因为作用域以函数划分，而非对象，所以即使是getNameFunc()要访问object中的name对象，也得用this.name表示。），因而向外搜索该属性，因为object对象无法生成变量对象，所以最后搜索到全局。</p></li>
+<li><p>不过，把外部作用域中的this 对象保存在一个闭包能够访问到的变量里，就可以让闭包访问该对象了</p></li>
+</ul>
+
+<h3>7.2.3 内存泄漏</h3>
+
+<ul>
+<li>IE中的循环引用问题</li>
+</ul>
+
+<h3>7.3 模仿块级作用域</h3>
+
+<ul>
+<li>JavaScript 从来不会告诉你是否多次声明了同一个变量；遇到这种情况，它只会对后续的声明视而不
+见（不过，它会执行后续声明中的变量初始化）</li>
+<li><p>用作块级作用域（通常称为<strong>私有作用域</strong>）的匿名函数的语法如下所示。</p>
+
+<pre><code class="javascript">(<span class="keyword">function</span>(){
+<span class="comment">//这里是</span> 块级作用域
+} )( );
+或者
+(function(){
+//这里是 块级作用域
+}( ) );
+</code></pre></li>
+<li><p>创建并立即调用一个函数，这样既可以执行其中的代码，又不会在内存中留下对该函数的引用。</p></li>
+<li><p>必须在function外加括号的原因：因为Javascript将function关键字当作一个函数声明的开始，而函数声明后面不能有圆括号。表达式后面可以跟圆括号。</p></li>
+<li><p>一般来说，我们都应该尽量少向全局作用域中添加变量和函数。在一个由很多开发人员共同参与的大型
+应用程序中，过多的全局变量和函数很容易导致命名冲突。而通过创建私有作用域，每个开发人员既可
+以使用自己的变量，又不必担心搞乱全局作用域。</p></li>
+</ul>
+
+<h2>7.4 私有变量</h2>
+
+<ul>
+<li>如果在这个函数内部创建一个闭包，那么闭包通过自己的作用域链也可以访
+问这些变量。而利用这一点，就可以创建用于访问私有变量的公有方法。</li>
+<li>我们把有权访问私有变量和私有函数的公有方法称为特权方法</li>
+<li>   <strong>构造函数模式</strong>（构造函数中的公有方法支持访问私有变量。公有方法为：this.function，私有属性：var property；）的缺点是针对每个实例都会创建同样一组新方法，而使用静态私有变量来实现特权方法就可以避免这个问题。</li>
+</ul>
+
+<h3>7.4.1 静态私有变量</h3>
+
+<ul>
+<li>在私有作用域中定义私有变量，定义<strong>全局函数</strong>和其原型方法作为特权方法（可以访问私有变量）。用全局特权方法来访问私有作用域中的私有变量。</li>
+<li>以这种方式创建静态私有变量会因为使用原型而增进代码复用，但每个实例都没有自己的私有变
+量。到底是使用实例变量，还是静态私有变量，最终还是要视你的具体需求而定。</li>
+<li>多查找作用域链中的一个层次，就会在一定程度上影响查找速度。而这正是使用闭包和私有变量的一个显明的不足之处。</li>
+</ul>
+
+<h3>7.4.2 模块模式</h3>
+
+<ul>
+<li>模块是一个提供接口却隐藏状态与实现的函数或对象。模块模式用于构造单例对象或封装应用程序。</li>
+<li>为<strong>单例</strong>创建私有变量和特权方法（不能继承复用）</li>
+<li>单例（singleton），指的就是只有一个实例的对象。以对象字面量的方式来创建单例对象。</li>
+<li>这个模块模式使用了一个返回对象的匿名函数。返回一个对象字面量。在这个匿名函数内部，首先定义了私有变量和函数。
+然后，将一个对象字面量作为函数的值返回。返回的对象字面量中只包含可以公开的属性和方法。由于
+这个对象是在匿名函数内部定义的，因此它的公有方法有权访问私有变量和函数。从本质上来讲，这个
+对象字面量定义的是单例的公共接口。这种模式在需要对单例进行某些初始化，同时又需要维护其私有
+变量时是非常有用的</li>
+<li>简言之，如果必须创建一个对象并以某些数据对其进行初始化，同时还要公开一些能够访问这些私有
+数据的方法，那么就可以使用模块模式。</li>
+<li>具体实现<sup>P189</sup></li>
+</ul>
+
+<h3>7.4.3 增强的模块模式</h3>
+
+<ul>
+<li>有人进一步<strong>改进了模块模式</strong>，即在返回对象之前加入对其增强的代码。这种增强的模块模式适合那
+些单例必须是某种类型的实例，同时还必须添加某些属性和（或）方法对其加以增强的情况。</li>
+<li>实现方式：在块级作用域中，以构造函数方式创建私有对象，然后对其增强（添加对私有变量的访问），然后返回该对象。<sup>P191</sup></li>
+</ul>
+
+<h1 id="c8">第八章 BOM <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>BOM 提供了很多对象，用于访问浏览器的功能，这些功能与任
+何网页内容无关。</li>
+</ul>
+
+<h2>8.1 window 对象</h2>
+
+<ul>
+<li>BOM 的核心对象是window，它表示浏览器的一个实例。</li>
+<li>在浏览器中，window 对象有双重角色，访问浏览器窗口的一个接口，又是ECMAScript 规定的Global 对象。</li>
+</ul>
+
+<h3>8.1.1 全局作用域</h3>
+
+<ul>
+<li>全局作用域中定义变量会被自动归在window 对象名下。</li>
+<li>定义全局变量与在window 对象上直接定义属性还是有一点差别：全局变量不能通过delete 操作符删除，而直接在window 对象上的定义的属性可以。</li>
+<li> 尝试访问未声明的变量会抛出错误，但是访问window 对象下的属性名则不会，会被认为是声明未赋值：undefined</li>
+</ul>
+
+<h3>8.1.2 窗口关系及框架</h3>
+
+<ul>
+<li>如果页面中包含框架，则每个框架都拥有自己的window 对象，并且保存在frames 集合中。</li>
+<li>每个window 对象都有一个name 属性，其中包含框架的名称。除非最高层窗口是通过window.open()打开的，否则其window 对象的name 属性不会包含任何值。</li>
+<li>可以通过window.frames[index]或者window.frames[&quot;FrameName&quot;]来引用框架。不过，最好使用
+top 而非window 来引用这些框架（例如，通过top.frames[0]）。top 对象始终指向最高（最外）层的框架。</li>
+<li>parent对象始终指向当前框架的直接上层框架。</li>
+<li>self对象始终指向window；实际上，self 和window 对象可以互换使用。</li>
+<li><strong>多框架对instanceof的影响</strong>：在使用框架的情况下，浏览器中会存在多个Global 对象。在每个框架中定义的
+全局变量会自动成为框架中window 对象的属性。由于每个window 对象都包含原生类型的构造函数，因此每个框架都有一套自己的构造函数，这些构造函数一一对应，但并不相等。例如，top.Object 并不等于top.frames[0].Object。这个问题会影响到对跨框架传递的对象使用instanceof 操作符。</li>
+</ul>
+
+<h3>8.1.3 窗口位置</h3>
+
+<ul>
+<li>screenLeft 和screenTop 属性，分别用于表示窗口相对于屏幕左边和上边的位置（Firefox得用screenX 和screenY ）。由于各种原因，无法在跨浏览器的条件下取得窗口左边和上边的精确坐标值。</li>
+<li>使用moveTo()和moveBy()方法将窗口精确地移动到一个新位置。这两个方法都接收两个参数，moveTo()接收的是新位置的x 和y 坐标值，而moveBy()接收的是在水平和垂直方向上移动的像素数。（这两个方法可能会被浏览器禁用；这两个方法都不适用于框架，只能对最外层的window 对象使用。）</li>
+</ul>
+
+<h3>8.1.4 窗口大小</h3>
+
+<ul>
+<li>outerWidth 和outerHeight 返回浏览器窗口本身的尺寸；innerWidth 和innerHeight则表示页面视图区的大小（减去边框宽度）。</li>
+<li>document.documentElement.clientWidth 和document.documentElement.clientHeight 中保存了页面视口的信息（对于移动设备，也就是屏幕上可见页面区域的大小）。对应innerWidth和innerHeight。</li>
+<li>使用resizeTo()和resizeBy()方法可以调整浏览器窗口的大小。resizeTo()接收浏览器窗口的新宽度和新高度，而resizeBy()接收新窗口与原窗口的宽
+度和高度之差。有可能被浏览器禁用。</li>
+</ul>
+
+<h3>8.1.5 导航和打开窗口</h3>
+
+<ul>
+<li>使用 window.open()方法既可以导航到一个特定的URL，也可以打开一个新的浏览器窗口。
+
+<ul>
+<li>这个方法可以接收4 个参数：要加载的URL、窗口目标、一个特性字符串以及一个表示新页面是否取代浏览器历史记录中当前加载页面的布尔值。</li>
+<li>通常只须传递第一个参数，最后一个参数只在不打开新窗口的情况下使用。</li>
+<li>如果为 window.open()传递了第二个参数，而且该参数是已有窗口或框架的名称，那么就会在具有该名称的窗口或框架中（没有则新建）加载第一个参数指定的URL。第二个参数也可以是下列任何一个特殊的窗口名称：_self、_parent、_top 或_blank。
+
+<ol>
+<li>弹出窗口
+
+<ul>
+<li>第二个参数不是一个已经存在的窗口或框架，就会根据在第三个参数位置上传入的字符串创建一个新窗口或新标签页。如果没有传入第三个参数，那么就会打开一个带有全部默认设置（工具栏、地址栏和状态栏等）的新浏览器窗口（或者打开一个新标签页——根据浏览器设置）。在不打开新窗口的情况下，会忽略第三个参数。</li>
+<li>第三个参数是一个逗号分隔的设置字符串，表示在新窗口中都显示哪些特性。所有特性见<sup>P200</sup></li>
+<li>window.open()方法会返回一个指向新窗口的引用。引用的对象与其他window 对象大致相似，但我们可以对其进行更多控制。例如，有些浏览器在默认情况下可能不允许我们针对主浏览器窗口调整大小或移动位置，但<strong>却允许我们针对通过window.open()创建的窗口调整大小或移动位置</strong>。调用该引用的close()方法还可以关闭新打开的窗口。</li>
+<li>新创建的 window 对象有一个opener 属性，其中保存着打开它的原始窗口对象。这个属性只在弹出窗口中的最外层window 对象（top）中有定义，而且指向调用window.open()的窗口或框架。将 opener 属性设置为null 就是告诉浏览器新创建的标签页不需要与打开它的标签页通信，因此可以在独立的进程中运行。标签页之间的联系一旦切断，将没有办法恢复。</li>
+<li>原始窗口中并没有这样的指针指向弹出窗口。窗口并不跟踪记录它们打开的弹出窗口，因此我们只能在必要的时候自己来手动实现跟踪。</li>
+</ul></li>
+<li>安全限制
+
+<ul>
+<li>他们经常把弹出窗口打扮成系统对话框的模样，引诱用户去点击其中的广告。由于看起来像是系统对话框，一般用户很难分辨是真是假。为了解决这个问题，有些浏览器开始在弹出窗口配置方面增加限制。</li>
+</ul></li>
+<li>弹出窗口屏蔽程序
+
+<ul>
+<li> 大多数浏览器都内置有弹出窗口屏蔽程序。如果是浏览器内置的屏蔽程序阻止的弹出窗口，那么window.open()很可能会返回null。此时，只要检测这个返回的值就可以确定弹出窗口是否被屏蔽。</li>
+<li>如果是浏览器扩展或其他程序阻止的弹出窗口，那么window.open()通常会抛出一个错误。</li>
+</ul></li>
+</ol></li>
+</ul></li>
+</ul>
+
+<h3>8.1.6 间歇调用和超时调用</h3>
+
+<ul>
+<li>setTimeout()方法，它接受两个参数：要执行的代码和以毫秒表示的时间
+
+<ul>
+<li>第一个参数可以是一个包含JavaScript 代码的字符串（就和在eval()函数中使用的字符串一样），也可以是一个函数（由于传递字符串可能导致性能损失，不建议字符串）。超时调用的代码都是在全局作用域中执行的，因此函数中this 的值在非严格模式下指向window 对象，在严格模式下是undefined。</li>
+<li>第二个参数告诉JavaScript 再过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行。</li>
+<li>返回一个数值ID，是计划执行代码的唯一标识符，可以通过它来取消超时调用（调用clearTimeout()方法并将ID 作为参数）</li>
+</ul></li>
+<li>setInterval()，它接受的参数与setTimeout()相同。
+
+<ul>
+<li>也会返回一个ID，使用clearInterval()方法并传入ID，以取消尚未执行的间歇调用</li>
+<li>用setTimeout实现setInterval：使用超时调用来模拟间歇调用的是一种最佳模式。在开发环境下，很少使用真正的间歇调用，原因是后一个间歇调用可能会在前一个间歇调用结束之前启动。而像前面示例中那样使用超时调用，则完全可以避免这一点。</li>
+</ul></li>
+</ul>
+
+<h3>8.1.7 系统对话框</h3>
+
+<ul>
+<li>系统对话框与在浏览器中显示的网页没有关系，也不包含HTML。它们的外观由操作系统及（或）浏览器设置
+决定，而不是由CSS 决定。</li>
+<li>alert()方法，这个方法接受一个字符串并将其显示给用户。具体来说，调用alert()方法的结果就是向用户显示一个系统对话框，其中包含指定的文本和一个OK（“确定”）按钮。</li>
+<li>confirm()方法：除了显示OK 按钮外，还会显示一个Cancel（“取消”）按钮。为了确定用户是单击了OK 还是Cancel，可以检查confirm()方法返回的布尔值：true 表示单击了OK，false 表示单击了Cancel 或单击了右上角的X 按钮。</li>
+<li>prompt()方法：除了显示OK 和Cancel 按钮之外，还会显示一个文本输入域。
+
+<ul>
+<li>接受两个参数：要显示给用户的文本提示和文本输入域的默认值（可以是一个空字符串）。</li>
+<li>返回：如果用户单击了OK 按钮，则prompt()返回文本输入域的值；如果用户单击了Cancel 或通过其他方式关闭了对话框，则该方法返回null。</li>
+</ul></li>
+</ul>
+
+<h2>8.2 location 对象</h2>
+
+<ul>
+<li>提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。用处不只表现在它保存着当前文档的信息，还表现在它将URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段。</li>
+<li>既是window 对象的属性，也是document 对象的属性；换句话说，window.location 和document.location 引用的是同一个对象。</li>
+<li>location 对象的所有属性。<sup>P207</sup></li>
+</ul>
+
+<h3>8.2.1 查询字符串参数</h3>
+
+<ul>
+<li>可以创建一个函数，用以解析查询字符串，然后返回包含所有参数的一个对象。A<sup>P207</sup> (思路：把去除？的字符串以#分隔，再将每部分以=分隔为属性名和值)</li>
+</ul>
+
+<h3>8.2.2 位置操作</h3>
+
+<ul>
+<li>location 对象可以通过很多方式来改变浏览器的位置。</li>
+<li>assign()方法并为其传递一个URL，立即打开新URL 并在浏览器的历史记录中生成一条记录。如果是将location.href或window.location 设置为一个URL 值，也会以该值调用assign()方法。（最常用的是设置location.href 属性）</li>
+<li>修改location 对象的其他属性也可以改变当前加载的页面。例如可以通过将hash、
+search、hostname、pathname 和port 属性设置为新值来改变URL。</li>
+<li>当通过上述任何一种方式修改URL 之后，浏览器的历史记录中就会生成一条新记录，因此用户通
+过单击“后退”按钮都会导航到前一个页面。要禁用这种行为，可以使用replace()方法。这个方法
+只接受一个参数，即要导航到的URL；结果虽然会导致浏览器位置改变，但不会在历史记录中生成新记
+录。在调用replace()方法之后，用户不能回到前一个页面</li>
+<li>reload()，作用是重新加载当前显示的页面。如果调用reload()时不传递任何参数，页面就会以最有效的方式重新加载。也就是说，如果页面自上次请求以来并没有改变过，页面就会从浏览器缓存中重新加载。如果要强制从服务器重新加载，则需要像下面这样为该方法传递参数true。</li>
+</ul>
+
+<h2>8.3 navigator 对象</h2>
+
+<ul>
+<li>navigator 对象已经成为识别客户端浏览器的事实标准。</li>
+<li>navigator 对象在所有浏览器中的属性和方法，以及支持它们的浏览器版本：<sup>P210</sup></li>
+</ul>
+
+<h3>8.3.1 检测插件</h3>
+
+<ul>
+<li>检测浏览器中是否安装了特定的插件：（非IE）可以使用plugins 数组来达到这个目的。该数组中的每一项都包含下列属性：
+
+<ol>
+<li>name：插件的名字。</li>
+<li>description：插件的描述。</li>
+<li>filename：插件的文件名。</li>
+<li>length：插件所处理的MIME 类型数量。</li>
+</ol></li>
+</ul>
+
+<h3>8.3.2 注册处理程序 （Firefox特有）：略</h3>
+
+<h2>8.4 screen 对象</h2>
+
+<ul>
+<li>在编程中用处不大</li>
+<li>screen 对象基本上只用来表明客户端的能力，其中包括浏览器窗口外部的显示器的信息，如像素宽度和高度等</li>
+<li>所有属性及支持相应属性的浏览器<sup>P214</sup></li>
+<li>调整浏览器窗口大小，使其占据屏幕的可用空间，例如：<code>window.resizeTo(screen.availWidth, screen.availHeight);</code></li>
+</ul>
+
+<h2>8.5 history 对象</h2>
+
+<ul>
+<li>history 对象保存着用户上网的历史记录，从窗口被打开的那一刻算起。</li>
+<li>因为history 是window对象的属性，因此每个浏览器窗口、每个标签页乃至每个框架，都有自己的history 对象与特定的window 对象关联。</li>
+<li>出于安全方面的考虑，开发人员无法得知用户浏览过的URL。不过，借由用户访问过的页面列表，同样可以在不知道实际URL 的情况下实现后退和前进。</li>
+<li>使用 go()方法可以在用户的历史记录中任意跳转。
+
+<ul>
+<li>这个方法接受一个参数，表示向后或向前跳转的页面数的一个整数值。负数表示向后跳转（类似于单击浏览器的“后退”按钮），正数表示向前跳转（类似于单击浏览器的“前进”按钮）。</li>
+<li>也可以给 go()方法传递一个字符串参数，此时浏览器会跳转到历史记录中包含该字符串的第一个位置——可能后退，也可能前进，具体要看哪个位置最近。如果历史记录中不包含该字符串，那么这个方法什么也不做</li>
+</ul></li>
+<li>还可以使用两个简写方法back()和forward()来代替go()。顾名思义，这两个方法可以模仿浏览器的“后退”和“前进”按钮。无参数</li>
+<li>history 对象还有一个length 属性，保存着历史记录的数量。对于加载到窗口、标签页或框架中的第一个页面而言，history.length 等于0。虽然 history 并不常用，但在创建自定义的“后退”和“前进”按钮，以及检测当前页面是不是用户历史记录中的第一个页面时，还是必须使用它。</li>
+</ul>
+
+<h1 id="c9">第九章 客户端检测 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>不到万不得已，就不要使用客户端检测。只要能找到更通用的方法，就应该优先采用更通用的方法。一言以蔽之，先设计最通用的方案，然后再使用特定于浏览器的技术增强该方案。</li>
+</ul>
+
+<h2>9.1 能力检测</h2>
+
+<ul>
+<li><p>能力检测的目标不是识别特定的浏览器，而是识别浏览器的能力。采用这种方式不必顾及特定的浏览器如何如何，只要确定浏览器支持特定的能力，就可以给出解决方案。能力检测的基本模式如下：</p>
+
+<pre><code class="javascript"><span class="keyword">if</span> (object.propertyInQuestion){
+<span class="comment">//使用object.propertyInQues</span>tion
+}
+</code></pre>
+
+<ul>
+<li>先检测达成目的的最常用的特性。先检测最常用的特性可以保证代码最优化，因为在多数情况下都可以避免测试多个条件。</li>
+<li>是必须测试实际要用到的特性。一个特性存在，不一定意味着另一个特性也存在。</li>
+</ul></li>
+</ul>
+
+<h3>9.1.1 更可靠的能力检测</h3>
+
+<ul>
+<li>在可能的情况下，要尽量使用typeof 进行能力检测。避免误检测属性而非功能。</li>
+</ul>
+
+<h3>9.1.2 能力检测，不是浏览器检测</h3>
+
+<ul>
+<li>实际上，根据浏览器不同将能力组合起来是更可取的方式。如果你知道自己的应用程序需要使用某
+些特定的浏览器特性，那么最好是一次性检测所有相关特性，而不要分别检测。</li>
+</ul>
+
+<h2>9.2 怪癖检测</h2>
+
+<ul>
+<li>怪癖检测是想要知道浏览器存在什么缺陷（“怪癖”也就是bug）。这通常需要运行一小段代码，以确定某一特性不能正常工作。</li>
+<li>我们建议仅检测那些对你有直
+接影响的“怪癖”，而且最好在脚本一开始就执行此类检测，以便尽早解决问题。
+##9.3 用户代理检测</li>
+<li>用户代理检测通过检测用户代理
+字符串来确定实际使用的浏览器。在每一次HTTP 请求过程中，用户代理字符串是作为响应首部发送的，
+而且该字符串可以通过JavaScript 的navigator.userAgent 属性访问。在服务器端，通过检测用户代
+理字符串来确定用户使用的浏览器是一种常用而且广为接受的做法。而在客户端，用户代理检测一般被
+当作一种万不得已才用的做法，其优先级排在能力检测和（或）怪癖检测之后。</li>
+</ul>
+
+<h3>9.3.1 用户代理字符串的历史(略)</h3>
+
+<h3>9.3.2 用户代理字符串检测技术(略)</h3>
+
+<h3>9.3.3 完整的代码<sup>P242</sup> (略)</h3>
+
+<h3>9.3.4 使用方法</h3>
+
+<ul>
+<li>用户代理检测一般适用于下列情形
+
+<ul>
+<li>不能直接准确地使用能力检测或怪癖检测</li>
+<li>同一款浏览器在不同平台下具备不同的能力</li>
+<li>为了跟踪分析等目的需要知道确切的浏览器。</li>
+</ul></li>
+</ul>
+
+<h2><a href="0.html#catalogue">回目录</a></h2>
+
+</body>
+</html>

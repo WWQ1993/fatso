@@ -1,0 +1,810 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <style type="text/css">
+   /*
+CSS stylesheet is based on killwing's flavored markdown style:
+https://gist.github.com/2937864
+*/
+body{
+margin: 0 auto;
+font: 12px/1.5em Tahoma;
+letter-spacing:0.1em;
+color: #444444;
+line-height: 1;
+width: 840px;
+padding: 5px;
+}
+h1, h2, h3, h4 {
+color: #111111;
+font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+margin-bottom: 16px;
+padding: 0;
+}
+h1 {
+margin: 15px auto;
+text-align: center;
+font-size: 28px;
+}
+h2 {
+font-size: 24px;
+
+}
+h3 {
+font-size: 20px;
+margin: 8px 16px ;
+}
+h4 {
+font-size: 16px;
+}
+h5 {
+font-size: 14px;
+}
+a {
+color: #0099ff;
+margin: 0;
+padding: 0;
+vertical-align: baseline;
+}
+a:link,a:visited{
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+}
+ul, ol {
+padding: 0;
+margin: 0;
+}
+li {
+line-height: 24px;
+margin-left: 40px;
+}
+li ul, li ol {
+margin-left: -5px;
+//margin-top:-15px;
+          color: #000080;
+
+}
+ul, ol {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+}
+
+p {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+margin-top: 3px;
+}
+
+pre {
+padding: 0px 4px;
+max-width: 800px;
+white-space: pre-wrap;
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+code {
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+pre code {
+border: 0px;
+}
+aside {
+display: block;
+float: right;
+width: 800px;
+}
+blockquote {
+border-left:.5em solid #40AA53;
+padding: 0 2em;
+margin-left:0;
+max-width: 800px;
+}
+blockquote  cite {
+font-size:14px;
+line-height:20px;
+color:#bfbfbf;
+}
+blockquote cite:before {
+content: '\2014 \00A0';
+}
+
+blockquote p {
+color: #666;
+max-width: 760px;
+}
+hr {
+height: 1px;
+border: none;
+border-top: 1px dashed #0066CC
+}
+
+button,
+input,
+select,
+textarea {
+font-size: 100%;
+margin: 0;
+vertical-align: baseline;
+*vertical-align: middle;
+}
+button, input {
+line-height: normal;
+*overflow: visible;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+border: 0;
+padding: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+cursor: pointer;
+-webkit-appearance: button;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+
+input[type="search"] {
+-webkit-appearance: textfield;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+-webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+font-weight: normal;
+line-height: normal;
+margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+display: inline-block;
+width: 210px;
+padding: 4px;
+font-size: 13px;
+font-weight: normal;
+line-height: 18px;
+height: 18px;
+color: #808080;
+border: 1px solid #ccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+select, input[type=file] {
+height: 27px;
+line-height: 27px;
+}
+textarea {
+height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+transition: border linear 0.2s, box-shadow linear 0.2s;
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+outline: none;
+border-color: rgba(82, 168, 236, 0.8);
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+/* buttons */
+button {
+display: inline-block;
+padding: 4px 14px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+line-height: 18px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+background-color: #0064cd;
+background-repeat: repeat-x;
+background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+background-image: linear-gradient(top, #049cdb, #0064cd);
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+border: 1px solid #004b9a;
+border-bottom-color: #003f81;
+-webkit-transition: 0.1s linear all;
+-moz-transition: 0.1s linear all;
+transition: 0.1s linear all;
+border-color: #0064cd #0064cd #003f81;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+button:hover {
+color: #fff;
+background-position: 0 -15px;
+text-decoration: none;
+}
+button:active {
+-webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+button::-moz-focus-inner {
+padding: 0;
+border: 0;
+}
+/* table  */
+table {
+border-spacing: 0;
+border: 1px solid #ccc;
+}
+td, th{
+border: 1px solid #ccc;
+padding: 5px;
+}
+/* code syntax highlight.
+Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own
+*/
+pre .literal,
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+color: #008000;
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+color: #0000FF;
+font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .python .decorator,
+pre .ruby .constant {
+color: #0000FF;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+color: #D14
+}
+
+pre .title,
+pre .id {
+color: #900;
+font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+color: #458;
+font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+color: #000080;
+font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+color: #008080
+}
+
+pre .regexp {
+color: #009926
+}
+
+pre .class {
+color: #458;
+font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+color: #999;
+font-weight: bold
+}
+
+pre .deletion {
+background: #fdd
+}
+
+pre .addition {
+background: #dfd
+}
+
+pre .diff .change {
+background: #0086b3
+}
+
+pre .chunk {
+color: #aaa
+}
+
+pre .markdown .header {
+color: #800;
+font-weight: bold;
+}
+
+pre .markdown .blockquote {
+color: #888;
+}
+
+pre .markdown .link_label {
+color: #88F;
+}
+
+pre .markdown .strong {
+font-weight: bold;
+}
+
+pre .markdown .emphasis {
+font-style: italic;
+}
+
+   </style>
+   
+   
+</head>
+<body>
+    <h1 id="c6">第六章 面向对象的程序设计 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>每个对象都是基于一个引用类型创建的，这个引用类型可以是原生类型，也可以是开发人员定义的类型。</li>
+<li>所有对象均继承自Object</li>
+</ul>
+
+<h2>6.1 理解对象</h2>
+
+<h3>6.1.1 属性类型</h3>
+
+<ul>
+<li>这些特性是为了实现JavaScript 引擎用的，因此在JavaScript 中不能直接访问它们。</li>
+<li>把它们放在了两对儿方括号中，例如[[Enumerable]]。</li>
+<li><p>ECMAScript 中有两种属性：数据属性和访问器属性。</p>
+
+<ol>
+<li><p>数据属性</p>
+
+<ul>
+<li>数据属性包含一个数据值的位置。在这个位置可以读取和写入值。</li>
+<li>有4 个描述其行为的特性。
+
+<ul>
+<li>[[Configurable]]：表示能否通过delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为true。</li>
+<li>[[Enumerable]]：表示能否通过for-in 循环返回属性。默认值为true。</li>
+<li>[[Writable]]：表示能否修改属性的值。默认值为true。</li>
+<li>[[Value]]：包含这个属性的数据值。这个特性的默认值为undefined。</li>
+</ul></li>
+<li><p>要修改属性默认的特性，必须使用<strong><code>Object.defineProperty()</code></strong>方法。接收三个参数：属性所在的对象、属性的名字和一个<strong>描述符对象</strong>。如：</p>
+
+<pre><code class="javascript"><span class="keyword">var</span> person = {};
+Object.defineProperty(person, <span class="string">"name"</span>, {
+writable: <span class="literal">false</span>,
+value: <span class="string">"Nicholas"</span>
+});
+alert(person.name); <span class="comment">//"Nicholas"</span>
+person.name = <span class="string">"Greg"</span>;
+alert(person.name); <span class="comment">//"Nicholas"</span>
+</code></pre></li>
+<li><p>delete可以删除对象的属性。</p></li>
+<li><p>一旦把属性定义为不可配置的，就不能再把它变回可配置了。此时，再调用配置该属性的Object.defineProperty()方法会导致错误</p></li>
+<li><p>多数情况下，没必要用到Object.defineProperty()方法提供的这些高级功能。不过，理解这些概念对理解JavaScript 对象却非常有用。</p></li>
+</ul></li>
+<li><p>访问器属性</p>
+
+<ul>
+<li>访问器属性不包含数据值；它们包含一对儿getter 和setter 函数（不过，这两个函数都不是必需的）。</li>
+<li>在读取访问器属性时，会调用getter 函数，这个函数负责返回有效的值；在写入访问器属性时，会调用setter 函数并传入新值，这个函数负责决定如何处理数据。</li>
+<li>访问器属性有如下4 个特性：
+
+<ul>
+<li>[[Configurable]]：表示能否通过delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为数据属性。默认值为true。</li>
+<li>[[Enumerable]]：表示能否通过for-in 循环返回属性。默认值为true。</li>
+<li>[[Get]]：在读取属性时调用的函数。默认值为undefined。</li>
+<li>[[Set]]：在写入属性时调用的函数。默认值为undefined。</li>
+</ul></li>
+<li>必须使用Object.defineProperty()来定义（同上）</li>
+<li>使用访问器属性的常见方式:设置一个属性的值会导致其他属性发生变化。M <sup>P141</sup> ( _year 前面的下划线是一种常用的记号，用于表示只能通过对象方法访问的属性。)</li>
+</ul>
+
+<pre><code class="javascript"><span class="keyword">var</span> book = {
+_year: <span class="number">2004</span>,
+edition: <span class="number">1</span>
+};
+Object.defineProperty(book, <span class="string">"year"</span>, {
+get: <span class="keyword">function</span>(){
+<span class="keyword">return</span> <span class="keyword">this</span>._year;
+},
+<span class="comment">//为属</span>性赋值时
+//自动调用set并将值传入参数
+set: function(newValue){
+<span class="keyword">if</span> (newValue &gt; 2<span class="number">0</span>04) {
+this._year = newValue;
+<span class="keyword">this</span>.edition += newValue - 200<span class="number">0</span>;
+}
+}
+});
+book.year = 2005;
+alert(book.edition); //6
+</code></pre>
+
+<ul>
+<li>不一定非要同时指定getter 和setter。只指定getter 意味着属性是不能写，尝试写入属性会被忽略。类似地，只指定setter 函数的属性也不能读，否则在非严格模式下读会返回undefined，而在严格模式下会抛出错误。</li>
+</ul></li>
+</ol></li>
+</ul>
+
+<h3>6.1.2 定义多个属性</h3>
+
+<ul>
+<li>          Object.defineProperties()方法。可以通过描述符一次定义多个属性。这个方法接收<strong>两个对象</strong>参数：第一个对象是要添加和修改其属性的对象，第二个对象的属性与第一个对象中要添加或修改的属性一一对应。第二个参数是一个由要修改的属性&amp;对象名值对构成的对象<sup>P142</sup></li>
+</ul>
+
+<h3>6.1.3 读取属性的特性</h3>
+
+<ul>
+<li>Object.getOwnPropertyDescriptor()方法。
+
+<ul>
+<li>作用：取得给定属性的描述符。</li>
+<li>接收两个参数：属性所在的对象和要读取其描述符的属性名称。</li>
+<li><strong>返回值是一个对象</strong>，如果是访问器属性，这个对象的属性有configurable、enumerable、get 和set；如果是数据属性，这个对象的属性有configurable、enumerable、writable 和value。</li>
+<li>在 JavaScript 中，可以针对任何对象——包括 DOM 和BOM 对象，使用Object.getOwnPropertyDescriptor()方法。</li>
+<li>具体用法<sup>P143</sup></li>
+</ul></li>
+</ul>
+
+<h2>6.2 创建对象</h2>
+
+<ul>
+<li>字面量创建单个对象的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。</li>
+</ul>
+
+<h3>6.2.1 工厂模式</h3>
+
+<ul>
+<li>用函数来封装以特定接口<strong>创建对象</strong>的细节。</li>
+<li>内部新建对象，返回新对象。调用函数不需要new。内部无this。</li>
+<li>缺点：无法识别实例类型。</li>
+<li>默写：具体实现。<sup>P144</sup></li>
+</ul>
+
+<h3>6.2.2构造函数模式</h3>
+
+<ul>
+<li>按照惯例，构造函数始终都应该以一个大写字母开头，而非构造函数则应该以一个小写字母开头。</li>
+<li>优点：可以识别实例类型。</li>
+<li>函数内部用this定义对象属性方法。无return。实例化必须使用new 操作符（会自动创建一个新对象，然后在该对象上调用构造函数，返回新对象）。</li>
+<li>通过构造函数创建的实例都有一个constructor属性，指向该构造函数（真正来源：其原型中。实例化时从原型中复制而来）。</li>
+<li>构造函数的缺点：对象的相同方法重复占用空间。（涉及function（）{}和Function _{}的代码会在内存创建一个保存该函数代码的空间）</li>
+</ul>
+
+<h3>6.2.3 原型模式</h3>
+
+<ul>
+<li>我们创建的每个函数都有一个 prototype（原型）属性，这个属性是一个指针，指向原型对象</li>
+<li>作用：所有对象实例共享它所包含的属性和方法。</li>
+</ul>
+
+<ol>
+<li>理解原型对象
+
+<ul>
+<li>只要创建了一个新函数，就会为该函数创建一个 prototype属性，这个属性指向函数的原型对象。一个构造函数只有一个原型，其所有实例共享它。</li>
+<li>所有原型对象都会自动获得一个constructor（构造函数）属性，这个属性指向prototype 属性所在函数。</li>
+<li> 当调用构造函数创建一个新实例后，该实例的内部将包含一个指针（内部属性），指向构造函数的原型对象。管这个指针叫[[Prototype]]。
+
+<ul>
+<li>虽然在Firefox、Safari、 IE11和Chrome 在每个实例对象上都支持一个属性<strong>proto</strong>可以访问原型。</li>
+<li>可以通过isPrototypeOf()方法来确定实例和原型之间的关系。</li>
+<li>Object.getPrototypeOf()，在所有支持的实现中，这个方法返回实例[[Prototype]]的值。</li>
+<li>搜索顺序:搜索给定名字的属性，首先从对象实例本身开始。如果在实例中找到了具有给定名字的属性，则返回该属性的值；如果没有找到，则继续搜索指针指向的原型对象，在原型对象中查找具有给定名字的属性。(与构造函数无关。构造函数里的变量只在创建实例的瞬间起作用)</li>
+<li>当为对象实例添加一个同名属性时，这个属性就会<strong>屏蔽</strong>原型对象中保存的同名属性；换句话说，添加这个属性只会阻止我们访问原型中的那个属性，但不会修改那个属性。(不使用<strong>proto</strong>)无法通过实例修改原型内的属性方法，会默认添加到实例并覆盖原型对应属性方法。<sup>P167</sup></li>
+<li>hasOwnProperty()方法确定属性属于实例还是原型。调用对象：实例</li>
+</ul></li>
+</ul></li>
+<li> 原型与in 操作符
+
+<ul>
+<li>有两种方式使用in 操作符：单独使用和在for-in 循环中使用。
+*单独使用时，in 操作符会在通过对象能够访问给定属性时返回true，无论该属性存在于实例中还是原型中 。格式：<code>&quot;propertyName&quot; in instance</code></li>
+<li>同时使用hasOwnProperty()方法和in 操作符，就可以确定该属性到底是存在于对象中，还是存在于原型中</li>
+<li>在使用 for-in 循环时，返回所有能够通过对象访问的、可枚举的（enumerated）属性，既包括存在于实例中的属性，也包括存在于原型中的属性。屏蔽了原型中不可枚举属性（即将[[Enumerable]]标记为false 的属性）的实例属性也会在for-in 循环中返回.</li>
+<li>取得<strong>对象上</strong>所有可枚举的实例属性，可以使用ECMAScript 5 的Object.keys()方法。这个方法接收一个对象作为参数，返回一个包含所有可枚举属性的字符串数组。(实例不会返回原型中的属性)</li>
+<li>如果你想要得到所有实例属性（无论它是否可枚举），使用Object.getOwnPropertyNames()方法。接受一个对象，返回所有（不含原型的）属性</li>
+</ul></li>
+<li><p>更简单的原型语法</p>
+
+<ul>
+<li><p>用一个包含所有属性和方法的对象字面量来重写整个原型对象</p>
+
+<ul>
+<li><p>注意：会覆盖原来的对象（指针指向新对象）。constructor 属性不再指向构造函数。此时，尽管instanceof操作符确定实例类型还能正确工作，但通过实例的constructor 已经无法确定对象的类型了。因此，在对象字面量定义时应当特意将它设置回适当的值。（以这种方式重设constructor 属性会导致它的[[Enumerable]]特性被设置为true。默认情况下，原生的constructor 属性是不可枚举的，如果你使用兼容ECMAScript 5 的JavaScript 引擎，可以试一试Object.defineProperty()。</p>
+
+<pre><code class="javascript">Object.defineProperty(Person.prototype, <span class="string">"constructor"</span>, {
+enumerable: <span class="literal">false</span>,
+value: Person
+}
+</code></pre>
+
+<p>）</p></li>
+</ul></li>
+</ul></li>
+<li><p>原型的动态性</p>
+
+<ul>
+<li>在原型中查找值的过程是一次搜索过程。</li>
+<li>如果先创建实例再重写原型会出现实例无法访问新原型的情况。（实例通过[[Prototype]]指针访问原型，如果重新替换原型，[[Prototype]]指针仍指向原来原型，则导致无法访问新的原型对象。）<sup>P156</sup> </li>
+</ul></li>
+<li><p>所有原生引用类型（Object、Array、String，等等）都在其构造函数的原型上定义了方法。通过原生对象的原型，不仅可以取得所有默认方法的引用，而且也可以定义新方法。可以像修改自定义对象的原型一样修改原生对象的原型，因此可以随时添加方法。（不推荐）</p></li>
+<li><p>原型对象的问题</p>
+
+<ul>
+<li> 没有构造函数，无法传递初始化参数，结果所有实例在默认情况下都将取得相同的属性值。</li>
+<li>原型模式的最大问题是由其共享的本性所导致的。</li>
+<li>这个问题正是我们很少看到有人单独使用原型模式的原因所在。</li>
+</ul></li>
+</ol>
+
+<h3>6.2.4 组合使用构造函数模式和原型模式</h3>
+
+<ul>
+<li>构造函数模式用于定义实
+例（特有的、个性化的）属性，而原型模式用于定义方法和共享的属性。每个实例都会有自己的一份实例属性的副本，又共享着对方法的引用，最大限度地节省了内存。另外，还支持向构造函数传递参数；可谓是集两种模式之长。</li>
+<li>这种构造函数与原型混成的模式，是目前在ECMAScript 中使用<strong>最广泛、认同度最高</strong>的一种创建自定义类型的方法</li>
+</ul>
+
+<h3>6.2.5 动态原型模式</h3>
+
+<ul>
+<li>把所有信息都封装在了构造函数中，而通过在构造函数
+中初始化原型（仅在必要的情况下），又保持了同时使用构造函数和原型的优点。换句话说，可以通过
+检查某个应该存在的方法是否有效，来决定是否需要初始化原型。</li>
+<li><p>实现方法：在构造函数中声明原型属性方法。</p>
+
+<pre><code class="javascript"><span class="comment">//这段�</span>��码只会在
+//初次调用构造函数时才会执行
+if (<span class="keyword">typeof</span> <span class="keyword">this</span>.sayName != "<span class="keyword">function</span>"){
+    Person.prototype.sayName = <span class="keyword">function</span>(){
+    alert(<span class="keyword">this</span>.name);
+    };
+}
+</code></pre>
+
+<p>不必用一大堆
+if 语句检查每个属性和每个方法；只要检查其中一个属性即可.</p></li>
+</ul>
+
+<h3>6.2.6 寄生构造函数模式</h3>
+
+<ul>
+<li>与工厂模式类似(实例化多了个new)。不推荐使用。</li>
+</ul>
+
+<h3>6.2.7 稳妥构造函数模式</h3>
+
+<ul>
+<li>稳妥对象，指的是没有公共属性，而且其方法也不引用this 的对象。稳妥对象最适合在
+一些安全的环境中（这些环境中会禁止使用this 和new），或者在防止数据被其他应用程序改动时使用。</li>
+<li>创建方式：类似工厂模式。创建并返回对象。该对象的方法有访问函数内部建立的私有变量的权利。</li>
+</ul>
+
+<h2>6.3 继承</h2>
+
+<ul>
+<li>ECMAScript 只支持实现继承，而且其实现继承主要是依靠原型链
+来实现的。</li>
+</ul>
+
+<h3>6.3.1 原型链</h3>
+
+<ul>
+<li>继承的基本思想：利用原
+型让一个引用类型继承另一个引用类型的属性和方法。</li>
+<li>实例都包含一个指向原型
+对象的内部指针。让原型对象等于另一个类型的实例，它又将指向自己的原型。例子：<sup>P163</sup></li>
+</ul>
+
+<ol>
+<li>别忘记默认的原型：所有引用类型默认都继承了Object，而这个继承也是通过原型链实现的</li>
+<li>确定原型和实例的关系
+
+<ul>
+<li>使用instanceof 操作符，只要用
+这个操作符来测试实例与原型链中出现过的构造函数（第二个参数一般是构造函数），结果就会返回true。子类实例的constructor会指向超类。</li>
+<li>第二种方式是使用isPrototypeOf()方法。同样，只要是原型链中出现过的原型，都可以说是该原型链所派生的实例的原型，因此isPrototypeOf()方法也会返回true</li>
+</ul></li>
+<li>谨慎地定义方法：给原型添加方法的代码一定要放在替换原型的语句之后</li>
+<li> 一般会增强对象：<code>SubType.constructor = SubType;</code>否则指向超类构造函数</li>
+<li> 原型链的问题
+
+<ol>
+<li> 超类实例属性共享问题</li>
+<li> 没有办法在不影响所有对象实例的情况下，给超类型的构造函数传递参数。有鉴于此，再加上前面刚刚讨论过的由于原型中包含引用类型值所带来的问题，实践中很少会单独使用原型链。</li>
+</ol></li>
+</ol>
+
+<h3>6.3.2 借用构造函数</h3>
+
+<ul>
+<li>在子类型构造函数的内部调用超类型构造函数。不仅子类拥有全部父类属性方法，而且原型本着子类覆盖超类的原则，因而将SuperType.call(this, par)放在函数第一句。</li>
+</ul>
+
+<ol>
+<li> 传递参数
+
+<ul>
+<li>相对于原型链而言，借用构造函数有一个很大的优势，即可以在子类型构造函数中向超类型构造函数传递参数。</li>
+<li>超类中的属性没有了共享问题。</li>
+</ul></li>
+<li>问题
+
+<ul>
+<li>在超类型的原型中定义的属性方法，对子类型而言也是不可见的。能见子类原型内的属性方法</li>
+</ul></li>
+</ol>
+
+<h3>6.3.3 组合继承</h3>
+
+<ul>
+<li>也叫做伪经典继承，指的是将原型链和借用构造函数的技术组合到一块，从而发挥二者之长的一种继承模式</li>
+<li>既通过在原型上定义方法实现了函数
+复用，又能够保证每个实例都有它自己的属性。</li>
+<li>组合继承避免了原型链和借用构造函数的缺陷，融合了它们的优点，成为JavaScript 中最常用的继
+承模式。而且，instanceof 和isPrototypeOf()也能够用于识别基于组合继承创建的对象。</li>
+<li>组合继承最大的
+问题就是无论什么情况下，都会调用两次超类型构造函数：一次是在重写子类型原型的时候，另一次是
+在子类型构造函数内部。</li>
+</ul>
+
+<h3>6.3.4 原型式继承</h3>
+
+<ul>
+<li>基于已有的对象创建新对象，同时还不必因此创建自定义类型。可以在不必预先定义构造函数的情况下实现继承。</li>
+<li><p>返回继承了传入对象的实例（用o替换了F的原型）（所有传入o返回的实例，原型都是同一个对象o）：</p>
+
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">object</span><span class="params">(o)</span>{</span>
+<span class="function"><span class="keyword">function</span> <span class="title">F</span><span class="params">()</span>{</span>}
+F.prototype = o;
+<span class="keyword">return</span> <span class="keyword">new</span> F();
+}
+</code></pre></li>
+<li><p>ECMAScript 5 通过新增Object.create()方法规范化了原型式继承。这个方法接收两个参数：一
+个用作新对象原型的对象和（可选的）一个为新对象定义额外属性的对象。在传入一个参数的情况下，Object.create()与上述object()方法的行为相同。</p>
+
+<ul>
+<li>Object.create()方法的第二个参数与Object.defineProperties()方法的第二个参数格式相同：每个属性都是通过自己的描述符定义的。以这种方式指定的任何属性都会覆盖原型对象上的同名属性。</li>
+</ul></li>
+<li><p>在没有必要兴师动众地创建构造函数，而只想让一个对象与另一个对象保持类似的情况下，原型式
+继承是完全可以胜任的。不过别忘了，包含引用类型值的属性始终都会共享相应的值，就像使用原型模
+式一样。</p></li>
+</ul>
+
+<h3>6.3.5 寄生式继承</h3>
+
+<ul>
+<li>原型式的拓展： 创建一个仅用于封装继承过程的函数，该
+函数在内部以某种方式来增强对象(继承传入对象，添方法等)，最后再像真地是它做了所有工作一样返回对象。
+在主要考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式。</li>
+</ul>
+
+<h3>6.3.6 寄生组合式继承</h3>
+
+<ul>
+<li>用来解决组合继承中父类构造函数中的属性创建两次（<code>superType.call(this)</code>一次和<code>SubType.prototype=new SuperType()</code>一次 。建立在子类原型上的父类属性是无用了，会被覆盖）的问题。</li>
+<li><p>寄生组合式继承的基本模式如下所示。</p>
+
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span><span class="params">(subType, superType)</span>{</span>
+<span class="keyword">var</span> prototype = object(superType.prototype); <span class="comment">//创�</span>��对象
+prototype.constructor = subType; //增强对象
+subType.prototype = prototype; //指定对象
+}
+
+</code></pre>
+
+<p>这样，我们就可以用调用inheritPrototype()函数的语句，去替换中组合继承为子类型原型赋值的语句（<code>SubType.prototype=new SuperType()</code>）了。</p></li>
+<li><p>高效率体现在它只调用了一次 SuperType 构造函数，并且因此避免了在SubType.prototype 上面创建不必要的、多余的属性。与此同时，原型链还能保持不变；因此，还能够正常使用instanceof 和isPrototypeOf()。开发人员普遍认为寄生组合式继承是引用类型<strong>最理想</strong>的继承范式。</p></li>
+</ul>
+
+<h2><a href="0.html#catalogue">回目录</a></h2>
+
+</body>
+</html>

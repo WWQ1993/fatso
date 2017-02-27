@@ -1,0 +1,1279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <style type="text/css">
+   /*
+CSS stylesheet is based on killwing's flavored markdown style:
+https://gist.github.com/2937864
+*/
+body{
+margin: 0 auto;
+font: 12px/1.5em Tahoma;
+letter-spacing:0.1em;
+color: #444444;
+line-height: 1;
+width: 840px;
+padding: 5px;
+}
+h1, h2, h3, h4 {
+color: #111111;
+font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+margin-bottom: 16px;
+padding: 0;
+}
+h1 {
+margin: 15px auto;
+text-align: center;
+font-size: 28px;
+}
+h2 {
+font-size: 24px;
+
+}
+h3 {
+font-size: 20px;
+margin: 8px 16px ;
+}
+h4 {
+font-size: 16px;
+}
+h5 {
+font-size: 14px;
+}
+a {
+color: #0099ff;
+margin: 0;
+padding: 0;
+vertical-align: baseline;
+}
+a:link,a:visited{
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+}
+ul, ol {
+padding: 0;
+margin: 0;
+}
+li {
+line-height: 24px;
+margin-left: 40px;
+}
+li ul, li ol {
+margin-left: -5px;
+//margin-top:-15px;
+          color: #000080;
+
+}
+ul, ol {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+}
+
+p {
+font-size: 14px;
+line-height: 20px;
+max-width: 840px;
+margin-top: 3px;
+}
+
+pre {
+padding: 0px 4px;
+max-width: 800px;
+white-space: pre-wrap;
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+code {
+font-family: Consolas, Monaco, Andale Mono, monospace;
+line-height: 1.5;
+font-size: 13px;
+border: 1px solid #ddd;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+pre code {
+border: 0px;
+}
+aside {
+display: block;
+float: right;
+width: 800px;
+}
+blockquote {
+border-left:.5em solid #40AA53;
+padding: 0 2em;
+margin-left:0;
+max-width: 800px;
+}
+blockquote  cite {
+font-size:14px;
+line-height:20px;
+color:#bfbfbf;
+}
+blockquote cite:before {
+content: '\2014 \00A0';
+}
+
+blockquote p {
+color: #666;
+max-width: 760px;
+}
+hr {
+height: 1px;
+border: none;
+border-top: 1px dashed #0066CC
+}
+
+button,
+input,
+select,
+textarea {
+font-size: 100%;
+margin: 0;
+vertical-align: baseline;
+*vertical-align: middle;
+}
+button, input {
+line-height: normal;
+*overflow: visible;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+border: 0;
+padding: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+cursor: pointer;
+-webkit-appearance: button;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+
+input[type="search"] {
+-webkit-appearance: textfield;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+-webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+font-weight: normal;
+line-height: normal;
+margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+cursor: pointer;
+margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+display: inline-block;
+width: 210px;
+padding: 4px;
+font-size: 13px;
+font-weight: normal;
+line-height: 18px;
+height: 18px;
+color: #808080;
+border: 1px solid #ccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+select, input[type=file] {
+height: 27px;
+line-height: 27px;
+}
+textarea {
+height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+transition: border linear 0.2s, box-shadow linear 0.2s;
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+outline: none;
+border-color: rgba(82, 168, 236, 0.8);
+-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+/* buttons */
+button {
+display: inline-block;
+padding: 4px 14px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+line-height: 18px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+background-color: #0064cd;
+background-repeat: repeat-x;
+background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+background-image: linear-gradient(top, #049cdb, #0064cd);
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+border: 1px solid #004b9a;
+border-bottom-color: #003f81;
+-webkit-transition: 0.1s linear all;
+-moz-transition: 0.1s linear all;
+transition: 0.1s linear all;
+border-color: #0064cd #0064cd #003f81;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+button:hover {
+color: #fff;
+background-position: 0 -15px;
+text-decoration: none;
+}
+button:active {
+-webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+button::-moz-focus-inner {
+padding: 0;
+border: 0;
+}
+/* table  */
+table {
+border-spacing: 0;
+border: 1px solid #ccc;
+}
+td, th{
+border: 1px solid #ccc;
+padding: 5px;
+}
+/* code syntax highlight.
+Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own
+*/
+pre .literal,
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+color: #008000;
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+color: #0000FF;
+font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .python .decorator,
+pre .ruby .constant {
+color: #0000FF;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+color: #D14
+}
+
+pre .title,
+pre .id {
+color: #900;
+font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+color: #458;
+font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+color: #000080;
+font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+color: #008080
+}
+
+pre .regexp {
+color: #009926
+}
+
+pre .class {
+color: #458;
+font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+color: #999;
+font-weight: bold
+}
+
+pre .deletion {
+background: #fdd
+}
+
+pre .addition {
+background: #dfd
+}
+
+pre .diff .change {
+background: #0086b3
+}
+
+pre .chunk {
+color: #aaa
+}
+
+pre .markdown .header {
+color: #800;
+font-weight: bold;
+}
+
+pre .markdown .blockquote {
+color: #888;
+}
+
+pre .markdown .link_label {
+color: #88F;
+}
+
+pre .markdown .strong {
+font-weight: bold;
+}
+
+pre .markdown .emphasis {
+font-style: italic;
+}
+
+   </style>
+   
+   
+</head>
+<body>
+    <h1 id="c4">第四章 变量、作用域和内存问题 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<h2>4.1基本类型和引用类型</h2>
+
+<ul>
+<li>ECMAScript变量可能保存两种类型的值（存储类型）：基本类型和引用类型</li>
+<li>当赋值给变量时，解析器必须确定变量的存储类型。</li>
+<li>5种基本数据类型的值按值访问的。对象按引用访问。</li>
+<li>JavaScript不能直接访问内存中的位置。</li>
+<li>基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中；</li>
+<li>引用类型的值是对象，保存在堆内存中；</li>
+</ul>
+
+<h3>4.1.1动态的属性</h3>
+
+<ul>
+<li>对于引用类型的值，我们可以为其添加属性和方法，也可以改变和删除其属性和方法。</li>
+<li>我们不能给基本类型的值添加属性，尽管这样做不会导致任何错误。</li>
+</ul>
+
+<h3>4.1.2复制变量值</h3>
+
+<ul>
+<li>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本；</li>
+<li>复制基本类型时，会创建原位置里的<strong>数据</strong>的副本，并放置到为新变量分配的位置上。</li>
+<li>复制引用类型时，会创建原位置里的<strong>指针</strong>的副本，并放置的为新变量分配的位置上。两个指针都指向同一引用对象。</li>
+</ul>
+
+<h3>4.1.3传递参数</h3>
+
+<ul>
+<li>所有函数的参数都按值传递。</li>
+<li>被传递的值会被复制（按上述方法复制）给一个局部变量（即命名参数，或者用ECMAScript 的概念来说，就是arguments 对象中的一个元素）</li>
+<li>不是按引用传递参数值的例子：在函数体内创建一个新的对象，并赋值给命名参数，结果并不影响传入对象的值。什么赋值只是修改了指针，而没有修改传入的对象，因此不是按引用传递。<sup>P71</sup></li>
+</ul>
+
+<h3>4.1.4检测类型</h3>
+
+<ul>
+<li>确定一个值是哪种基本类型可以使用typeof 操作符，而确定一个值是哪种引用类型可以使用instanceof 操作符。</li>
+<li><code>instancof()</code>：如果变量是给定引用类型（根据它的原型链来识别）的实例，那么instanceof 操作符就会返回true。</li>
+<li>使用instanceof 检测基本类型会始终返回false，因为基本类型不是对象。</li>
+</ul>
+
+<h2>4.2执行环境及作用域</h2>
+
+<ul>
+<li>每个执行环境都有一个与之关联的变量对象，环境中定义的所有变量和函数都保存在这个对象中。我们无法用代码访问这个对象。</li>
+<li>执行环境有全局执行环境（也称为全局环境）和函数执行环境之分；</li>
+<li>在Web 浏览器中，全局执行环境被认为是window 对象。</li>
+<li>环境的消毁：该环境内所有代码执行完毕后，消毁一切变量和方法。全局环境在关闭网页时销毁</li>
+<li>每个函数都有自己的执行环境。执行流进入一个函数时，函数环境变量对象会被创建（变量声明提升的原因）和被推入一个环境栈中。而在函数执行之后，且没有函数引用其环境（闭包），栈将其环境弹出，把控制权返回给之前的执行环境。也是内部属性[[Scope]]对象集合的增减原理。</li>
+<li><p><strong>作用域链</strong></p>
+
+<ul>
+<li>作用域链被保存在内部的[[Scope]]属性中，该属性包含了函数被创建的作用域中对象的集合，这个集合被称为函数的作用域链，它决定了哪些数据能被函数访问。</li>
+<li>创建：当某个函数被调用时，会为函数创建一个执行环境，然后通过复制函数的[[Scope]]属性中的对象构建起执行环境的作用域链。</li>
+<li>销毁：但函数返回时，其执行环境的作用域链会被销毁</li>
+<li>作用：保证环境对变量、方法的访问次序（先内后外）</li>
+<li>前端：是当前执行的代码所在环境的变量对象。如果这个环境是函数，则将其活动对象（该对象包含了函数的所有局部变量、命名参数、参数集合以及this，然后此对象会被推入作用域链的前端。当没有作用域链引用时，活动对象随之销毁。）作为变量对象。活动对象开始时包含arguements对象。</li>
+<li>前端后面是前端环境的外部环境变量对象。</li>
+<li>全局环境始终在末端。</li>
+<li>搜索顺序：沿着作用域链一级一级地搜索标识符的过程。始终从作用域链的前端开始，然后逐级地向后回溯，直至找到标识符为止（如果找不到标识符，通常会导致错误发生）。</li>
+<li><p>作用域链和代码优化：从作用域链的结构可以看出，在运行期上下文的作用域链中，标识符所在的位置越深，读写速度就会越慢。查找全局变量是最慢的。所以，在编写代码的时候应尽量少使用全局变量，尽可能使用局部变量。一个好的经验法则是：如果一个跨作用域的对象被引用了一次以上，则先把它存储到局部变量里再使用。</p>
+
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">changeColor</span><span class="params">()</span>{</span>
+    <span class="keyword">var</span> doc=document;
+    doc.getElementById(<span class="string">"btnChange"</span>).onclick=<span class="keyword">function</span>(){
+        doc.getElementById(<span class="string">"targetCanvas"</span>).style
+                          .backgroundColor=<span class="string">"red"</span>;
+    };
+}
+</code></pre>
+
+<p>这段代码比较简单，重写后不会显示出巨大的性能提升，但是如果程序中有大量的全局变量被从反复访问，那么重写后的代码性能会有显著改善。</p></li>
+<li><p>全局环境只能访问在全局环境中定义的变量和函数，而不能直接访问局部环境中的任何数据；</p></li>
+</ul></li>
+<li><p>变量的执行环境有助于确定应该何时释放内存。</p></li>
+</ul>
+
+<h3>4.2.1延长作用域链</h3>
+
+<ul>
+<li>有些语句可以在作用域链的前端临时<strong>增加</strong>一个变量对象，该变量对象会在代码执行后被移除：
+
+<ul>
+<li>try-catch 语句的catch 块。当try代码块中发生错误时，执行过程会跳转到catch语句，然后把异常对象推入一个可变对象并置于作用域的头部。在catch代码块内部，函数的所有局部变量将会被放在第二个作用域链对象中。可以通过优化代码来减少catch语句对性能的影响。一个很好的模式是将错误委托给一个函数处理。</li>
+<li>with 语句。当代码运行到with语句时，运行期上下文的作用域链临时被改变了。一个新的变量对象被创建，它包含了参数指定的对象的所有属性。这个对象将被推入作用域链的头部，这意味着函数的所有局部变量现在处于第二个作用域链对象中，因此访问代价更高了。</li>
+</ul></li>
+</ul>
+
+<h3>4.2.2没有块级作用域</h3>
+
+<ul>
+<li>由for 语句创建的变量i 即使在for循环执行结束后，也依旧会存在于循环外部的执行环境中。</li>
+</ul>
+
+<ol>
+<li>声明变量
+
+<ul>
+<li>使用 var 声明的变量会自动被添加到最接近的环境中。（注意变量声明提升）
+
+<ul>
+<li>在函数内部，最接近的环境就是函数的局部环境 </li>
+<li>在with 语句中，最接近的环境是函数环境。(应该是with语句外的环境)</li>
+</ul></li>
+<li>如果初始化变量时没有使用var 声明，该变量会自动被添加到全局环境。</li>
+<li>不声明而直接初始化变量是一个常见的错误做法，因为这样可能会导致意外。我们建议在初始化变量之前，一定要先声明，这样就可以避免类似问题。</li>
+</ul></li>
+<li>查询标识符
+
+<ul>
+<li>逐级向外，搜到打断。（如果局部环境中存在着同名标识符，就不会使用位于父环境中的标识符）</li>
+</ul></li>
+</ol>
+
+<h2>4.3垃圾收集</h2>
+
+<ul>
+<li>原理：找出那些不再继续使用的变量，然后释放其占用的内存。</li>
+<li>周期性：垃圾收集器会按照固定的时间间隔（或代码执行中预定的收集时间），周期性地执行这一操作。</li>
+<li>会为局部变量在栈（或堆）内存上分配相应的空间</li>
+</ul>
+
+<h3>4.3.1标记清除</h3>
+
+<ul>
+<li>最常用、主流。</li>
+<li>原理：给当前不使用的值加上标记，然后再回收其内存。</li>
+<li>进入环境：当变量进入环境（例如，在函数中声明一个变量）时，就将这个变量标记为“进入环境”。</li>
+<li>不会销毁进入环境标签变量</li>
+<li>离开环境：而当变量离开环境时，则将其标记为“离开环境”。</li>
+<li>原理：
+
+<ul>
+<li>加标记：垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记</li>
+<li>去标记：去掉环境中的变量以及被环境中的变量引用的变量的标记。</li>
+<li>删被标记变量：销毁那些带标记的值并回收它们所占用的内存空间。</li>
+</ul></li>
+</ul>
+
+<h3>4.3.2引用计数</h3>
+
+<ul>
+<li>不常用。JavaScript
+引擎目前都不再使用这种算法；但在IE 中访问非原生JavaScript 对象（如DOM 元素）时，这种
+算法仍然可能会导致问题。</li>
+<li>原理:跟踪记录每个值被引用的次数。次数为0则删除。</li>
+<li>存在问题：循环引用。指的是对象A 中包含一个指向对象B 的指针，而对象B 中也包含一个指向对象A 的引用。所以引用次数永不为0，删除不了互相引用的变量。</li>
+<li>手动解决问题：为了避免类似这样的循环引用问题，最好是在不使用它们的时候手工断开对象与对象之间的连接。object.toOtherObject=null; otherObject.toObject=null;</li>
+</ul>
+
+<h3>4.3.3性能问题</h3>
+
+<ul>
+<li>为垃圾收集器分配内存和综合性能之间的关系。（略）</li>
+</ul>
+
+<h3>4.3.4管理内存</h3>
+
+<ul>
+<li>使用具备垃圾收集机制的语言编写程序，开发人员一般不必操心内存管理的问题。</li>
+<li>就是分配给Web浏览器的可用内存数量通常要比分配给桌面应用程序的少。</li>
+<li>内存限制会影响变量分配内存、调用栈以及在一个线程中能够同时执行的语句数量。</li>
+<li><p>优化内存方法：</p>
+
+<ul>
+<li>解除引用：一旦数据不再有用，最好通过将其值设置为null 来释放其引用。 适用于大多数全局变量和全局对象的属性。</li>
+<li>应该及时解除不再使用的全局对象、全局对象属性以及循环引用变量的引用。</li>
+</ul></li>
+<li><p>局部变量会在它们离开执行环境时自动被解除引用</p></li>
+</ul>
+
+<h1 id="c5">第五章 引用类型 <sup><a href="0.html#catalogue">回目录</a></sup></h1>
+
+<ul>
+<li>引用类型是一种数据结构，用于将数据和功能组织在一起。</li>
+<li>也被称为对象定义，因为它们描述的是一类对象所具有的属性和方法。</li>
+<li>对象是某个特定引用类型的实例。新对象是使用new 操作符后跟一个构造函数来创建的。构造函数本身就是一个函数，只不过该函数是出于创建新对象的目的而定义的。</li>
+</ul>
+
+<h2>5.1Object类型</h2>
+
+<ul>
+<li>虽然Object 的实例不具备多少功能，但对于在应用程序中存储和传输数据而言，它们确实是非常理想的选择。</li>
+<li>为属性赋值的过程实际上就是复制（引用类型复制指针）过程</li>
+<li>创建 Object 实例的方式有两种。
+
+<ul>
+<li> 使用new 操作符后跟Object 构造函数</li>
+<li>使用对象字面量表示法（本形式只能创建Object类型实例）。对象字面量是对象定义的一种简写形式，目的在于简化创建包含大量属性的对象的过程。<code>var obj = {}</code> 。左花括号在这里表示一个表达式的开始，该表达式返回一个Object实例。在通过对象字面量定义对象时，实际上不会调用Object 构造函数。</li>
+<li>虽然可以使用前面介绍的任何一种方法来定义对象，但开发人员更青睐对象字面量语法，因为这种语法要求的代码量少，而且能够给人封装数据的感觉。实际上，对象字面量也是向函数传递大量可选参数的首选方式</li>
+<li>使用字面量的另一优点：对那些必需值使用命名参数，使用对象字面量来封装多个可选参数。<sup>P85</sup></li>
+</ul></li>
+<li>访问对象属性：
+
+<ul>
+<li> 点表示法（建议）</li>
+<li>方括号表示法。可以通过变量来访问属性（变量无引号，常量要引号）。如果属性名中包含会导致语法错误的字符，或者属性名使用的是关键字或保留字，也可以使用方括号表示法。<sup>P85</sup></li>
+</ul></li>
+</ul>
+
+<h2>5.2Array类型</h2>
+
+<ul>
+<li>ECMAScript 数组的每一项可以保存任何类型的数据。</li>
+<li>ECMAScript 数组的大小是可以动态调整的，即可以随着数据的添加自动增长以容纳新增数据。</li>
+<li>创建方式
+
+<ul>
+<li>使用Array 构造函数。
+
+<ul>
+<li>可以给构造函数传递数组长度。</li>
+<li>也可以向Array 构造函数传递数组中应该包含的项。</li>
+<li>在使用Array 构造函数时也可以省略new 操作符</li>
+</ul></li>
+<li>使用数组字面量表示法
+
+<ul>
+<li>数组字面量由一对包含数组项的方括号表示，多个数组项之间以逗号隔开，如下所示：<br>
+<code>
+var colors = [&quot;red&quot;, &quot;blue&quot;,&quot;green&quot;];
+</code></li>
+<li>在使用数组字面量表示法时，也不会调用Array 构造函数</li>
+</ul></li>
+</ul></li>
+<li>读取和设置数组：使用方括号并提供相应值的基于0 的数字索引。
+
+<ul>
+<li>如果索引小于数组中的项数，则返回对应项的值。</li>
+<li>如果<strong>设置</strong>某个值的索引超过了数组现有项数，数组就会自动增加到该索引值加1 的长度；读取时超过项数则返回undefined（不会报错）。</li>
+</ul></li>
+<li>length属性
+
+<ul>
+<li>可读可设置。通过设置这个属性，可以从数组的尾部移除项或向数组中添加新项。将length增大则新增项，减小则删除尾部至指定长度。</li>
+<li>利用 length 属性也可以方便地在数组末尾添加新项：<code>arr[arr.length]=someValue</code> //设置末尾后一位的值，同时增加了长度。</li>
+</ul></li>
+</ul>
+
+<h3>5.2.1检测数组</h3>
+
+<ul>
+<li>value instanceof Array
+
+<ul>
+<li>instanceof普遍存在的问题： 只适合只有一个全局执行环境的情况。<em>如果网页中包含多个框架，那实
+际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的Array构造函数。如果你从一个框架向另一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别具有各自不同的构造函数。</em></li>
+</ul></li>
+<li>Array.isArray()。
+
+<ul>
+<li>解决了不同全局环境的问题。</li>
+</ul></li>
+</ul>
+
+<h3>5.2.2转换方法</h3>
+
+<ul>
+<li>调用数组的toString()方法会返回由数组中<strong>每个值</strong>的字符串形式拼接而成的一个以逗号分隔的字符串。调用每一项的toString，然后以,拼接。</li>
+<li>调用valueOf()返回的还是数组。</li>
+<li><p><strong>alert()要接收字符串参数，对于非字符串参数所以它会在后台调用String()方法，由此
+会得到与直接调用toString()方法相同的结果。</strong> <em>已证实</em></p>
+
+<pre><code class="javascript"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>];
+alert(colors.toString()); <span class="comment">// red,blue,green  </span>
+alert(colors.valueOf()); <span class="comment">// red,blue,green  </span>
+alert(colors); <span class="comment">// red,blue,green</span>
+</code></pre></li>
+<li><p>toLocaleString()方法经常也会返回与toString()和valueOf()方法相同的值。调用每一项的toLocalString，然后以,拼接。</p></li>
+<li><p><code>join()</code>:可以使用不同的分隔符来构建这个字符串。join()方法只接收一个参数（无参数则默认逗号），调用每一项的toString，然后以该参数拼接。</p></li>
+</ul>
+
+<h3>5.2.3栈方法</h3>
+
+<ul>
+<li>ECMAScript 为数组专门提供了<code>push()</code>和<code>pop()</code>方法，以便实现类似栈的行为。</li>
+<li><code>push()</code>：接收任意数量的参数，把它们逐个添加到数组末尾，并<strong>返回</strong>修改后数组的<strong>长度</strong>。</li>
+<li><code>pop()</code>：从数组末尾移除最后一项，减少数组的length 值，然后<strong>返回移除的项</strong>。</li>
+</ul>
+
+<h3>5.2.4队列方法</h3>
+
+<ul>
+<li>结合使用shift()和push()方法，可以像使
+用队列一样使用数组。</li>
+<li><code>shift()</code>：移除数组中的第一个项并返回该项，同时将数组长度减1</li>
+<li><code>unshift()</code>：与shift()的用途相反，与push相对，它能在数组前端添加任意个项并返回新数组的长度。（先推后面的参数）</li>
+<li>栈方法和队列方法都是：增加项返回数值长度；删除项返回该项。</li>
+</ul>
+
+<h3>5.2.5重排序方法</h3>
+
+<ul>
+<li><code>reverse()</code>：反转数组项的顺序。返回反转的数组。</li>
+<li><code>sort()</code>：
+
+<ul>
+<li>无参情况：方法按升序排列数组项
+sort()方法会调用每个数组项的toString()转型方法，然后比较得到的字符串。即使数组中的每一项都是数值，sort()方法比较的也是字符串。</li>
+<li><code>sort()</code>方法可以接收一个比较函数作为参数。调用sort时，sort反复调用该函数，（类似冒泡排序法）传入要比较的两个值。若函数返回非正数，不交换两数位置；若返回正数，交换两数位置；</li>
+</ul></li>
+</ul>
+
+<h3>5.2.6操作方法</h3>
+
+<ul>
+<li><code>concat()</code>：先创建当前数组一个副本，然后将接收到的参数添加到这个副本的末尾，最后返回新构建的数组。如果传递给concat()方法的是一或多个数组，则该方法会将这些数组中的每一项都添加到结果数组中。如果传递的值不是数组，这些值就会被简单地添加到结果数组的末尾。</li>
+<li><code>slice()</code>：基于当前数组中的一或多个项创建一个新数组。接受一或两个参数，即要返回项的起始和结束位置。在只有一个参数的情况下，slice()方法返回从该参数指定位置开始到当前数组末尾的所有项组成的新数值。如果有两个参数，该方法返回起始和结束位置之间的项——但不包括结束位置的项(有首无尾)。</li>
+<li><code>splice()</code>的主要用途是向数组的中部插入项。接受2个或更多参数。前两个参数表示要删除的位置和项数。后面的参数表示要在该位置（后）插入的项（可以是数值）。splice()方法始终都会返回一个数组，该数组中包含从原始数组中删除的项（如果没有删除任何项，则返回一个<strong>空数组</strong>）。例子：
+
+<ul>
+<li>splice(0,2)会删除数组中的前两项。</li>
+<li>splice(2,0,&quot;red&quot;,&quot;green&quot;)会从当前数组的位置2开始插入字串&quot;red&quot;和&quot;green&quot;。</li>
+<li>splice (2,1,&quot;red&quot;,&quot;green&quot;)会删除当前数组位置2 的项，然后再从位置2 开始插入字符串&quot;red&quot;和&quot;green&quot;。</li>
+</ul></li>
+</ul>
+
+<h3 id="com1">5.2.7位置方法</h3>
+
+<ul>
+<li>indexOf()和lastIndexOf()。
+
+<ul>
+<li>这两个方法都接收两个参数：要查找的项和表示查找起点位置的索引（可选的）。</li>
+<li>都返回要查找的项在数组中的位置，或者在没找到的情况下返回-1。</li>
+<li>在比较第一个参数与数组中的每一项时，会使用全等操作符。</li>
+<li>其中，indexOf()方法从数组的开头（位置0）开始向后查找，lastIndexOf()方法则从数组的末尾开始向前查找（接受的和返回的索引都是正常计数方式）。</li>
+<li>可以通过循环调用indexOf()或lastIndexOf()来找到所有匹配的子字符串。M <sup>P125</sup></li>
+</ul></li>
+</ul>
+
+<h3>5.2.8迭代方法</h3>
+
+<ul>
+<li>5个迭代方法。<code>forEach()</code>、<code>every()</code>、<code>some()</code>、<code>map()</code>、<code>filter()</code></li>
+<li>都接收两个参数：要在每一项上运行的函数和（可选的）运行该函数的作用域对象——影响this 的值。</li>
+<li>都会对数组中的每一项运行给定函数。该函数会接收三个参数：数组项的值、该项在数组中的位置和数组对象本身。</li>
+<li>返回值具体如下：
+
+<ul>
+<li>forEach()：这个方法<strong>没有返回值</strong>。</li>
+<li>every()：如果<strong>每一项</strong>都返回true，则返回true。</li>
+<li>some()：如果该函数对<strong>任一项</strong>返回true，则返回true。</li>
+<li>map()：返回每次函数调用的<strong>结果组成的数组</strong>。</li>
+<li>filter()：返回每次函数调用的<strong>结果为true 的项</strong>组成的数组。</li>
+</ul></li>
+</ul>
+
+<h3>5.2.9 归并方法</h3>
+
+<ul>
+<li><code>reduce()</code>和<code>reduceRight()</code></li>
+<li>这两个方法都会迭代数组的所有项，然后构建一个最终返回的值。</li>
+<li>reduce()方法从数组的第一项开始；reduceRight()从数组的最后一项开始，向前遍历</li>
+<li>这两个方法都接收两个参数：一个在每一项上调用的函数和作为归并基础的初始值（可选）</li>
+<li>调用函数函数接收4 个参数：前一个值、当前值、项的索引和数组对象。这个函数返回的任何值都会作为第一个参数自动传给下一项。没有传入归并初始值时：第一次迭代发生在数组的第二项上，因此第一个参数是数组的第一项，第二个参数就是数组的第二项；传入则第一次迭代发生在第一项，第一个参数是初始值。</li>
+</ul>
+
+<h2>5.3Date类型</h2>
+
+<ul>
+<li>Date类型使用自UTC（Coordinated Universal Time，国际协调时间）1970 年1 月1 日午夜（零时）开始经过的毫秒数来保存日期。</li>
+<li>要创建一个日期对象，使用new 操作符和Date 构造函数即可</li>
+<li>参数：
+
+<ul>
+<li>不传递参数的情况下，新创建的对象自动获得<strong>当前</strong>日期和时间。</li>
+<li>如果想根据特定的日期和时间创建日期对象，必须传入表示该日期的毫秒数。为了简化这一计算过程，ECMAScript 提供了两个方法：Date.parse()和Date.UTC()，返回相应的毫秒数。
+
+<ul>
+<li>Date.parse()方法接收一个表示日期的字符串参数。没有定义Date.parse()应该支持哪种日期格式。大体有：<sup>P99</sup>
+
+<ul>
+<li> “月/日/年”</li>
+<li>“英文月名日,年”</li>
+<li>“英文星期几英文月名 日 年 时:分:秒时区”</li>
+<li>ISO 8601 扩展格式YYYY-MM-DDTHH:mm:ss.sssZ。</li>
+</ul></li>
+<li>Date.UTC()的参数分别是年份、基于0 的月份、月中的哪一天（1 到31）、小时数（0 到23）、分钟、秒以及毫秒数。在这些参数中，只有前两个参数（年和月）是必需的。如果没有提供月中的天数，则假设天数为1；如果省略其他参数，则统统假设为0。</li>
+</ul></li>
+<li>如果直接将表示日期的<strong>字符串</strong>传递给Date 构造函数，也会在后台调用Date.parse()。</li>
+<li>可以省略Date.UTC()的显示调用，直接将要传入Date.UTC()的参数传入Date的构造函数。<sup>P100</sup></li>
+</ul></li>
+<li>Data.now()方法，返回表示调用这个方法时的日期和时间的毫秒数。</li>
+</ul>
+
+<h3>5.3.1继承的方法</h3>
+
+<ul>
+<li>Date 类型的toLocaleString()方法会按照与浏览器设置的地区相适应的格式返回日期和时间。格式中会包含AM 或PM，但不会包含时区信息（当然，具体的格式会因浏览器而异）。</li>
+<li>toString()方法则通常返回带有时区信息的日期和时间，其中时间一般以军用时间（即小时的范围是0 到23）表示。</li>
+<li><p>Date 类型的valueOf()方法，则返回日期的毫秒表示。因此，可以方便使用比较操作符（小于或大于）来比较日期值。例子：   </p>
+
+<pre><code class="javascript">console.log(+<span class="keyword">new</span> Date(<span class="number">2015</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">22</span>,<span class="number">50</span>,<span class="number">50</span>));<span class="comment">//1439218250000</span>
+</code></pre></li>
+</ul>
+
+<h3>5.3.2日期格式化方法（略） <sup>P101</sup></h3>
+
+<h3>5.3.3日期/时间组件方法（略）<sup>P102</sup></h3>
+
+<h2>5.4RegExp 类型</h2>
+
+<ul>
+<li><p>创建正则表达式：</p>
+
+<ol>
+<li><p>字面量形式 :  </p>
+
+<pre><code class="javascript"><span class="keyword">var</span> expression = <span class="regexp">/ pattern /</span> flags ;
+</code></pre>
+
+<ul>
+<li>pattern部分可以是任何简单或复杂的正则表达式，可以包含字符类、限定符、分组、向前查找以及反向引用。</li>
+<li>flags：可带有一或多个标志（flags），用以标明正则表达式的行为。支持下列3 个标志：
+
+<ul>
+<li> g：表示全局（global）模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即
+停止；</li>
+<li>i：表示不区分大小写；</li>
+<li>m：表示多行（multiline）模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项。</li>
+</ul></li>
+<li>模式中使用的所有元字符都必须转义。
+
+<ul>
+<li>正则表达式中的元字符包括：( [ { \ ^ $ | ) ? * + .]}</li>
+</ul></li>
+</ul></li>
+<li><p>RegExp 构造函数</p>
+
+<pre><code class="javascript"><span class="keyword">var</span> pattern2 = <span class="keyword">new</span> RegExp(<span class="string">"[bc]at"</span>, <span class="string">"i"</span>);
+</code></pre>
+
+<ul>
+<li>接收两个参数：一个是要匹配的字符串模式，另一个是可选的标志字符串。</li>
+<li>所有元字符都必须双重转义。</li>
+<li>使用正则表达式字面量和使用RegExp 构造函数创建的正则表达式不一样<sup>[此处存疑]</sup> ：在ECMAScript 3 中，正则表达式字面量始终会共享同一个RegExp 实例，而使用构造函数创建的每一个新RegExp 实例都是一个新例。ECMAScript 5明确规定，使用正则表达式字面量必须像直接调用RegExp 构造函数一样，每次都创建新的RegExp 实例。</li>
+</ul></li>
+</ol></li>
+</ul>
+
+<h3>5.4.1RegExp实例属性</h3>
+
+<ul>
+<li>RegExp 的每个实例都具有下列属性：
+
+<ol>
+<li>global：布尔值，表示是否设置了g 标志。</li>
+<li>ignoreCase：布尔值，表示是否设置了i 标志。</li>
+<li>lastIndex：整数，如果匹配成功，lastIndex会被设置为该匹配项后第一个字符的位置（不成功置为0）。如果regexp带有全局标识g，下次查找就从lastIndex（初始为0）开始。<sup>因子仅匹配regexp.lastIndex为0的情况</sup></li>
+<li>multiline：布尔值，表示是否设置了m 标志。</li>
+<li>source：正则表达式的字符串表示，按照字面量形式而非传入构造函数中的字符串模式返回。</li>
+</ol></li>
+</ul>
+
+<h3>5.4.2RegExp实例方法</h3>
+
+<ul>
+<li><code>exec()</code>
+
+<ul>
+<li>接受一个参数，即要应用模式的字符串，然后返回包含<strong>第一个</strong>匹配项信息的数组；或者在没有匹配项的情况下返回null。</li>
+<li>返回的数组虽然是Array 的实例，但包含两个额外的属性：index 和input。其中，index 表示匹配项在字符串中的位置，而input 表示应用正则表达式的字符串。在数组中，第一项是与整个模式匹配的字符串，其他项是与模式中的捕获组匹配的字符串（如果模式中没有捕获组，则该数组只包含一项；字符串不匹配模式，则该数组为null）。</li>
+<li>即使在模式中设置了全局标志（g），它每次也只会返回一个匹配项。多次调用exec()则都会在字符串中继续查找新匹配项。<sup>P106</sup></li>
+</ul></li>
+<li><code>test()</code>:它接受一个字符串参数。在模式与该参数匹配的情况下返回true；否则，返回false。
+
+<ul>
+<li>这种用法经常出现在验证用户输入的情况下，因为我们只想知道输入是不是有效，至于它为什么无效就无关紧要了。</li>
+</ul></li>
+<li>RegExp 实例继承的toLocaleString()和toString()方法都会返回正则表达式的字面量，与创建正则表达式的方式无关。</li>
+<li>正则表达式的valueOf()方法返回正则表达式本身。</li>
+</ul>
+
+<h3>5.4.3RegExp构造函数属性</h3>
+
+<ul>
+<li>这些属性适用于作用域中的所有正则表达式，并且基于所执行的最近一次正则表达式操作而变化。</li>
+<li><p>这些属性分别有一个长属性名和一个短属性名。</p>
+
+<table><thead>
+<tr>
+<th>长属性名</th>
+<th>短属性名</th>
+<th>说 明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>input</td>
+<td>$_</td>
+<td>最近一次要匹配的字符串。</td>
+</tr>
+<tr>
+<td>lastMatch</td>
+<td>$&amp;</td>
+<td>最近一次的匹配项。</td>
+</tr>
+<tr>
+<td>lastParen</td>
+<td>$+</td>
+<td>最近一次匹配的捕获组。</td>
+</tr>
+<tr>
+<td>leftContext</td>
+<td>$`</td>
+<td>input字符串中lastMatch之前的文本</td>
+</tr>
+<tr>
+<td>rightContext</td>
+<td>$&#39;</td>
+<td>Input字符串中lastMatch之后的文本</td>
+</tr>
+<tr>
+<td>multiline</td>
+<td>$*</td>
+<td>布尔值，表示是否所有表达式都使用多行模式</td>
+</tr>
+</tbody></table></li>
+<li><p>使用这些属性可以从exec()或test()执行的操作中提取出更具体的信息</p></li>
+<li><p>执行方式：<code>RegExp.input</code>。在
+调用exec()或test()方法时，这些属性会被自动填充。<sup>P108</sup></p></li>
+<li><p>长属性名都可以用相应的短属性名来代替。（由于这些短属性名大都不是有效的ECMAScript 标识符，因此必须通过方括号语法来访问它们）</p></li>
+<li><p>还有多达9 个用于存储捕获组的构造函数属性。访问这些属性的语法是RegExp.$1、RegExp.$2…RegExp.$9，分别用于存储第一、第二……第九个匹配的捕获组。<sup>P109</sup></p></li>
+</ul>
+
+<h3>5.4.4模式的局限性</h3>
+
+<ul>
+<li>ECMAScript 正则表达式不支持的特性<sup>P109</sup></li>
+</ul>
+
+<h2>5.5 Function 类型</h2>
+
+<ul>
+<li>函数实际上是对象。每个函数都是Function 类型的实例，而且都与其他引用类型一样具有属性和方法。由于函
+数是对象，因此函数名实际上也是一个指向函数对象的指针，不会与某个函数绑定</li>
+<li><p>函数的定义：</p>
+
+<ol>
+<li><p>函数声明法</p>
+
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> <span class="params">(num1, num2)</span> {</span>
+    <span class="keyword">return</span> num1 + num2;
+}
+</code></pre></li>
+<li><p>表达式定义（注意函数末尾有一个分号）</p>
+
+<pre><code class="javascript"><span class="keyword">var</span> sum = <span class="keyword">function</span>(num1, num2){
+    <span class="keyword">return</span> num1 + num2;
+};
+</code></pre></li>
+<li><p>使用 Function 构造函数。(不推荐)</p>
+
+<pre><code class="javascript"><span class="keyword">var</span> sum = <span class="keyword">new</span> Function(<span class="string">"num1"</span>, <span class="string">"num2"</span>, <span class="string">"return num1 + num2"</span>); <span class="comment">// 不</span>推荐
+</code></pre></li>
+</ol></li>
+</ul>
+
+<h3>5.5.1 没有重载（深入理解）</h3>
+
+<ul>
+<li>声明了两个同名函数，而结果则是后面的函数覆盖了前面的函数</li>
+</ul>
+
+<h3>5.5.2 函数声明与函数表达式</h3>
+
+<ul>
+<li>对函数声明和函数表达式并非一视同仁。解析器会率先读取函数声明，并使其在执行任何代码之前可用（可以访问）；至于函数表达式，则必须等到解析器执行到它所在的代码行，才会真正被解释执行。</li>
+<li>原理：理解JavaScript变量定义行为的一个好办法是把变量定义看作由两部分组成，即声明和赋值。JavaScript隐式地提升(hoists)声明部分到封闭函数的顶部，而将赋值留在原地。换句话说，变量的作用域是整个函数，但仅在var语句出现的位置进行赋值。</li>
+<li>表达式提升的是指向函数的指针变量；函数声明提升的是该函数代码块和指针。</li>
+</ul>
+
+<h3>5.5.3 作为值的函数</h3>
+
+<ul>
+<li><p>函数名本身就是变量，所以函数也可以作为值来使用。</p>
+
+<ul>
+<li> 可以像传递参数一样把一个函数传递给另一个函数</li>
+<li>也可以将一个函数作为另一个函数的结果返回。</li>
+</ul></li>
+<li><p>要访问函数的指针而不执行函数的话，必须去掉函数名后
+面的那对圆括号。</p></li>
+</ul>
+
+<h3>5.5.4 函数内部属性</h3>
+
+<ul>
+<li>在函数内部，有两个特殊的对象：arguments 和this。</li>
+<li>arguments：<a href="123.html#arguments">见第三章</a></li>
+<li>this属性：引用函数<strong>据以执行</strong>的环境对象。当在网页的全局作用域中调用函数时，
+this 对象引用的就是window</li>
+<li>caller属性：这个属性中保存着调用当前函数的函数的引用，如果是在全局作用域中调用当前函数，它的值为null。</li>
+</ul>
+
+<h3>5.5.5函数属性和方法</h3>
+
+<ul>
+<li>每个函数都包含两个属性：length 和prototype。</li>
+<li>length 属性表示函数希望接收的命名参数的个数</li>
+<li>对原生引用类型而言：prototype 是保存它们所有实例方法的真正所在。prototype 属性是不可枚举的，因此使用for-in 无法发现。</li>
+<li>每个函数都包含两个非继承而来的方法：apply()和call()。用途都是在特定的作用域中调用函数，实际上等于设置函数体内this 对象的值。
+
+<ul>
+<li>apply()方法接收两个参数：一个
+是在其中运行函数的作用域，另一个是参数数组。其中，第二个参数可以是Array 的实例，也可以是
+arguments 对象。</li>
+<li>call()方法，第一个参数是this 值没有变化，变化的是其余参数都直接传递给函数。</li>
+</ul></li>
+<li>bind()方法：这个方法会创建一个函数的实例，其this 值会被绑定到传给bind()函数的值。<sup>优点参考第22章。</sup></li>
+<li>每个函数继承的valueOf()、toLocaleString()和toString()方法始终都返回函数的代码。返回代码的格
+式则因浏览器而异</li>
+</ul>
+
+<h2>5.6 基本包装类型</h2>
+
+<ul>
+<li>3个特殊的引用类型：Boolean、Number 和String。这些类型与本章介绍的其他引用类型相似，但同时也具有与各自的基本类型相应的特殊行为。</li>
+<li>每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而让我们能够调用一些方法来操作这些数据。</li>
+<li>而在读取模式中访问基本包装类型时，后台都会自动完成下列处理。
+
+<ol>
+<li>创建该类型的一个实例；</li>
+<li>在实例上调用指定的方法；</li>
+<li>销毁这个实例。</li>
+</ol></li>
+<li>使用new 操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁。这意味着我们不能在运行时为基本类型值添加属性和方法。</li>
+<li>可以显式地调用Boolean、Number 和String 来创建基本包装类型的对象（不建议）。<strong>该对象返回object。</strong><sup>P119</sup></li>
+<li>把字符串传给Object 构造函数，就会创建String 的实例；而传入数值参数会得到Number 的实例，传入布尔值参数就会得到Boolean 的实例。</li>
+</ul>
+
+<h3>5.6.1 Boolean类型</h3>
+
+<h3>5.6.2 Number类型</h3>
+
+<ul>
+<li>valueOf()方法返回对象表示的基本类型的数值</li>
+<li>toFixed()方法会按照指定的小数位返回数值的字符串表示。如果数值本身包含的小数位比指定的还多，那么接近指定的最大小数位的值就会舍入</li>
+<li>toExponential()，该方法返回以指数表示法（也称e 表示法）
+表示的数值的字符串形式。与toFixed()一样，toExponential()也接收一个参数，而且该参数同样也是指定输出结果中的小数位数。</li>
+<li>toPrecision()方法可能会返回固定大小（fixed）格式，也可能返回指数
+（exponential）格式；具体规则是看哪种格式最合适。这个方法接收一个参数，即表示数值的所有数字的位数（不包括指数部分）。</li>
+</ul>
+
+<h3>5.6.3 String类型</h3>
+
+<ul>
+<li>valueOf()、toLocaleString()和toString()方法，都返回对象所表示的基本字符串值。</li>
+<li>length 属性，表示字符串中包含多个字符。</li>
+<li>字符方法 
+
+<ul>
+<li>charAt()和charCodeAt()。都接收一个参数，即字符位置。charAt()返回给定位置的那个字符；charCodeAt返回该位置字符编码。</li>
+<li>还可以使用方括号加数字索引来访问字符串中的特定字符。</li>
+</ul></li>
+<li>字符串操作方法
+
+<ul>
+<li>concat()，用于将一或多个字符串拼接起来，
+返回拼接得到的新字符串。（实践中使用更多的还是加号操作符）</li>
+<li>slice()、substr()和substring()。
+都<strong>返回一个子字符串</strong>，都接受一或两个参数。第一个指定子字符串的开始位置。如果没有给这些方法传递第二个参数，则将字符串的长度作为结束位置。
+
+<ul>
+<li>slice()和substring()的第二个参数指定的是子字符串最后一个字符后面的位置。有首无尾。</li>
+<li>slice()：如果第二个参数小于第一个，则返回undefined。两个参数中任何一个为负数，这将array.length和<strong>它们</strong>相加，</li>
+<li>substr()的第二个参数指定的则是返回的字符个数</li>
+<li>substring()会将较小的数作为开始位置，将较大的数作为结束位置。slice不会。</li>
+<li>参数传入负数的情况。<sup>P124</sup></li>
+</ul></li>
+</ul></li>
+<li>字符串位置方法
+
+<ul>
+<li>indexOf()和lastIndexOf()。(<a href="#com1">详见5.2.7</a>):
+
+<ul>
+<li>唯一区别：接受子字符串和数组单项的区别。</li>
+</ul></li>
+</ul></li>
+<li> trim()方法
+
+<ul>
+<li>创建一个字符串的副本，删除前置及后缀的所有空格，然后返回结果</li>
+</ul></li>
+<li> 字符串大小写转换方法<br>
+
+<ul>
+<li>toLowerCase()、toUpperCase()、toLocaleLowerCase()、toLocaleUpperCase()：转换每一个字符到对应的大小写。</li>
+<li>而toLocaleLowerCase()和toLocaleUpperCase()方法则是针对特定地区的实现。对有些地区来说，针对地区的方法与其通用方法得到的结果相同，但少数语言（如土耳其语）会为Unicode 大小写转换应用特殊的规则，这时候就必须使用针对地区的方法来保证实现正确的转换。</li>
+<li>一般来说，在不知道自己的
+代码将在哪种语言环境中运行的情况下，还是使用针对地区的方法更稳妥一些。</li>
+</ul></li>
+<li>字符串的模式匹配方法
+
+<ul>
+<li>match()，在字符串上调用这个方法，本质上与调用RegExp 的exec()方法相同。match()方法只接受一个参数，要么是一个正则表达式，要么是一个RegExp 对象。返回和exec()一致。</li>
+<li>search()。这个方法的唯一参数与match()方法的参数相同。search()方法返回字符串中第一个匹配项的索引；如果没有找到匹配项，则返回-1。而且，search()方法始终是从字符串开头向后查找模式。</li>
+<li>replace()方法。这个方法接受两个参数：第一个参数可以是一个RegExp 对象或者一个字符串（这个字符串不会被转换成正则表达式），第二个参数可以是一个字符串或者一个函数。如果第一个参数是字符串，那么只会替换第一个子字符串。要想替换所有子字符串，唯一的办法就是提供一个正则表达式，而且要指定全局（g）标志<sup>P127</sup>
+
+<ul>
+<li>如果第二个参数是字符串，那么还可以使用一些特殊的字符序列，将正则表达式操作得到的值插入到结果字符串中。<sup>P127</sup></li>
+<li>第二个参数也可以是一个函数。在只有一个匹配项（即与模式匹配的字符串）的情况下，会向这个函数传递3 个参数：模式的匹配项、模式匹配项在字符串中的位置和原始字符串（即调用该函数的字符串）。在正则表达式中<strong>定义了多个捕获组的情况下</strong>，传递给函数的参数依次是模式的匹配项、第一个捕获组的匹配项、第二个捕获组的匹配项……，但最后两个参数仍然分别是模式的匹配项在字符串中的位置和原始。这个函数应该返回一个字符串，表示应该被替换的匹配项使用函数作为replace()方法的第二个参数可以实现更加精细的替换操作
+字符串。</li>
+</ul></li>
+<li>split()，这个方法可以基于指定的分隔符将一个字符串分割成多个子字符串，并将结果放在一个数组中。分隔符可以是字符串（空字符串则将每个字符存入数组），也可以是一个RegExp 对象（这个方法不会将字符串看成正则表达式）。可以接受可选的第二个参数，用于指定数组的大小，以便确保返回的数组不会超过既定大小。对 split()中正则表达式的支持因浏览器而异。尽管对于简单的模式没有什么差别，但对于未发现匹配项以及带有捕获组的模式，匹配的行为就不大相同了</li>
+</ul></li>
+<li>localeCompare()方法
+
+<ul>
+<li>比较两个字符串</li>
+<li>调用字符串小于参数字符串，返回负数（-1）</li>
+<li>调用字符串大于参数字符串，返回整数（1）</li>
+<li>字符串等于字符串参数，则返回0；</li>
+</ul></li>
+<li>fromCharCode()方法：接收一或多个字符<strong>编码</strong>，然后将它们转换成一个字符串。</li>
+<li>HTML 方法。应该尽量不使用这些方法，因为它们创建的标记通常无法表达语义。</li>
+</ul>
+
+<h2>5.7 单体内置对象</h2>
+
+<ul>
+<li>不依赖于宿主环境的对象，已经实例化。</li>
+<li>Object、Array 、String、Boolean、Global 和Math。<br></li>
+</ul>
+
+<h3>5.7.1Global对象</h3>
+
+<ul>
+<li>不属于任何其他对象的属性和方法，最终都是它的属性和方法。所有在全局作用域中定义的属性和函数，都是Global 对象的属性，诸如isNaN()、isFinite()、parseInt()以及parseFloat()。</li>
+<li>Global 对象还包含其他一些方法。
+
+<ol>
+<li> URI 编码方法 
+
+<ul>
+<li>调用格式：fun(string)</li>
+<li>encodeURI()和encodeURIComponent()： 对URI进行编码，以便发送给浏览器。
+
+<ul>
+<li>它们的主要区别在于，encodeURI()不会对本身属于URI 的特殊字符进行编码，只替换空格；而encodeURIComponent()则会对它发现的任何非标准字符进行编码。使用encodeURIComponent() 方法的时候要比使用encodeURI()更多。</li>
+</ul></li>
+<li>decodeURI()和decodeURIComponent()。
+
+<ul>
+<li>decodeURI()只能对使用encodeURI()替换的字符进行解码</li>
+<li>decodeURIComponent()能够解码encodeURI()和encodeURIComponent()。<br></li>
+</ul></li>
+</ul></li>
+<li>eval()方法
+
+<ul>
+<li>只接受一个参数，即要执行的字符串。 将传入的参数当作实际的ECMAScript 语句来解析，然后把执行结果插入到原位置。（被替换成了一行真正的代码）</li>
+<li>被执行的代码具有与该执行环境相同的作用域链。这意味着通过eval()执行的代码可以引用在包含环境中定义的变量</li>
+<li>在 eval()中创建的任何变量或函数都不会被提升，因为在解析代码的时候，它们被包含在一个字符串中；它们只在eval()执行的时候创建。</li>
+</ul></li>
+<li>Global 对象的属性：特殊的值undefined、NaN 以及Infinity 都是Global 对象的属性。此外，所有原生引用类型的构造函数，像Object 和Function，也都是Global 对象的属性。Global 对象的所有属性：<sup>P133</sup></li>
+<li> window 对象
+
+<ul>
+<li>但Web 浏览器都是将Global 对象作为window 对象的一部分加以实现的。因此，在全局作用域中声明的所有变量和函数，就都成为了window对象的属性 </li>
+<li>在没有给函数明确指定this 值的情况下，this值等于Global 对象。</li>
+</ul></li>
+</ol></li>
+</ul>
+
+<h3>5.7.2 Math对象</h3>
+
+<ol>
+<li>Math 对象的属性.<sup>P134</sup></li>
+<li><p>min()和max()方法</p>
+
+<ul>
+<li>常用于避免多余的循环和在if 语句中确定一组数的最大值。</li>
+<li>接受一组数值，返回最大或者最小值。</li>
+</ul></li>
+<li><p>舍入方法</p>
+
+<ol>
+<li>Math.ceil()执行向上舍入，即它总是将数值向上舍入为最接近的整数；</li>
+<li>Math.floor()执行向下舍入，即它总是将数值向下舍入为最接近的整数；</li>
+<li>Math.round()执行标准舍入，即它总是将数值四舍五入为最接近的整数</li>
+</ol></li>
+<li><p>random()方法</p>
+
+<ul>
+<li>返回大于等于0 小于1 的一个随机数。</li>
+<li><p>从某个整数范围内随机选择一个值: </p>
+
+<pre><code class="javascript">值 = Math.floor(Math.random() * 可能值的总数 + 第一个可能的值)
+</code></pre></li>
+<li><p>拓展：(利用这个函数，可以方便地从数组中随机取出一项)</p>
+
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">selectFrom</span><span class="params">(lowerValue, upperValue)</span> {</span>
+<span class="keyword">var</span> choices = upperValue - lowerValue + <span class="number">1</span>;
+<span class="keyword">return</span> Math.floor(Math.random() * choices + lowerValue);
+}
+</code></pre></li>
+</ul></li>
+<li><p>其他方法</p>
+
+<ul>
+<li>Math对象的方法。<sup>P136</sup></li>
+</ul></li>
+</ol>
+
+<h2>复习题</h2>
+
+<ul>
+<li>写出colors1、colors2、colors3的值。答案<sup>P128</sup></li>
+</ul>
+
+<pre><code class="javascript"><span class="keyword">var</span> colorText = <span class="string">"red,blue,green,yellow"</span>;
+<span class="keyword">var</span> colors1 = colorText.split(<span class="string">","</span>); 
+<span class="keyword">var</span> colors2 = colorText.split(<span class="string">","</span>, <span class="number">2</span>); 
+<span class="keyword">var</span> colors3 = colorText.split(<span class="regexp">/[^\,]+/</span>); 
+</code></pre>
+
+<ul>
+<li>理解下列语法：</li>
+</ul>
+
+<pre><code class="javascript"><span class="keyword">var</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>];
+<span class="keyword">var</span> max = Math.max.apply(Math, values);
+</code></pre>
+
+<h2><a href="0.html#catalogue">回目录</a></h2>
+
+</body>
+</html>
