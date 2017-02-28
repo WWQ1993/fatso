@@ -8,7 +8,16 @@ export default class extends Base {
    * index action
    * @return {Promise} []
    */
+  getClientIP=function(http){
+    var req=http.req;
+    return req.headers['x-forwarded-for'] ||
+      req.connection.remoteAddress ||
+      req.socket.remoteAddress ||
+      req.connection.socket.remoteAddress;
+  }
   indexAction() {
+    //获取客户端ip
+    console.log(this.getClientIP(this.http))
     //auto render template file index_index.html
     return this.display();
 

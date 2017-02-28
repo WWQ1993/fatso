@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "npm run compile;pm2 stop fatso;pm2 start www/production.js --name=fatso -i -0",
-    "startdev": "npm run compile;pm2 stop fatso;pm2 start www/development.js --name=fatso -i -0",
+    "startdev": "npm run compile;pm2 stop fatso;pm2 start pm2.json",
     "dev": "node www/development.js",
     "compile": "babel --presets es2015-loose,stage-1 --plugins transform-runtime src/ --out-dir app/ --source-maps",
     "watch-compile": "node -e \"console.log('<npm run watch-compile> no longer need, use <npm start> command direct.');console.log();\"",

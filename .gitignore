@@ -10,3 +10,8 @@ selenium-debug.log
 .idea/workspace.xml
 
 app/
+
+logs/error-1.log
+logs/error-2.log
+logs/out-1.log
+logs/out-2.log
