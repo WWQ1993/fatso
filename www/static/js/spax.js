@@ -5,6 +5,47 @@
 
   var spas = document.getElementsByClassName('spax'),
     length = spas.length,
+    loadHtml = '<style>' +
+      '  .spax-loading-pad{' +
+      '    display: block;' +
+      '    width: 100%;' +
+      '    height: 100%;' +
+      '    z-index: 999;' +
+      '    position: fixed;' +
+      '    left: 0;' +
+      '    top: 0;' +
+      '    background-color:rgba(94, 94, 94, 0.34);' +
+      '  }' +
+      '  .spax-loading{' +
+      '    color: #fffe00;' +
+      '    font-size: 30px;' +
+      '    position: fixed;' +
+      '    top: 0;' +
+      '    left: 0;' +
+      '    right: 0;' +
+      '    bottom: 0;' +
+      '    margin: auto;' +
+      '    width: 130px;' +
+      '    z-index: 100;' +
+      '    height: 60px;' +
+      '    line-height: 60px;' +
+      '    animation:spax-loading 1200ms infinite ;' +
+      '    white-space: nowrap;' +
+      '    overflow: hidden;' +
+      '  }' +
+      '  @keyframes spax-loading' +
+      '  {' +
+      '    from {width:95px;}' +
+      '    25%{width:95px;}' +
+      '    26%{width:105px;}' +
+      '    50%{width:105px;}' +
+      '    51%{width:112px;}' +
+      '    75%{width:112px;}' +
+      '    76%{width:122px;}' +
+      '    to {width:122px;}' +
+      '  }' +
+      '</style>' +
+      '  <div class="spax-loading">loading...</div>',
     ajax = function (option) {
 
       var param = function (target) {
@@ -127,9 +168,13 @@
         }
       }
     };
-  for ( var i = 0;  i < length;  i++ ) {
-    spas[i].addEventListener('click',function (e) {
+  for (var i = 0; i < length; i++) {
+    spas[i].addEventListener('click', function (e) {
       e.preventDefault();
+      var loadingPad = document.createElement('div');
+      loadingPad.className='spax-loading-pad'
+      document.body.appendChild(loadingPad);
+      loadingPad.innerHTML = loadHtml;
       var url = e.target.getAttribute('href');
 
       ajax({
@@ -137,7 +182,7 @@
         method: 'GET',
         success: function (e) {
           window.history.pushState({}, null, url);
-          document.open('text/html',true);
+          document.open('text/html', true);
           document.write(e);
           document.close();
         }
