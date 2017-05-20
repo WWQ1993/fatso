@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Our Love</title>
+
+  <style>
+    .outer {
+      width: 300px;
+      height: 270px;
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .detail {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: left;
+    }
+    #code p{
+      font-size: 18px;
+      line-height: 30px;
+    }
+    .diary{
+      text-align: center;
+    }
+#diary{
+  display: none;
+}
+.detail ul li{
+  line-height: 30px;
+  font-size: 13px;
+
+}
+.name{
+  width: 500px;
+  position: absolute;
+  top: 0px;
+  left: 142px;
+}
+    .w_main .w_days .w_day.heart:hover {
+      /*background-color: inherit;*/
+    }
+
+    .heart {
+      background: url(/static/img/heart.png) no-repeat center;
+      background-size: 100%;
+      color: wheat;
+    }
+  </style>
+  <link href="/static/love/default.css" type="text/css" rel="stylesheet">
+  <script type="text/javascript" src="/static/love/jquery.js"></script>
+  <script type="text/javascript" src="/static/love/garden_dev.js"></script>
+  <script type="text/javascript" src="/static/love/functions_dev.js"></script>
+</head>
+
+<body>
+<div id="mainDiv">
+  <div id="content" style="width: 1110px; height: 625px; margin-top: 39px; margin-left: 77.5px;">
+    <img src="/static/img/name.png" alt="" class="name">
+    <div id="code" style="margin-top: 112.5px;">
+
+      <p>I love three things in this world🌎, the sun☀️,the star✨, and you👩. The sun for the day, the star for the night, and
+        you for ever...</p>
+      <p>I am unhappy when you're unhappy...</p>
+      <p>I am here waitting for you...</p>
+      <span></span>
+    </div>
+    <div id="loveHeart">
+      <canvas id="garden" width="670" height="625"></canvas>
+      <div id="words" style="position: absolute; top: 234px; left: 587.5px;">
+        <div id="messages" style="display: block;">
+          Haiyi, I have fallen in love with you for
+          <div id="elapseClock"><span class="digit">2389</span> day <span class="digit">16</span> hr <span
+            class="digit">37</span> min <span class="digit">00</span> sec
+          </div>
+        </div>
+        <div id="loveu" style="display: block;">
+          Love u forever and ever.<br>
+          <div class="signature">- Wanqiang</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="diary">
+    <div class="outer"></div>
+    <div class="detail">
+      <ul></ul>
+    </div>
+  </div>
+
+  <div id="copyright">
+    Inspired by <a href="http://www.openrise.com/lab/FlowerPower/">FlowerPower</a> project.<br>
+    Copyright © 2017 <a href="http://wwq.space/">wwq.space</a> 2016-2017
+  </div>
+</div>
+<div id="diary">
+  <h2 data-id="0514">0514</h2>
+  <ul>
+    <li>初次看见你的照片，令我着迷，睡之前还忍不住再看几眼
+    </li>
+    <li>为何久久不加我微信呢，难道你只是为了应付家人？
+    </li>
+  </ul>
+  <h2 data-id="0515">0515</h2>
+  <ul>
+    <li>终于加到你微信了😏
+    </li>
+    <li>知道你喜欢西藏
+    </li>
+    <li>你一般在11点左右睡觉，以后早点找你聊
+    </li>
+    <li>非常喜欢你朋友圈画风，估计你的审美和我类似
+    </li>
+  </ul>
+  <h2 data-id="0516">0516</h2>
+  <ul>
+    <li>不小心聊到12点，你第二天还得上班呢
+    </li>
+    <li>知道你会做饭，肯定是贤妻良母啦🙃
+    </li>
+    <li>喜欢看小说，不爱言情类，喜欢科幻；涉猎广泛
+    </li>
+    <li>性格测试：理性真诚，和我94%匹配度，让我震惊
+    </li>
+    <li>能够站在我的角度理解我，感觉很舒服
+    </li>
+    <li>渴望创业👍
+    </li>
+    <li>居然能认识我的错别字
+    </li>
+    <li>在西藏长大，热爱西藏，渴望去西藏
+    </li>
+    <li>你说跟我聊天很开心，可我比你更开心
+    </li>
+    <li>脾气好，性格好，和你聊天很舒服
+    </li>
+    <li>喜欢玩王者荣耀
+    </li>
+  </ul>
+  <h2 data-id="0517">0517</h2>
+  <ul>
+    <li>居然叫我“万强”，好开心~😝
+    </li>
+    <li>发了一张大学时的照片给我，美美的
+    </li>
+    <li>陪你失眠
+    </li>
+    <li>喜欢吃全聚德烤鸭、喜欢狗狗🐕、喜欢榴莲
+    </li>
+    <li>不追求手机电脑这些东西
+    </li>
+    <li>好理解人哟🤘
+    </li>
+  </ul>
+  <h2 data-id="0518">0518</h2>
+  <ul>
+    <li>主动找我聊天，很惊喜
+    </li>
+    <li>厨艺真好😋，喜欢吃小龙虾
+    </li>
+    <li>你描述的一起做家务的场景让我向往
+    </li>
+    <li>聊短语音了，好兴奋。你的声音真好听
+    </li>
+    <li>说老实男人好，感动!🙊
+    </li>
+    <li>喜欢肥肠粉，喜欢过山车，喜欢泡菜酸萝卜
+    </li>
+    <li>害怕过马路，童年经历
+    </li>
+    <li>喜欢看冷笑话公众号
+    </li>
+    <li>头疼睡不着，心疼
+    </li>
+  </ul>
+  <h2 data-id="0519">0519</h2>
+  <ul>
+    <li>头疼终于好了😌
+    </li>
+    <li>喜欢看美剧
+    </li>
+    <li>推荐我看恐怖游轮、吐槽大会、闪电侠，加入日程
+    </li>
+    <li>陪你玩王者荣耀，瞬间爱上了这游戏
+    </li>
+    <li>聊了会语音，好开心
+    </li>
+    <li>喜欢水果，苹果、葡萄、琵琶、芒果、人参果
+    </li>
+    <li>聊成两点，一次次推延睡觉时间点，不舍睡去
+    </li>
+    <li>光听声音就让人着迷了☺️
+    </li>
+  </ul>
+  <h2 data-id="0520">0520</h2>
+  <ul>
+    <li>给我发早安，好开心。你居然起这么早
+    </li>
+    <li>昨晚两点半还给我发信息，你失眠了，可惜当时我已经猪🐷一样的睡着了😲
+    </li>
+    <li>你昨晚做噩梦了，以后晚上再也不和你说恐怖电影了
+    </li>
+    <li>喜欢螺蛳粉、过桥米线、（榴莲）披萨
+    </li>
+    <li>为了准备的小心意，喜欢你能喜欢☺️
+    </li>
+    <li>待续
+    </li>
+  </ul>
+</div>
+
+
+<script type="text/javascript">
+  var offsetX = $("#loveHeart").width() / 2;
+  var offsetY = $("#loveHeart").height() / 2 - 55;
+  var displayMode = -1;
+  var together = new Date();
+  together.setFullYear(2017, 4, 13);
+  together.setHours(20);
+  together.setMinutes(0);
+  together.setSeconds(0);
+  together.setMilliseconds(0);
+
+  $("#loveHeart").click(function () {
+//    displayMode *= -1;
+//    timeElapse(together, displayMode);
+  });
+
+  if (!document.createElement('canvas').getContext) {
+    var msg = document.createElement("div");
+    msg.id = "errorMsg";
+    msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+    document.body.appendChild(msg);
+    $("#code").css("display", "none")
+    $("#copyright").css("position", "absolute");
+    $("#copyright").css("bottom", "10px");
+    document.execCommand("stop");
+  } else {
+    setTimeout(function () {
+      adjustWordsPosition();
+      startHeartAnimation();
+    }, 2000);
+
+    timeElapse(together, displayMode);
+    setInterval(function () {
+      timeElapse(together, displayMode);
+    }, 500);
+
+    adjustCodePosition();
+    $("#code").typewriter();
+  }
+</script>
+<script src="http://apps.bdimg.com/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="/static/js/calendar.js"></script>
+<script>
+  calendar('.outer', '../../img/arrow_left.png', '../../img/arrow_right.png', function (ob) {
+    if (ob.action === 'choose') {
+      $('.result').text('您选择的日期是: ' + ob.choose.year + '年 ' + ob.choose.month + '月 ' + ob.choose.day + '日 ')
+    }
+    else {
+      $('.result').text('');
+    }
+  });
+</script>
+<!--<div id="download_plus_animation"></div>-->
+</body>
+</html>
